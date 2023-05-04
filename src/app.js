@@ -17,7 +17,7 @@ connection.once('open', () => {
 });
 
 app.listen(port, () => {
-    console.log(`[API] Server listening on port ${port}`.green);
+    console.log(`[API] Server listening on port ${port}`.cyan);
 });
 
 app.get('/', (req, res) => {
