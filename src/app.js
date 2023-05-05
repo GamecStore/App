@@ -26,3 +26,4 @@ app.get('/', (req, res) => {
 
 require('./routes/ping')(app);
 require('./controllers/UserController')(app);
+require('./controllers/GameController')(app);
