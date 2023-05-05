@@ -6,6 +6,9 @@ const Game = mongoose.Schema({
     developer: { type: String, require: true },
     price: { type: String, require: true },
     genre: { type: String, require: true },
-    editions: { type: Number, require: true }
+    editions: { type: Number, require: true },
+    releaseDate: { type: Date, require: true }
 
 });
+
+module.exports = mongoose.model('game', Game);

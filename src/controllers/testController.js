@@ -1,7 +1,10 @@
+const UserModel = require('../models/User.js')
+
 module.exports = (app) => {
-    app.get('/testController', async (req, res) => {
-        const data = req.body
-        const newUser = new UserModel(user)
+    app.post('/testController', async (req, res) => {
+        console.log(res.body)
+        const newUser = new UserModel(req.body)
         await newUser.save();
+        res.status(200).json({ "message": "hi" })
     })
 }
