@@ -1,5 +1,5 @@
-const { testController } = require('../controllers/UserController.js');
+const { userController } = require('../controllers/UserController.js');
 
 module.exports = (app) => {
-    app.post('/test', testController);
+    app.post('/test', userController);
 }

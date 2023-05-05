@@ -1,17 +1,7 @@
 const UserModel = require('../models/User.js')
-const registerView = (req, res) => {
-    res.render("register", {
-    });
-}
 
-const loginView = (req, res) => {
-    res.render("login", {
-    });
-}
 
-const testController = async (req, res) => {
-    console.log(req.body)
-
+const userController = async (req, res) => {
     const newUser = new UserModel(req.body)
     res.json(newUser)
     try {
@@ -23,7 +13,5 @@ const testController = async (req, res) => {
 };
 
 module.exports = {
-    registerView,
-    loginView,
-    testController
+    userController
 };
