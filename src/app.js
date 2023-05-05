@@ -25,4 +25,4 @@ app.get('/', (req, res) => {
 });
 
 require('./routes/ping')(app);
-require('./controllers/testController')(app);
+require('./controllers/UserController')(app);
