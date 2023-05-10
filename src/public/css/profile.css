@@ -1,0 +1,391 @@
+* {
+    font-family: "Barlow", Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.menu input {
+    margin-left: 10px;
+}
+
+.list {
+    font-size: 14px;
+}
+
+in style.css .user-pic {
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+a.nav-link {
+    color: gray;
+    font-size: 15px;
+    padding: 0;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #e84118;
+    padding: 2px;
+    flex: none;
+}
+
+input:focus {
+    outline: 0px !important;
+    box-shadow: none !important;
+}
+
+.card-text {
+    border: 2px solid #ddd;
+    border-radius: 8px;
+}
+
+
+.loginbtn:hover {
+    text-decoration: underline #007bff;
+}
+
+.bgcolor {
+    background-color: #212529;
+}
+
+.lihov:hover {
+    background-color: black;
+    opacity: 0.3;
+}
+
+/*footer*/
+.footeremil {
+    background-color: #222 !important;
+    border-color: #333 !important;
+    border-radius: 20px !important;
+    color: #fff !important;
+}
+
+::placeholder {
+    color: #888 !important;
+    font-size: 14px;
+}
+
+.footertext {
+    font-size: 15px;
+    font-family: "Nunito sans ,sans-serif";
+    color: #3d3d3d;
+    font-weight: 400;
+    line-height: 25px;
+    margin: 0 0 15px 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+ul {
+    padding-left: 0;
+
+}
+
+.footeremail:focus {
+    outline: none;
+}
+
+a:hover a:focus {
+    outline: none;
+    color: #ffffff;
+}
+
+.but {
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-align: center;
+    border: none;
+    border-radius: 12px;
+    height: 43px;
+    width: 100px;
+}
+
+.footer {
+    height: 100%;
+    font-family: "Nunito sans ,sans-serif";
+    -webkit-font-smoothing: antialiased;
+    padding-top: 70px;
+}
+
+.footer-about {
+    margin-bottom: 30px;
+}
+
+.footer-about .footer-logo {
+    margin-bottom: 30px;
+}
+
+.footer-about p {
+    color: #b7b7b7;
+    margin-bottom: 30px;
+}
+
+.footer-wedget {
+    margin-bottom: 30px;
+}
+
+.footer-wedget h6 {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.footer-wedget ul li {
+    line-height: 36px;
+    list-style: none;
+}
+
+.footer-wedget ul li a {
+    color: #b7b7b7;
+    font-size: 15px;
+}
+
+.footer-wedget ul li a:hover {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.footer-wedget .footer-newslatter p {
+    color: #b7b7b7;
+}
+
+.footer-wedget .footer-newslatter form {
+    position: relative;
+}
+
+.footer-wedget .footer-newslatter form input {
+    width: 100%;
+    font-size: 15px;
+    color: #ffffffff;
+    background: transparent;
+    border: none;
+    padding: 15px;
+    border-bottom: 2px solid #ffffffff;
+}
+
+.footer-wedget .footer-newslatter form input ::placeholder {
+    color: #b7b7b7;
+
+}
+
+.footer-wedget .footer-newslatter form button {
+    color: #b7b7b7;
+    font-size: 16px;
+    position: absolute;
+    right: 5px;
+    top: 0;
+    height: 100%;
+    background: transparent;
+    border: none;
+}
+
+.bg {
+    background-color: #212529;
+}
+
+/*slideshow*/
+
+.carImage {
+    height: 600px;
+    object-fit: contain;
+    width: fit-content;
+}
+
+h5 {
+    font-weight: bold;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-family: Inter, serif;
+    font-family: Inter, serif;
+    line-height: 0.5;
+}
+
+.rspac {
+    font-family: "Inter", serif;
+    font-size: 11px;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    letter-spacing: 7px;
+    margin-left: 10px;
+}
+
+.slidepara {
+    font-family: "Inter", serif;
+    display: flex;
+    align-items: center;
+    color: rgb(245, 245, 245);
+    font-size: 16px;
+    font-size: 16px;
+}
+
+.cmText {
+    font-family: "Inter", serif;
+    font-size: 14px;
+    color: white;
+    text-transform: uppercase;
+    line-height: 3;
+    text-align: justify;
+    margin: 45px 0px 0px 10px;
+}
+
+.botbtn {
+    font-family: "Inter", serif;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    text-align: center;
+    border: none;
+    border-radius: 12px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    height: 50px;
+    width: 165px;
+}
+
+.pricpara {
+    font-family: "Inter", serif;
+    font-size: 12px;
+    color: white;
+    text-transform: uppercase;
+    display: flex;
+    text-align: center;
+    margin: 45px 0px 0px 8px;
+}
+
+.Pbt {
+    font-family: "Inter", serif;
+    line-height: 2;
+    padding: 280px 0px 0px 0px;
+    align-items: center;
+}
+
+.repr {
+    font-weight: bold;
+    font-size: 14px;
+    padding: 5px;
+}
+
+.botbtn:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.cross {
+
+    text-decoration: line-through;
+    color: #888;
+
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(0, 0, 0));
+    backdrop-filter: blur(10px);
+}
+
+.containerr:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+/**body*/
+.bdcol {
+    background-color: #212529;
+    color: white;
+    border: none;
+}
+
+body {
+    background-color: black;
+}
+
+.payment {
+    padding-left: 12px;
+    margin: 30px;
+}
+
+.editprofile {
+    margin: 30px;
+    padding-left: 12px;
+}
+
+.account-settings .user-profile {
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.account-settings .user-profile .user-avatar {
+    margin: 0 0 1rem 0;
+}
+
+.account-settings .user-profile .user-avatar img {
+    width: 90px;
+    height: 90px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+}
+
+.account-settings .user-profile h5.user-name {
+    margin: 0 0 0.5rem 0;
+}
+
+.account-settings .user-profile h6.user-email {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.account-settings .about {
+    margin: 1rem 0 0 0;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+
+.form-control {
+    border: 1px solid #596280;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    font-size: .825rem;
+}
+
+.profimg {
+    border-radius: 550px;
+    width: 12%;
+    margin-top: 9px;
+}

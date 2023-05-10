@@ -1,0 +1,49 @@
+.libraryItem {
+    object-fit: cover;
+}
+
+.card {
+    width: 15rem;
+}
+
+.libraryItem {
+    transition: 0.5s ease;
+}
+
+.info {
+    display: relative;
+    bottom: 50px;
+    position: relative;
+    color: white;
+    text-align: center;
+    transition: opacity 0.5s ease;
+    margin: 0px;
+    padding: 0px;
+    bottom: 90px;
+    opacity: 0;
+}
+
+.bkcol{
+    background-color: #212529;
+}
+
+.libraryItem:hover {
+    transform: scale(1.12);
+    opacity: 0.7;
+}
+
+.libraryItem:hover.info {
+    opacity: 1;
+}
+
+#gameSearch {
+    border: none;
+}
+
+#gameSearch:focus {
+    outline: none;
+}
+
+select:focus {
+    outline: none;
+}
