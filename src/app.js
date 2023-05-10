@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 
 
 app.get('/gamepage', (req, res) => {
-    res.render('gamePage');
+    res.render('pages/gamePage');
 });
 
 require('./routes/ping')(app);
