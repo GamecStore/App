@@ -1,3 +1,5 @@
+
+
 const config = require('./config.json');
 const express = require('express');
 const cors = require('cors');
@@ -23,6 +25,7 @@ connection.once('open', () => {
 });
 
 const indexRouter = require('./routes/index')
+const gamePageRouter = require('./routes/gamepage')
 
 app.listen(port, () => {
     console.log(`[API] Server listening on port ${port}`.cyan);
