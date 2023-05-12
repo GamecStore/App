@@ -8,6 +8,8 @@ require("colors");
 const app = express();
 const port = config.port || 3000;
 app.set('view engine', 'ejs')
+app.set('views', __dirname + '/views')
+
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
@@ -20,14 +22,13 @@ connection.once('open', () => {
     console.log(`[MONGO] Connected to MongoDB`.green);
 });
 
+const indexRouter = require('./routes/index')
+
 app.listen(port, () => {
     console.log(`[API] Server listening on port ${port}`.cyan);
 });
 
-app.get('/', (req, res) => {
-    res.sendStatus(200);
-});
-
+app.use('/', indexRouter)
 
 app.get('/gamepage', (req, res) => {
     res.render('pages/gamePage');
@@ -36,3 +37,4 @@ app.get('/gamepage', (req, res) => {
 require('./routes/ping')(app);
 require('./routes/user')(app);
 require('./routes/game')(app);
+
