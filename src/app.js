@@ -35,6 +35,10 @@ app.get('/gamepage', (req, res) => {
     res.render('pages/gamePage');
 });
 
+app.get('/public/:dir/:file', (req, res) => {
+    res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);
+});
+
 require('./routes/ping')(app);
 require('./routes/user')(app);
 require('./routes/game')(app);
