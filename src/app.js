@@ -31,9 +31,7 @@ app.listen(port, () => {
 
 app.use('/', indexRouter)
 
-app.get('/gamepage', (req, res) => {
-    res.render('pages/gamePage');
-});
+app.get('/gamepage/:id', gamePageRouter)
 
 app.get('/public/:dir/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);
