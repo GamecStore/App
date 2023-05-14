@@ -26,7 +26,7 @@ const indexRouter = require('./routes/index')
 const gamePageRouter = require('./routes/gamepage')
 
 app.listen(port, () => {
-    console.log(`[API] Server listening on port ${port}`.cyan);
+    console.log(`[API] Server listening on http://localhost:${port}`.cyan);
 });
 
 app.use('/', indexRouter)
@@ -38,6 +38,10 @@ app.get('/gamepage', (req, res) => {
 app.get('/public/:dir/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);
 });
+
+app.use((req, res) => {
+    res.status(404).render("pages/ErrorPage.ejs");
+})
 
 require('./routes/ping')(app);
 require('./routes/user')(app);
