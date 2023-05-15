@@ -13,6 +13,8 @@ app.set('views', __dirname + '/views')
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
+app.use('/static', express.static('static'))
+
 
 app.set('views', path.join(__dirname, 'views'));
 
@@ -24,20 +26,40 @@ connection.once('open', () => {
 
 const indexRouter = require('./routes/index')
 const gamePageRouter = require('./routes/gamepage')
+const regesteratioRoter = require('./routes/regestration')
+const loginRoter = require('./routes/login')
+
+app.use('/', indexRouter)
+
 
 app.listen(port, () => {
     console.log(`[API] Server listening on port ${port}`.cyan);
 });
 
-app.use('/', indexRouter)
 
 app.get('/gamepage', (req, res) => {
     res.render('pages/gamePage');
 });
 
+app.get('/regestration',(req,res)=>{
+    res.render('pages/regestration')
+
+});
+
+app.get('/login', (req, res) => {
+    res.render('pages/login');
+});
+
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+});
+
 app.get('/public/:dir/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);
 });
+
+
 
 require('./routes/ping')(app);
 require('./routes/user')(app);
