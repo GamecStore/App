@@ -55,6 +55,10 @@ app.get('/public/:dir/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);
 });
 
+app.get('/:dir/:dir2/:file', (req, res) => {
+    res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.dir2}/${req.params.file}`);
+});
+
 
 app.listen(port, () => {
     console.log(`[API] Server listening on port ${port}`.cyan);

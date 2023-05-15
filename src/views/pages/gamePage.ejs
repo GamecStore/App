@@ -41,17 +41,29 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="img/god-of-war-ragnarok-watermark-screenshot-11-en-08sep21.webp"
+
+                            <img src="/images/gameimages/<%= game.sliderImgs[0] %>"
                                 class="d-block w-100 carImage img-fluid" alt="a photo form the god of war game">
                         </div>
-                        <div class="carousel-item">
+
+                        <% game.sliderImgs.slice(1).forEach((pic)=> { %>
+                            <div class="carousel-item">
+                                <img src="/images/gameimages/<%= pic %>" class="d-block w-100 img-fluid"
+                                    alt="GOW image">
+                            </div>
+                            <% }) %>
+
+
+
+
+                                <!-- <div class="carousel-item">
                             <img src="img/god-of-war-ragnarok-watermark-screenshot-03-en-08sep21.webp"
                                 class="d-block w-100  img-fluid" alt="...">
                         </div>
                         <div class="carousel-item">
                             <img src="img/god-of-war-ragnarok-watermark-screenshot-12-en-08sep21.webp"
                                 class="d-block w-100" alt="...">
-                        </div>
+                        </div> -->
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                         data-bs-slide="prev">
