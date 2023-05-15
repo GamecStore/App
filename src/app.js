@@ -29,8 +29,9 @@ const gamePageRouter = require('./routes/gamepage')
 const regesteratioRoter = require('./routes/regestration')
 const loginRoter = require('./routes/login')
 
-app.use('/', indexRouter)
-
+app.get('/login', (req, res) => {
+    res.render('pages/login')
+})
 
 app.use('/', indexRouter)
 
@@ -52,6 +53,11 @@ app.get('/logout', (req, res) => {
 
 app.get('/public/:dir/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);
+});
+
+
+app.listen(port, () => {
+    console.log(`[API] Server listening on port ${port}`.cyan);
 });
 
 
