@@ -32,14 +32,16 @@ const loginRoter = require('./routes/login')
 app.use('/', indexRouter)
 
 
+<<<<<<< HEAD
 app.listen(port, () => {
     console.log(`[API] Server listening on port ${port}`.cyan);
 });
 
+=======
+app.use('/', indexRouter)
+>>>>>>> 2bad9e80b53d11bb1c5b7eae25b24ce5b7c51370
 
-app.get('/gamepage', (req, res) => {
-    res.render('pages/gamePage');
-});
+app.get('/gamepage/:id', gamePageRouter)
 
 app.get('/regestration',(req,res)=>{
     res.render('pages/regestration')
@@ -59,7 +61,21 @@ app.get('/public/:dir/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);
 });
 
+<<<<<<< HEAD
 
+=======
+app.get('/signup', (req, res) => {
+    res.render("pages/signup.ejs");
+});
+
+app.use((req, res) => {
+    res.status(404).render("pages/ErrorPage.ejs");
+})
+
+app.listen(port, () => {
+    console.log(`[API] Server listening on http://localhost:${port}`.cyan);
+});
+>>>>>>> 2bad9e80b53d11bb1c5b7eae25b24ce5b7c51370
 
 require('./routes/ping')(app);
 require('./routes/user')(app);

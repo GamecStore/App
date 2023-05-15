@@ -24,7 +24,9 @@
     <!-- body -->
     <div class="container bg-dark mt-4 test p-4  rounded-3 mb-4 ">
         <div class="row">
-            <h1 class="text-white my-3">God of war Ragnarök</h1>
+            <h1 class="text-white my-3">
+                <%= game.name %>
+            </h1>
         </div>
         <div class="row">
             <div class="col-12 col-md-9 my-3 order-1 order-md-0">
@@ -69,9 +71,9 @@
                     <div class="col-12 w-60 w-md-100"><img class="img-fluid"
                             src="img/god-of-war-ragnarok-button-1631231879154.jpg" alt="god of war imagae"></div>
                     <div class="col-12">
-                        <p class="text-white mx-3 my-3 text-">Journey to dangerous and stunning landscapes
-                            Embark on an epic and heartfelt journey as Kratos and Atreus struggle with holding on and
-                            letting go.</p>
+                        <p class="text-white mx-3 my-3 text-">
+                            <%= game.sideDescription %>
+                        </p>
                     </div>
                     <div class="col-12 text-center">
                         <button id="scrollButton" class="border-0 w-100 rounded-2 buyButton ">Purchase</button>
@@ -79,24 +81,18 @@
                     <div class="col-12">
                         <hr class="border-5 border-white">
                     </div>
-                    <div class="col-12 text-white my-1">Developer: Sony Santa monica</div>
+                    <div class="col-12 text-white my-1">Developer: <%= game.developer %>
+                    </div>
                     <hr class="border-5 border-white">
-                    <div class="col-12 text-white my-1">Publisher: Sony Entertainment</div>
+                    <div class="col-12 text-white my-1">Publisher: <%= game.publisher %>
+                    </div>
                 </div>
 
             </div>
 
-            <div class="text-white col-12 col-md-9 order-3 text-center my-2">From Santa Monica Studio comes the sequel
-                to the
-                critically acclaimed
-                God of
-                War
-                (2018). Fimbulwinter
-                is well underway. Kratos and Atreus must journey to each of the Nine Realms in search of answers as
-                Asgardian forces prepare for a prophesied battle that will end the world. Along the way they will
-                explore stunning, mythical landscapes, and face fearsome enemies in the form of Norse gods and monsters.
-                The threat of Ragnarök grows ever closer. Kratos and Atreus must choose between their own safety and the
-                safety of the realms.</div>
+            <div class="text-white col-12 col-md-9 order-3 text-center my-2">
+                <%= game.mainDescription %>
+            </div>
 
         </div>
         <div id="focusContent" class="container my-5 text-white ">
@@ -109,7 +105,8 @@
                                 <li>God of War Ragnarök ps4</li>
                             </ul>
                         </div>
-                        <div class="col-12 mx-1 text-start text-white ">$59.99</div>
+                        <div class="col-12 mx-1 text-start text-white ">$<%= game.price[0] %>
+                        </div>
                         <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
 
                     </div>
@@ -122,7 +119,8 @@
                                 <li>God of War Ragnarök ps4 and ps5</li>
                             </ul>
                         </div>
-                        <div class="col-12 mx-1 text-start text-white">$69.99</div>
+                        <div class="col-12 mx-1 text-start text-white">$<%= game.price[1] %>
+                        </div>
                         <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
 
                     </div>
@@ -142,7 +140,8 @@
                                 <li>PSN avatar set for PS4/PS5</li>
                             </ul>
                         </div>
-                        <div class="col-12 mx-1 text-start text-white">$79.99</div>
+                        <div class="col-12 mx-1 text-start text-white">$<%= game.price[2] %>
+                        </div>
                         <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
                     </div>
                 </div>
