@@ -4,7 +4,6 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 require("colors");
-//test
 
 const app = express();
 const port = config.port || 3000;
@@ -26,10 +25,6 @@ connection.once('open', () => {
 const indexRouter = require('./routes/index')
 const gamePageRouter = require('./routes/gamepage')
 
-app.listen(port, () => {
-    console.log(`[API] Server listening on http://localhost:${port}`.cyan);
-});
-
 app.use('/', indexRouter)
 
 app.get('/gamepage/:id', gamePageRouter)
@@ -38,9 +33,18 @@ app.get('/public/:dir/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);
 });
 
+app.get('/signup', (req, res) => {
+    res.render("pages/signup.ejs");
+});
+
 app.use((req, res) => {
-    res.status(404).render("pages/ErrorPage.ejs");
+    // res.status(404).render("pages/ErrorPage.ejs");
+    res.status(404).render("pages/signup.ejs");
 })
+
+app.listen(port, () => {
+    console.log(`[API] Server listening on http://localhost:${port}`.cyan);
+});
 
 require('./routes/ping')(app);
 require('./routes/user')(app);
