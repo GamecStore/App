@@ -1,12 +1,7 @@
 
 /*form*/
 .bgimg{
-    background-image: url("./../img/log.gif");
-    background-size: 60%;
-    background-repeat: no-repeat;
-    background-position: top;
-    background-position-x: left;
-    background-color: #13032B;
+    background-image: url("./../images/bkg.gif");
 }
 
 .formlayout {

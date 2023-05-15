@@ -38,8 +38,7 @@ app.get('/signup', (req, res) => {
 });
 
 app.use((req, res) => {
-    // res.status(404).render("pages/ErrorPage.ejs");
-    res.status(404).render("pages/signup.ejs");
+    res.status(404).render("pages/ErrorPage.ejs");
 })
 
 app.listen(port, () => {
