@@ -42,51 +42,14 @@
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <!------------------->
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../../public/css/style.css">
 </head>
 
 <body class="bg-black">
 
   <!-- Header -->
   <header class="p-3 menu-fixed bg">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <img src="img/logo.png" alt="logo" width="40" height="40">
-        </a>
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 " onsubmit="return validateSearch(this)" role="search">
-            <input id="search" type="search" class="form-control" placeholder="Search..." aria-label="Search">
-          </form>
-
-          <li>
-            <div class="dropdown">
-              <button type="button" class="btn dropdown text-light" data-bs-toggle="dropdown">Account
-              </button>
-              <ul class="dropdown-menu bgcolor">
-                <li><a class="dropdown-item text-light lihov" href="profile.html">Profile</a></li>
-                <li><a class="dropdown-item text-light lihov" href="library.html">Library</a></li>
-                <li><a class="dropdown-item text-light lihov" href="history.html">History</a></li>
-                <li><a class="dropdown-item text-light lihov" href="wishlist.html">Wishlist</a></li>
-              </ul>
-            </div>
-          </li>
-
-
-          <li><a href="aboutUs.html" class="nav-link px-2 text-light mt-2">About Us</a></li>
-          <li><a href="contactus.html" class="nav-link px-2 text-light mt-2">Contact Us</a></li>
-          <li><a id="scrol_to" class="nav-link px-2 text-light btn mt-2">FAQs</a></li>
-
-        </ul>
-        <div class="text-end">
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="login.html" class="btn btn-outline-primary mx-2" href="login.html" role="button">Login</a></li>
-            <li><a class="btn btn-primary" href="signup.html" role="button">Sign up</a></li>
-            <li><a href="cart.html" class="nav-link px-2 text-light mt-2"><i class="bi bi-cart3"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <%- include ('../partials/header.ejs') %>
   </header>
   <!------------>
 
@@ -593,62 +556,7 @@
 
   <!--footer-->
   <footer class="footer bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="footer-about">
-            <div class="footer-logo">
-              <a href="index.html"><img src="img/logo.png" alt="logo" width="50%"></a>
-            </div>
-            <p>payment methods</p>
-            <a href="#"><img src="img/payment.png" alt="logo" width="30%"></a>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="footer-wedget">
-            <h6>shopping</h6>
-            <ul>
-              <li><a href="#">Games </a></li>
-              <li><a href="#"> trending Games </a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="footer-wedget">
-            <h6>LINKS</h6>
-            <ul>
-              <li><a href="#">Contact us</a></li>
-              <li><a href="#"> Payment methods </a></li>
-              <li><a href="#"> Return and Exchanges </a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="footer-wedget">
-            <h6>Newsletter</h6>
-            <div class="footer-newslatter">
-              <p class="footertext">Be the first to know about new arrivals,sales & promos!</p>
-              <form action="#">
-                <input type="text" class="footeremail" placeholder="Your Email">
-                <button type="submit"><span><i class="fa fa-envelope" arial-hidden="true"></i></span> submit</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <div class="footer-copyright-text">
-            <p class="footertext"> Copyright &copy; 2023 All rights reserved | This website is made with love <i
-                class="fa fa-heart-o" aria-hidden="true"></i> by <a href="aboutUs.html">Gamec Group</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%- include('../partials/footer') %>
   </footer>
 
   <!---------------->

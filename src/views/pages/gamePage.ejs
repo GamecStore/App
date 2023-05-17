@@ -24,32 +24,27 @@
     <!-- body -->
     <div class="container bg-dark mt-4 test p-4  rounded-3 mb-4 ">
         <div class="row">
-            <h1 class="text-white my-3">God of war Ragnarök</h1>
+            <h1 class="text-white my-3">
+                <%= game.name %>
+            </h1>
         </div>
         <div class="row">
             <div class="col-12 col-md-9 my-3 order-1 order-md-0">
                 <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
+                        <% game.sliderImgs.forEach((_, index)=> { %>
+                            <button type="button" data-bs-target="#carouselExampleIndicators"
+                                data-bs-slide-to="<%= index %>" <% if (index===0) { %> class="active"
+                                aria-current="true" <% } %> aria-label="Slide <%= index + 1 %>"></button>
+                            <% }) %>
                     </div>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="img/god-of-war-ragnarok-watermark-screenshot-11-en-08sep21.webp"
-                                class="d-block w-100 carImage img-fluid" alt="a photo form the god of war game">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/god-of-war-ragnarok-watermark-screenshot-03-en-08sep21.webp"
-                                class="d-block w-100  img-fluid" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="img/god-of-war-ragnarok-watermark-screenshot-12-en-08sep21.webp"
-                                class="d-block w-100" alt="...">
-                        </div>
+                        <% game.sliderImgs.forEach((img, index)=> { %>
+                            <div class="carousel-item <% if (index === 0) { %>active<% } %>">
+                                <img src="/images/gameimages/<%= img %>" class="d-block w-100 carImage img-fluid"
+                                    alt="Slide <%= index + 1 %>">
+                            </div>
+                            <% }) %>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                         data-bs-slide="prev">
@@ -62,16 +57,17 @@
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
+
                 <h2 class="text-white col-12 col-md-9 fw-light order-3 mx-1 mt-4">Description</h2>
             </div>
             <div class="col-12  my-3 col-md-3 order-0 order-md-1 test sticky-md-top">
                 <div class="row">
                     <div class="col-12 w-60 w-md-100"><img class="img-fluid"
-                            src="img/god-of-war-ragnarok-button-1631231879154.jpg" alt="god of war imagae"></div>
+                            src="/images/gameimages/<%= game.sideImg %>" alt="god of war imagae"></div>
                     <div class="col-12">
-                        <p class="text-white mx-3 my-3 text-">Journey to dangerous and stunning landscapes
-                            Embark on an epic and heartfelt journey as Kratos and Atreus struggle with holding on and
-                            letting go.</p>
+                        <p class="text-white mx-3 my-3 text-">
+                            <%= game.sideDescription %>
+                        </p>
                     </div>
                     <div class="col-12 text-center">
                         <button id="scrollButton" class="border-0 w-100 rounded-2 buyButton ">Purchase</button>
@@ -79,29 +75,23 @@
                     <div class="col-12">
                         <hr class="border-5 border-white">
                     </div>
-                    <div class="col-12 text-white my-1">Developer: Sony Santa monica</div>
+                    <div class="col-12 text-white my-1">Developer: <%= game.developer %>
+                    </div>
                     <hr class="border-5 border-white">
-                    <div class="col-12 text-white my-1">Publisher: Sony Entertainment</div>
+                    <div class="col-12 text-white my-1">Publisher: <%= game.publisher %>
+                    </div>
                 </div>
 
             </div>
 
-            <div class="text-white col-12 col-md-9 order-3 text-center my-2">From Santa Monica Studio comes the sequel
-                to the
-                critically acclaimed
-                God of
-                War
-                (2018). Fimbulwinter
-                is well underway. Kratos and Atreus must journey to each of the Nine Realms in search of answers as
-                Asgardian forces prepare for a prophesied battle that will end the world. Along the way they will
-                explore stunning, mythical landscapes, and face fearsome enemies in the form of Norse gods and monsters.
-                The threat of Ragnarök grows ever closer. Kratos and Atreus must choose between their own safety and the
-                safety of the realms.</div>
+            <div class="text-white col-12 col-md-9 order-3 text-center my-2">
+                <%= game.mainDescription %>
+            </div>
 
         </div>
         <div id="focusContent" class="container my-5 text-white ">
             <div class="row">
-                <div class="col-12 col-md-4 "><img class="img-fluid" src="img/Standard+ps5.png" alt="">
+                <div class="col-12 col-md-4 "><img class="img-fluid" src="/images/gameimages/Standard+ps5.png" alt="">
                     <div class="col text-white my-3 text-center d-flex flex-column">
                         <h2 class="fw-light col-12">Standard</h2>
                         <div class="col-12 text-start mx-1">
@@ -109,12 +99,13 @@
                                 <li>God of War Ragnarök ps4</li>
                             </ul>
                         </div>
-                        <div class="col-12 mx-1 text-start text-white ">$59.99</div>
+                        <div class="col-12 mx-1 text-start text-white ">$<%= game.price[0] %>
+                        </div>
                         <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
 
                     </div>
                 </div>
-                <div class="col-12 col-md-4"><img class="img-fluid" src="img/Standard+ps5.png" alt="">
+                <div class="col-12 col-md-4"><img class="img-fluid" src="/images/gameimages/Standard+ps5.png" alt="">
                     <div class="col text-white my-3 text-center d-flex flex-column">
                         <h2 class="fw-light col-12">Standard</h2>
                         <div class="col-12 text-start mx-1">
@@ -122,12 +113,13 @@
                                 <li>God of War Ragnarök ps4 and ps5</li>
                             </ul>
                         </div>
-                        <div class="col-12 mx-1 text-start text-white">$69.99</div>
+                        <div class="col-12 mx-1 text-start text-white">$<%= game.price[1] %>
+                        </div>
                         <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
 
                     </div>
                 </div>
-                <div class="col-12 col-md-4"><img class="img-fluid" src="img/Digital Deluxe.png" alt="">
+                <div class="col-12 col-md-4"><img class="img-fluid" src="/images/gameimages/Digital Deluxe.png" alt="">
                     <div class="col text-white my-3 text-center">
                         <h2 class="fw-light col-12">Digital Deluxe Edition</h2>
                         <div class="col-12 text-start mx-1">
@@ -142,7 +134,8 @@
                                 <li>PSN avatar set for PS4/PS5</li>
                             </ul>
                         </div>
-                        <div class="col-12 mx-1 text-start text-white">$79.99</div>
+                        <div class="col-12 mx-1 text-start text-white">$<%= game.price[2] %>
+                        </div>
                         <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
                     </div>
                 </div>
