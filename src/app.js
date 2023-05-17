@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const session = require('express-session')
 const logger = require('morgan');
+const fs = require('fs');
 
 const app = express();
 const port = config.port || 3000;
@@ -12,6 +13,8 @@ require("colors");
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
+
+
 
 app.use(cors());
 app.use(express.json());
@@ -21,6 +24,17 @@ app.use('/static', express.static('static'))
 app.use(express.urlencoded({ extended: true }));
 
 app.set('views', path.join(__dirname, 'views'));
+
+app.use(
+    logger(":method :url :status :res[content-length] - :response-time ms")
+);
+app.use(
+    logger("tiny", {
+        stream: fs.createWriteStream("/logs.access.log", { flags: "a" }),
+    })
+);
+
+
 
 mongoose.connect(config.mongoURI);
 const connection = mongoose.connection;
