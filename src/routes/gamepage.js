@@ -17,7 +17,7 @@ router.get('/gamepage/:id', (req, res) => {
             price: [59.99, 69.99, 79.99],
             editionsDesc: ['God of War Ragnarök ps4'],
             sliderImgs: ['GOWR1.webp', 'GOWR2.webp', 'GOWR3.webp', 'GOWR3.webp', "GOWR2.webp"],
-            sideImg: 'GOWR1.webp'
+            sideImg: 'GOWRSide.jpg'
         },
         {
             id: 2,
