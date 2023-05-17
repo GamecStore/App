@@ -3,6 +3,9 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
+const session = require('express-session')
+const logger = require('morgan');
+
 const app = express();
 const port = config.port || 3000;
 require("colors");
@@ -14,6 +17,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/static', express.static('static'))
+// to read from posts
+app.use(express.urlencoded({ extended: true }));
 
 app.set('views', path.join(__dirname, 'views'));
 
@@ -23,23 +28,19 @@ connection.once('open', () => {
     console.log(`[MONGO] Connected to MongoDB`.green);
 });
 
-app.get('/login', (req, res) => {
-    res.render('pages/login')
-})
+
 
 app.use('/', require('./routes/index'))
-app.get('/gamepage/:id', require('./routes/gamepage'))
+app.use('/', require('./routes/gamepage'))
 app.use('/', require('./routes/game'));
 app.use('/', require('./routes/user'));
+
 
 app.get('/regestration', (req, res) => {
     res.render('pages/regestration')
 
 });
 
-app.get('/login', (req, res) => {
-    res.render('pages/login');
-});
 
 app.get('/logout', (req, res) => {
     req.session.destroy();
