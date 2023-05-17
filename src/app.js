@@ -28,11 +28,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(
     logger(":method :url :status :res[content-length] - :response-time ms")
 );
-app.use(
-    logger("tiny", {
-        stream: fs.createWriteStream("/logs.access.log", { flags: "a" }),
-    })
-);
+// app.use(
+//     logger("tiny", {
+//         stream: fs.createWriteStream("/logs.access.log", { flags: "a" }),
+//     })
+// );
 
 
 
