@@ -8,12 +8,19 @@ router.get('/login', (req, res) => {
 
 
 
-router.get('/', UserController.getAllUsers);
-router.get('/:id', UserController.getUserById);
-router.post('/', UserController.createUser);
-router.put('/:id', UserController.updateUserById);
-router.delete('/:id', UserController.deleteUserById);
+router.get('/users', UserController.getAllUsers);
+router.get('/users/:id', UserController.getUserById);
+router.post('/users', UserController.createUser);
+router.put('/users/:id', UserController.updateUserById);
+router.delete('/users/:id', UserController.deleteUserById);
 
+
+// just in case
+// router.get('/', UserController.getAllUsers);
+// router.get('/:id', UserController.getUserById);
+// router.post('/', UserController.createUser);
+// router.put('/:id', UserController.updateUserById);
+// router.delete('/:id', UserController.deleteUserById);
 
 router.get('/login', (req, res) => {
     res.send('login page');
