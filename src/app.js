@@ -27,24 +27,28 @@ app.get('/login', (req, res) => {
     res.render('pages/login')
 })
 
-app.use('/', require('./routes/index'))
-app.get('/gamepage/:id', require('./routes/gamepage'))
-app.use('/', require('./routes/game'));
-app.use('/', require('./routes/user'));
+ app.use('/', require('./routes/index'))
+// app.get('/gamepage/:id', require('./routes/gamepage'))
+// app.use('/', require('./routes/game'));
+// app.use('/', require('./routes/user'));
 
-app.get('/regestration', (req, res) => {
-    res.render('pages/regestration')
+// app.get('/regestration', (req, res) => {
+//     res.render('pages/regestration')
 
+// });
+
+// app.get('/login', (req, res) => {
+//     res.render('pages/login');
+// });
+
+app.get('/allGames', (req, res) => {
+    res.render('pages/allGames');
 });
 
-app.get('/login', (req, res) => {
-    res.render('pages/login');
-});
-
-app.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/');
-});
+// app.get('/logout', (req, res) => {
+//     req.session.destroy();
+//     res.redirect('/');
+// });
 
 app.get('/public/:dir/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);
@@ -54,6 +58,11 @@ app.get('/:dir/:dir2/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.dir2}/${req.params.file}`);
 });
 
+
+app.use((req, res) => {
+    res.status(404).render('pages/ErrorPage');
+})
+
 app.listen(port, () => {
-    console.log(`[API] Server listening on port ${port}`.cyan);
+    console.log(`[API] Server listening on http://localhost:${port}`.cyan);
 });
