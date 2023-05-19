@@ -25,6 +25,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.set('views', path.join(__dirname, 'views'));
 
+
+// used to log files
 app.use(
     logger(":method :url :status :res[content-length] - :response-time ms")
 );
@@ -36,11 +38,11 @@ app.use(
 
 
 
-mongoose.connect(config.mongoURI);
-const connection = mongoose.connection;
-connection.once('open', () => {
-    console.log(`[MONGO] Connected to MongoDB`.green);
-});
+mongoose.connect(config.mongoURI).then(() => console.log(`[MONGO] Connected to MongoDB`.green)).catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
+// const connection = mongoose.connection;
+// connection.once('open', () => {
+//     console.log(`[MONGO] Connected to MongoDB`.green);
+// });
 
 
 
