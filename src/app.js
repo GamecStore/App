@@ -18,6 +18,10 @@ app.use('/static', express.static('static'))
 
 app.set('views', path.join(__dirname, 'views'));
 
+app.listen(port, () => {
+    console.log(`[API] Server listening on port ${port}`.cyan);
+});
+
 mongoose.connect(config.mongoURI);
 const connection = mongoose.connection;
 connection.once('open', () => {
@@ -26,7 +30,7 @@ connection.once('open', () => {
 
 const indexRouter = require('./routes/index')
 const gamePageRouter = require('./routes/gamepage')
-const regesteratioRoter = require('./routes/regestration')
+const signupRoter = require('./routes/signup')
 const loginRoter = require('./routes/login')
 
 app.use('/', indexRouter)
@@ -36,9 +40,8 @@ app.use('/', indexRouter)
 
 app.get('/gamepage/:id', gamePageRouter)
 
-app.get('/regestration', (req, res) => {
-    res.render('pages/regestration')
-
+app.get('/signup', (req, res) => {
+    res.render('pages/signup')
 });
 
 app.get('/login', (req, res) => {
