@@ -1,0 +1,43 @@
+
+
+.accordion-button{
+    color: #585858;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    background-color: black;
+}
+
+.accordion-button:focus{
+    background-color: black;
+    color: white;
+    box-shadow: none;
+    border: 1px solid white;
+}
+.accordion-button:hover{
+    cursor: pointer;
+    color:white;
+}
+
+.accordion-item{
+    border: none;
+}
+
+.accordion-body{
+    background-color: black;
+    color: #585858;
+}
+
+.options:hover{
+    cursor: pointer;
+    color: white;
+}
+
+.inputbg{
+    border: none;
+}
+
+.accordion-button:not(.collapsed){
+    color: #585858; 
+    background-color: black;
+    box-shadow: none;
+}

@@ -42,46 +42,10 @@
 
   <body class="bg-black">
     <!-- Header -->
-    <header class="p-3 bg menu-fixed">
-      <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-            <img src="img/logo.png" alt="logo" width="40" height="40">
-          </a>
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 " onsubmit="return validateSearch(this)" role="search">
-              <input id="search" type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            </form>
-
-            <li>
-              <div class="dropdown">
-                <button type="button" class="btn dropdown text-light" data-bs-toggle="dropdown">Account
-                </button>
-                <ul class="dropdown-menu bgcolor">
-                  <li><a class="dropdown-item text-light lihov" href="profile.html">Profile</a></li>
-                  <li><a class="dropdown-item text-light lihov" href="library.html">Library</a></li>
-                  <li><a class="dropdown-item text-light lihov" href="history.html">History</a></li>
-                  <li><a class="dropdown-item text-light lihov" href="wishlist.html">Wishlist</a></li>
-
-                </ul>
-              </div>
-            </li>
-
-
-            <li><a href="aboutUs.html" class="nav-link px-2 text-light mt-2">About Us</a></li>
-            <li><a href="contactus.html" class="nav-link px-2 text-light mt-2">Contact Us</a></li>
-            <li><a id="scrol_to" class="nav-link px-2 text-light btn mt-2" href="index.html#faq">FAQs</a></li>
-
-          </ul>
-          <div class="text-end">
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="cart.html" class="nav-link px-2 text-light mt-2"><i class="bi bi-cart3"></i></a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+    <header class="p-3 menu-fixed bg">
+      <%- include ('../partials/header.ejs') %>
     </header>
+    <!--header-->
     <!------------>
 
     <div class="container my-5">
@@ -107,15 +71,15 @@
 
             </div>
 
-          <div class="col-5 md-2">
-            <p class=" text-white mt-4 price1">EGP 200.00 </p>
-            <br>
-            <br>
-            <div style="padding-left: 56px; padding-top:25px ;">
-              <div class=" text-white mt-2 removeText bg-dark btn">Remove From Cart</div>
-              <div class=" text-white mt-2 removeText bg-dark btn">Add to Wishlist</div>
+            <div class="col-5 md-2">
+              <p class=" text-white mt-4 price1">EGP 200.00 </p>
+              <br>
+              <br>
+              <div style="padding-left: 56px; padding-top:25px ;">
+                <div class=" text-white mt-2 removeText bg-dark btn">Remove From Cart</div>
+                <div class=" text-white mt-2 removeText bg-dark btn">Add to Wishlist</div>
+              </div>
             </div>
-          </div>
 
 
 
@@ -125,115 +89,40 @@
 
         </div>
 
-      <div class="col-12 col-md-4 bg-black text-white px-5">
-        <p class="header">Games and Apps Summary</p>
-        <div>
-          <p class="alignleft">Price</p>
-          <p class="alignright">EGP 250.99</p>
-        </div>
-        <div style="clear: both;"></div>
-        <div>
-          <p class="alignleft">Sales Discount</p>
-          <p class="alignright">EGP -50.99</p>
-        </div>
-        <div style="clear: both;"></div>
-        <div>
-          <p class="alignleft">Taxes</p>
-          <p style="color: grey;" class="alignright">Calculate at Checkout</p>
-        </div>
-        <div style="clear: both;"></div>
-        <div class="line"></div>
-        <div>
-          <p style="font-weight: bold;" class="alignleft">Subtotal</p>
-          <p style="font-weight: bold;" class="alignright">EGP 200.00</p>
-        </div>
-        <div style="clear: both;"></div>
-        <a href="checkout.html" class="btn btn-primary text-center ">CHECK OUT</a>
+        <div class="col-12 col-md-4 bg-black text-white px-5">
+          <p class="header">Games and Apps Summary</p>
+          <div>
+            <p class="alignleft">Price</p>
+            <p class="alignright">EGP 250.99</p>
+          </div>
+          <div style="clear: both;"></div>
+          <div>
+            <p class="alignleft">Sales Discount</p>
+            <p class="alignright">EGP -50.99</p>
+          </div>
+          <div style="clear: both;"></div>
+          <div>
+            <p class="alignleft">Taxes</p>
+            <p style="color: grey;" class="alignright">Calculate at Checkout</p>
+          </div>
+          <div style="clear: both;"></div>
+          <div class="line"></div>
+          <div>
+            <p style="font-weight: bold;" class="alignleft">Subtotal</p>
+            <p style="font-weight: bold;" class="alignright">EGP 200.00</p>
+          </div>
+          <div style="clear: both;"></div>
+          <a href="checkout.html" class="btn btn-primary text-center ">CHECK OUT</a>
 
         </div>
 
 
       </div>
 
-  </div>
-  <!--footer-->
-  <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="footer-about">
-            <div class="footer-logo">
-              <a href="index.html"><img src="img/logo.png" alt="logo" width="50%"></a>
-            </div>
-            <p>payment methods</p>
-            <a href="#"><img src="img/payment.png" alt="logo" width="30%"></a>
-          </div>
-        </div>
-
-          <div class="col-lg-3 col-md-6 col-sm-6">
-
-
-            <div class="footer-wedget">
-              <h6>shopping</h6>
-              <ul>
-                <li><a href="#">Games </a></li>
-                <li><a href="#"> trending Games </a></li>
-              </ul>
-            </div>
-
-          </div>
-
-
-          <div class="col-lg-3 col-md-6 col-sm-6">
-
-
-            <div class="footer-wedget">
-
-              <h6>LINKS</h6>
-              <ul>
-                <li><a href="#">Contact us</a></li>
-                <li><a href="#"> Payment methods </a></li>
-                <li><a href="#"> Return and Exchanges </a></li>
-              </ul>
-            </div>
-
-          </div>
-
-
-
-
-          <div class="col-lg-3 col-md-6 col-sm-6">
-
-
-            <div class="footer-wedget">
-
-              <h6>Newsletter</h6>
-              <div class="footer-newslatter">
-                <p>Be the first to know about new arrivals,sales & promos!</p>
-                <form action="#">
-                  <input type="text" placeholder="Your Email">
-                  <button type="submit"><span><i class="fa fa-envelope" arial-hidden="true"></i></span> submit</button>
-                </form>
-
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <div class="footer-copyright-text">
-              <p> Copyright &copy; 2023 All rights reserved | This website is made with love <i class="fa fa-heart-o"
-                  aria-hidden="true"></i> by <a href="aboutUs.html">Gamec Group</a> </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
+    </div>
+    <!--footer-->
+    <footer class="footer bg">
+      <%- include('../partials/footer') %>
     </footer>
     <!--footer-->
     <!-- Scripts -->

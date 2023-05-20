@@ -73,11 +73,13 @@ app.use('/wishlist', WishlistRouter)
 app.use('/history', HistoryRouter)
 app.use('/checkout', CheckoutRouter)
 
-app.get('/regestration', (req, res) => {
-    res.render('pages/regestration')
-
+app.get('/signup', (req, res) => {
+    res.render('pages/signup')
 });
 
+app.get('/allGames', (req, res) => {
+    res.render('pages/allGames');
+});
 
 app.get('/logout', (req, res) => {
     req.session.destroy();
@@ -92,8 +94,13 @@ app.get('/:dir/:dir2/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.dir2}/${req.params.file}`);
 });
 
+
+app.use((req, res) => {
+    res.status(404).render('pages/ErrorPage');
+})
+
 app.listen(port, () => {
-    console.log(`[API] Server listening on port ${port}`.cyan);
+    console.log(`[API] Server listening on http://localhost:${port}`.cyan);
 });
 
 //export default app;
