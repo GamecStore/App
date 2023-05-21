@@ -58,7 +58,6 @@ mongoose.connect(config.mongoURI).then(() => console.log(`[MONGO] Connected to M
 
 
 app.use('/', require('./routes/index'))
-app.use('/', require('./routes/gamepage'))
 app.use('/', require('./routes/game'));
 app.use('/', require('./routes/user'));
 app.use('/products', ProductsRouter)

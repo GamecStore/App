@@ -1,5 +1,5 @@
 const Game = require('../models/Game.js')
-
+const games = require('../models/Game')
 
 const createGame = async (req, res) => {
     try {
@@ -85,6 +85,15 @@ const filterGames = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+const gamepage = (req, res) => {
+
+    const id = req.params.id;
+    game = games.findOne({ _id: id }).then((game) => {
+        res.render('pages/gamePage', { game })
+    })
+
+
+}
 
 module.exports = {
     createGame,
@@ -93,4 +102,5 @@ module.exports = {
     updateGameById,
     deleteGameById,
     filterGames,
+    gamepage,
 };
