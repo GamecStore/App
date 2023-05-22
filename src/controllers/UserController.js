@@ -1,32 +1,31 @@
 const User = require('../models/User');
+//const bcrypt = require('bcrypt');
 
 const createUser = async (req, res) => {
     try {
-        const user = new User(req.body);
-        await user.save();
-        res.status(201).json(user);
+        // const user = new User(req.body);
+        // await user.save();
+        // res.status(201).json(user);
+
+        const user = new User(
+            {
+                email: req.body.email,
+                gender: req.body.gender,
+                username: req.body.name,
+
+                password: req.body.password,
+                dob: req.body.dob,
+
+
+            });
+
+        user.save()
+            .then(() => res.send('User saved to database'))
+            .catch(err => console.error(err));
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-
-
-    const { username, email, password, confirmpassword, dob, gender, userType } = req.body;
-    const user = new User(
-        {
-            Username: username.body.us,
-            email: email.body.em,
-            password: password.body.pw,
-            confirmpassword,
-            dob,
-            gender,
-            userType
-        });
-    user.save()
-        .then(() => res.send('User saved to database'))
-        .catch(err => console.error(err));
-
-
-
 };
 
 const getAllUsers = async (req, res) => {
@@ -77,12 +76,12 @@ const deleteUserById = async (req, res) => {
     }
 };
 
-const
 
-    module.exports = {
-        createUser,
-        getAllUsers,
-        getUserById,
-        updateUserById,
-        deleteUserById,
-    };
+
+module.exports = {
+    createUser,
+    getAllUsers,
+    getUserById,
+    updateUserById,
+    deleteUserById,
+};

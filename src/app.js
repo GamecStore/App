@@ -65,12 +65,10 @@ app.use('/products', ProductsRouter)
 app.use('/orders', OrdersRouter)
 app.use('/customers', CustomersRouter)
 app.use('/adminindex', AdminindexRouter)
-app.use('/cart', CartRouter)
 //app.use('/aboutUs',AboutUsRouter)
 app.use('/contactus', ContactUsRouter)
 app.use('/library', LibraryRouter)
 app.use('/wishlist', WishlistRouter)
-app.use('/history', HistoryRouter)
 app.use('/checkout', CheckoutRouter)
 
 // app.get('/user', (req, res) => {
