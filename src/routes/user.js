@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const UserController = require('../controllers/UserController');
 
+router.get('/history', (req, res)=> {
+    res.render('pages/history');
+});
+router.get('/orders',(req,res)=>{
+    res.render('pages/admin/orders')
+    })
 router.get('/signup', (req, res) => {
     res.render('pages/signup');
 });
