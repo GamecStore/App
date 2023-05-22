@@ -19,7 +19,7 @@ const OrdersRouter = require('./routes/orders')
 const CartRouter = require('./routes/cart')
 const CheckoutRouter = require('./routes/checkout')
 const ContactUsRouter = require('./routes/contactus')
-const HistoryRouter = require('./routes/history')
+const HistoryRouter = require('./routes/user')
 const LibraryRouter = require('./routes/library')
 const WishlistRouter = require('./routes/wishlist')
 // const loginRouter = require('./routes/login')
@@ -65,12 +65,10 @@ app.use('/products', ProductsRouter)
 app.use('/orders', OrdersRouter)
 app.use('/customers', CustomersRouter)
 app.use('/adminindex', AdminindexRouter)
-app.use('/cart', CartRouter)
 //app.use('/aboutUs',AboutUsRouter)
 app.use('/contactus', ContactUsRouter)
 app.use('/library', LibraryRouter)
 app.use('/wishlist', WishlistRouter)
-app.use('/history', HistoryRouter)
 app.use('/checkout', CheckoutRouter)
 
 // app.get('/user', (req, res) => {
@@ -95,7 +93,6 @@ app.get('/public/:dir/:file', (req, res) => {
 app.get('/:dir/:dir2/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.dir2}/${req.params.file}`);
 });
-
 
 app.use((req, res) => {
     res.status(404).render('pages/ErrorPage');

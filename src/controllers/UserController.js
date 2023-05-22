@@ -1,10 +1,28 @@
 const User = require('../models/User');
+//const bcrypt = require('bcrypt');
 
 const createUser = async (req, res) => {
     try {
-        const user = new User(req.body);
-        await user.save();
-        res.status(201).json(user);
+        // const user = new User(req.body);
+        // await user.save();
+        // res.status(201).json(user);
+
+        const user = new User(
+            {
+                email: req.body.email,
+                gender: req.body.gender,
+                username: req.body.name,
+
+                password: req.body.password,
+                dob: req.body.dob,
+
+
+            });
+
+        user.save()
+            .then(() => res.send('User saved to database'))
+            .catch(err => console.error(err));
+
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -57,6 +75,8 @@ const deleteUserById = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+
 
 module.exports = {
     createUser,

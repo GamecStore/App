@@ -1,6 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const UserController = require('../controllers/UserController');
+const bcrypt = require('bcrypt');
+router.get('/history', (req, res) => {
+    res.render('pages/history');
+});
+router.get('/orders', (req, res) => {
+    res.render('pages/admin/orders')
+})
 
 router.get('/signup', (req, res) => {
     res.render('pages/signup');
@@ -9,6 +16,10 @@ router.get('/signup', (req, res) => {
 router.get('/login', (req, res) => {
     res.render('pages/login')
 })
+
+router.get('/cart', (req, res) => {
+    res.render('pages/cart');
+});
 
 //get user information
 // app.get('/signup', (req, res) => {
@@ -21,7 +32,7 @@ router.get('/users/:id', UserController.getUserById);
 router.post('/users', UserController.createUser);
 router.put('/users/:id', UserController.updateUserById);
 router.delete('/users/:id', UserController.deleteUserById);
-
+router.post('/signup', UserController.createUser);
 
 // just in case
 // router.get('/', UserController.getAllUsers);
@@ -29,23 +40,7 @@ router.delete('/users/:id', UserController.deleteUserById);
 // router.post('/', UserController.createUser);
 // router.put('/:id', UserController.updateUserById);
 // router.delete('/:id', UserController.deleteUserById);
-router.post('/signup', (req, res) => {
-    const { firstname, lastname, email, password, confirmpassword, dob, gender, userType } = req.body;
-    const user = new User(
-        {
-            firstname,
-            lastname,
-            email,
-            password,
-            confirmpassword,
-            dob,
-            gender,
-            userType
-        });
-    user.save()
-        .then(() => res.send('User saved to database'))
-        .catch(err => console.error(err));
-});
+
 
 
 
