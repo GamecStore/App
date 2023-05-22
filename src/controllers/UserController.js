@@ -1,6 +1,6 @@
 const User = require('../models/User');
-//const bcrypt = require('bcrypt');
-
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const createUser = async (req, res) => {
     try {
         // const user = new User(req.body);
@@ -8,18 +8,25 @@ const createUser = async (req, res) => {
         // res.status(201).json(user);
 
         console.log(req.body)
-        const user = new User(
-            {
-                email: req.body.email,
-                gender: req.body.gender,
-                username: req.body.name,
-                password: req.body.password,
-                dob: req.body.dob
-            });
+        bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
+            const user = new User(
+                {
+                    email: req.body.email,
+                    gender: req.body.gender,
+                    username: req.body.name,
 
-        user.save()
-            .then(() => res.send('User saved to database'))
-            .catch(err => console.error(err));
+                    password: hash,
+
+                    // bcrypt: req.body.password.bcrypt,
+                    dob: req.body.dob
+                });
+            user.save()
+                .then(() => res.send('User saved to database'))
+                .catch(err => console.error(err));
+        });
+
+
+
 
     } catch (error) {
         res.status(500).json({ message: error.message });
