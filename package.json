@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/GamecStore/App#readme",
   "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
     "bcrypt": "^5.1.0",
     "cjs": "^0.0.11",
     "colors": "^1.4.0",
