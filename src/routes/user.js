@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const UserController = require('../controllers/UserController');
-
+const bcrypt = require('bcrypt');
 router.get('/signup', (req, res) => {
     res.render('pages/signup');
 });
@@ -30,18 +30,16 @@ router.delete('/users/:id', UserController.deleteUserById);
 // router.put('/:id', UserController.updateUserById);
 // router.delete('/:id', UserController.deleteUserById);
 router.post('/signup', (req, res) => {
-    const { firstname, lastname, email, password, confirmpassword, dob, gender, userType } = req.body;
     const user = new User(
         {
-            firstname,
-            lastname,
-            email,
-            password,
-            confirmpassword,
-            dob,
-            gender,
-            userType
+            username: req.body.name,
+            email: req.body.email,
+            password: bcrypt.hashSync(req.body.password, 10),
+            dob: req.body.dob,
+            gender: req.body.gender,
+
         });
+
     user.save()
         .then(() => res.send('User saved to database'))
         .catch(err => console.error(err));
