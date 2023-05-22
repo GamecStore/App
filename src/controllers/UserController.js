@@ -8,6 +8,25 @@ const createUser = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
+
+
+    const { username, email, password, confirmpassword, dob, gender, userType } = req.body;
+    const user = new User(
+        {
+            Username: username.body.us,
+            email: email.body.em,
+            password: password.body.pw,
+            confirmpassword,
+            dob,
+            gender,
+            userType
+        });
+    user.save()
+        .then(() => res.send('User saved to database'))
+        .catch(err => console.error(err));
+
+
+
 };
 
 const getAllUsers = async (req, res) => {
@@ -58,10 +77,12 @@ const deleteUserById = async (req, res) => {
     }
 };
 
-module.exports = {
-    createUser,
-    getAllUsers,
-    getUserById,
-    updateUserById,
-    deleteUserById,
-};
+const
+
+    module.exports = {
+        createUser,
+        getAllUsers,
+        getUserById,
+        updateUserById,
+        deleteUserById,
+    };
