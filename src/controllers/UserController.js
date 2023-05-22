@@ -1,4 +1,9 @@
 const User = require('../models/User');
+const config = require('../config.json');
+
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(config.gridsend)
+
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const createUser = async (req, res) => {
@@ -21,7 +26,27 @@ const createUser = async (req, res) => {
                     dob: req.body.dob
                 });
             user.save()
-                .then(() => res.send('User saved to database'))
+            .then(() => {
+                const msg = {
+                    to: user.email, // Change to your recipient
+                    from: 'gamecyt2@gmail.com', // Change to your verified sender
+                    subject: 'Sending with SendGrid is Fun',
+                    text: 'and easy to do anywhere, even with Node.js',
+                    html: '<strong>Welcome to gamec.store</strong>',
+                }
+
+                sgMail
+                    .send(msg)
+                    .then((response) => {
+                        console.log(response[0].statusCode)
+                        console.log(response[0].headers)
+                    })
+                    .catch((error) => {
+                        console.error(error)
+                    })
+
+                res.send('User saved to database')
+            })
                 .catch(err => console.error(err));
         });
 
