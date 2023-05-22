@@ -11,7 +11,12 @@ const Game = mongoose.Schema({
 
     releaseDate: { type: Date, default: Date.now },
     sliderImgs: { type: Array, default: [] },
-    sideImg: { type: String, default: 'N/A' }
+    sideImg: { type: String, default: 'N/A' },
+    user:
+    {
+        type: mongoose.Schema.Types.ObjectId, ref: "user"
+    }
+
 });
 
 module.exports = mongoose.model('game', Game);

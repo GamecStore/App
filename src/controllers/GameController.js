@@ -1,4 +1,5 @@
 const Game = require('../models/Game.js')
+const user = require('../models/User.js')
 
 
 const createGame = async (req, res) => {

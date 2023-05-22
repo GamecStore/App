@@ -6,9 +6,10 @@ const User = mongoose.Schema({
     firstName: { type: String },
     lastName: { type: String },
     password: { type: String, required: true },
+    confirmpassword: { type: String, required: true},
     dateOfBirth: { type: Date },
     role: { type: String, default: 'user' },
-    created: { type: Date, default: Date.now }
+    // created: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model('User', User);

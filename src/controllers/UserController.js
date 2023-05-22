@@ -27,7 +27,7 @@ const getUserById = async (req, res) => {
         }
         res.status(200).json(user);
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({ message: 'User ID not found , Do you want to regester instead' });
     }
 };
 

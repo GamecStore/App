@@ -22,6 +22,7 @@ const ContactUsRouter = require('./routes/contactus')
 const HistoryRouter = require('./routes/history')
 const LibraryRouter = require('./routes/library')
 const WishlistRouter = require('./routes/wishlist')
+// const loginRouter = require('./routes/login')
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 
@@ -73,14 +74,16 @@ app.use('/wishlist', WishlistRouter)
 app.use('/history', HistoryRouter)
 app.use('/checkout', CheckoutRouter)
 
-app.get('/signup', (req, res) => {
-    res.render('pages/signup')
-});
+// app.get('/user', (req, res) => {
+//     res.render('pages/user/signup')
+// });
 
 app.get('/allGames', (req, res) => {
     res.render('pages/allGames');
 });
-
+app.get('/signup', (req, res) => {
+    res.render('pages/signup');
+})
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');

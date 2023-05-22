@@ -24,7 +24,6 @@
         <script defer src="../../public/Js/validations.js"></script>
         <!-- need to change this -->
 
-
         <!---->
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,7 +45,11 @@
             integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!------------------->
 
-
+        <style>
+            .bgimg {
+                background-image: url("../../public/images/bkg.gif");
+            }
+        </style>
 
     </head>
 
@@ -67,12 +70,24 @@
                     you!</div>
                 <!--grid-->
                 <form class="row g-3" action="" method="get" onsubmit="return validate(this)">
+                   
+                    <div class="col-12">
+                        <label for="name" class="form-label text-white">First Name<span class="asteric">*</span></label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your first name">
+                        <div class="div" id="nameError"></div>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="name" class="form-label text-white">Last Name<span class="asteric">*</span></label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your first name">
+                        <div class="div" id="nameError"></div>
+                    </div>
+
                     <div class="col-12">
                         <label for="name" class="form-label text-white">User Name<span class="asteric">*</span></label>
                         <input type="text" class="form-control" id="name" placeholder="Enter your first name">
                         <div class="div" id="nameError"></div>
                     </div>
-
                     <div class="col-12">
                         <label for="email" class="form-label text-white">Email<span class="asteric">*</span></label>
                         <input type="email" class="form-control" id="email" aria-describedby="emailhelp"
@@ -182,4 +197,5 @@
             crossorigin="anonymous"></script>
         <script src="js/FQAs.js"></script>
     </body>
+
 </html>
