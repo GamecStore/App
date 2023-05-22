@@ -9,6 +9,8 @@ const fs = require('fs');
 
 const app = express();
 const port = config.port || 3000;
+app.use(express.urlencoded({ extended: true }));
+
 require("colors");
 
 const ProductsRouter = require('./routes/products')

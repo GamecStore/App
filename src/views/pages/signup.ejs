@@ -85,12 +85,12 @@
 
                 <div class="col-12">
                     <label for="name" class="form-label text-white">User Name<span class="asteric">*</span></label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter your first name">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your first name">
                     <div class="div" id="nameError"></div>
                 </div>
                 <div class="col-12">
                     <label for="email" class="form-label text-white">Email<span class="asteric">*</span></label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailhelp"
+                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailhelp"
                         placeholder="Enter your email">
                     <div class="div" id="emailError"></div>
                     <div id="emailhelp" class="form-text text-secondary">test@example.com</div>
@@ -98,8 +98,8 @@
 
                 <div class="col-12">
                     <label for="password" class="form-label text-white">Password<span class="asteric">*</span></label>
-                    <input type="password" class="form-control" id="password" aria-describedby="passwordhelp"
-                        placeholder="Enter your password">
+                    <input type="password" class="form-control" id="password" name="password"
+                        aria-describedby="passwordhelp" placeholder="Enter your password">
                     <div class="div" id="passwordError"></div>
                     <div id="passwordhelp" class="form-text text-secondary"> Your password must be 8-20 characters
                         long,
@@ -117,7 +117,7 @@
 
                 <div class="col-12">
                     <label for="dob" class="form-label text-white">Date of Birth<span class="asteric">*</span></label>
-                    <input type="date" class="form-control" name="" id="dob">
+                    <input type="date" class="form-control" name="dob" id="dob">
                     <div class="div" id="dobError"></div>
                 </div>
 
@@ -141,8 +141,6 @@
 
                     <div class="div" id="checboxError"></div>
                 </div>
-
-
 
                 <div class="col-12">
                     <div class="d-flex justify-content-center">

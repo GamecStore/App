@@ -7,16 +7,14 @@ const createUser = async (req, res) => {
         // await user.save();
         // res.status(201).json(user);
 
+        console.log(req.body)
         const user = new User(
             {
                 email: req.body.email,
                 gender: req.body.gender,
                 username: req.body.name,
-
                 password: req.body.password,
-                dob: req.body.dob,
-
-
+                dob: req.body.dob
             });
 
         user.save()
