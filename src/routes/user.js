@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const UserController = require('../controllers/UserController');
 const bcrypt = require('bcrypt');
+
+
 router.get('/history', (req, res) => {
     res.render('pages/history');
 });
@@ -59,6 +61,7 @@ router.get('/cart', (req, res) => {
 
     res.render('pages/cart', { game })
 })
+
 
 
 

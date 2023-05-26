@@ -10,8 +10,6 @@ function validate(form) {
     document.getElementById('confirmPassword').style.border = '';
     document.getElementById('dobError').innerHTML = '';
     document.getElementById('dob').style.border = '';
-    document.getElementById('adminError').innerHTML = '';
-    document.getElementById('admin').style.border = '';
 
 
     let error = true;
@@ -85,13 +83,6 @@ function validate(form) {
         document.getElementById('dobError').style.color = 'red';
         error = false;
     }
-
-    if (!form.admin.checked && !form.user.checked) {
-        document.getElementById('adminError').innerText = 'You must choose a user type';
-        document.getElementById('adminError').style.color = 'red';
-    }
-
-
 
     return error;
 

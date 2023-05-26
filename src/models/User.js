@@ -5,7 +5,7 @@ const User = mongoose.Schema({
     gender: { type: String },
     username: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    dateOfBirth: { type: Date },
+    dob: { type: Date },
     role: { type: String, default: 'user' },
     // created: { type: Date, default: Date.now }
 });
