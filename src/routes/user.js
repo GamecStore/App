@@ -20,16 +20,6 @@ router.get('/login', (req, res) => {
 })
 
 router.get('/cart', (req, res) => {
-    
-
-
-
-
-
-
-
-
-
     games = [
         {
             id: 1,
@@ -58,13 +48,8 @@ router.get('/cart', (req, res) => {
     ]
     game = games.find(game => game.id === parseInt(req.params.id))
 
-
     res.render('pages/cart', { game })
 })
-
-
-
-
 
 //get user information
 // app.get('/signup', (req, res) => {
@@ -74,10 +59,11 @@ router.get('/cart', (req, res) => {
 
 router.get('/users', UserController.getAllUsers);
 router.get('/users/:id', UserController.getUserById);
-router.post('/users', UserController.createUser);
+// router.post('/users', UserController.createUser);
 router.put('/users/:id', UserController.updateUserById);
 router.delete('/users/:id', UserController.deleteUserById);
 router.post('/signup', UserController.createUser);
+router.post('/login',UserController.login);
 
 // just in case
 // router.get('/', UserController.getAllUsers);
@@ -85,8 +71,4 @@ router.post('/signup', UserController.createUser);
 // router.post('/', UserController.createUser);
 // router.put('/:id', UserController.updateUserById);
 // router.delete('/:id', UserController.deleteUserById);
-
-
-
-
 module.exports = router;
