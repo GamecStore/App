@@ -28,7 +28,7 @@ router.get('/cart', (req, res) => {
             mainDescription: 'From Santa Monica Studio comes the sequelto the critically acclaimed God of War (2018). Fimbulwinter is well underway. Kratos and Atreus must journey to each of the Nine Realms in search of answers as Asgardian forces prepare for a prophesied battle that will end the world.Along the way they will explore stunning, mythical landscapes, and face fearsome enemies in the form of Norse gods and monsters. The threat of Ragnarök grows ever closer.Kratos and Atreus must choose between their own safety and the safety of the realms. ',
             developer: 'Sony Santa Monica ',
             publisher: 'Sony Entertainment',
-            price: [59.99, 69.99, 79.99],
+            price: 59.99,
             editionsDesc: ['God of War Ragnarök ps4'],
             sliderImgs: ['GOWR1.webp', 'GOWR2.webp', 'GOWR3.webp', 'GOWR3.webp', "GOWR2.webp"],
             sideImg: 'GOWRSide.jpg'
@@ -40,15 +40,15 @@ router.get('/cart', (req, res) => {
             mainDescription: 'From Santa Monica Studio comes the sequelto the critically acclaimed God of War (2018). Fimbulwinter is well underway. Kratos and Atreus must journey to each of the Nine Realms in search of answers as Asgardian forces prepare for a prophesied battle that will end the world.Along the way they will explore stunning, mythical landscapes, and face fearsome enemies in the form of Norse gods and monsters. The threat of Ragnarök grows ever closer.Kratos and Atreus must choose between their own safety and the safety of the realms. ',
             developer: 'Sony Santa Monica ',
             publisher: 'Sony Entertainment',
-            price: [59.99, 69.99, 79.99],
+            price: 59.99,
             editionsDesc: ['God of War Ragnarök ps4'],
             sliderImgs: ['GOWR1.webp', 'GOWR2.webp', 'GOWR3.webp', 'GOWR3.webp', "GOWR2.webp"],
             sideImg: 'GOWRSide.jpg'
         }
     ]
-    game = games.find(game => game.id === parseInt(req.params.id))
-
-    res.render('pages/cart', { game })
+    let sum = 0
+    
+    res.render('pages/cart', { games, sum })
 })
 
 //get user information

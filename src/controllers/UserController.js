@@ -38,7 +38,7 @@ const createUser = async (req, res) => {
                 //     .catch((error) => {
                 //         console.error(error)
                 //     })
-
+2   
                 res.send('User saved to database')
             })
                 .catch(err => console.error(err));
@@ -67,7 +67,10 @@ console.log (user.username)
      const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
      console.log(hashedPassword)
  bcrypt.compare(req.body.password, user.password, function(err, isMatch) {
-     if (err) throw err;
+     if (err) 
+     {
+        console.log('error')
+     }
      if(isMatch){
         console.log('correct password!')
         res.send("YES")
