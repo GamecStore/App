@@ -101,7 +101,7 @@ console.log (user.username)
     if (err) 
     {
        console.log('error')
-    
+    }
      if(isMatch){
         console.log('correct password!')
         res.send("YES")
