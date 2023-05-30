@@ -65,6 +65,7 @@ router.delete('/users/:id', UserController.deleteUserById);
 router.post('/signup', UserController.createUser);
 router.post('/login',UserController.login);
 
+
 // just in case
 // router.get('/', UserController.getAllUsers);
 // router.get('/:id', UserController.getUserById);

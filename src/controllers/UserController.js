@@ -21,7 +21,7 @@ const createUser = async (req, res) => {
                     dob: req.body.dob
                 });
             const { email, gender, username, password, dob } = req.body;
-            if (!username || !email || !password || !gender || dobb) {
+            if (username || !email || !password || !gender || !dob) {
                 //         return res.render('Name, email, and password are required');
                 res.send("username email password gender dob are required  ")
             }
@@ -35,6 +35,8 @@ const createUser = async (req, res) => {
             user.save()
 
                 .then(() => {
+                    req.session.username = user.username;
+                    req.session.password = user.password;
                     // const msg = {
                     //     to: user.email, // Change to your recipient
                     //     from: 'gamecyt2@gmail.com', // Change to your verified sender
@@ -81,45 +83,48 @@ const createUser = async (req, res) => {
 
 // };
 //trial 2
-const login = async(req,res)=>{
-//          bcrypt.hash(req.body.password, saltRounds, function (err, hash) {     
-//          const user = new User
-//          {
-//           userName:req.body.name;
-//          password :hash 
-//      console.log(username);     
-//  }
-//      });
-const sentUser = req.body.name;
- const user = User.findOne({ username: sentUser })
- if(user.username === sentUser)
- {
-console.log (user.username)
-     const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
-     console.log(hashedPassword)
- bcrypt.compare(req.body.password, user.password, function(err, isMatch) {
-    if (err) 
-    {
-       console.log('error')
-    
-     if(isMatch){
-        console.log('correct password!')
-        res.send("YES")
-     }
-     callback(null, isMatch);
-     console.log('incorrect password')
-  });
-  const username = req.params.username;
-    
-      if (req.body.name==username)
- {
- res.send  ('the login is working')
- }
- }
- else{
-     res.send("WHAAt")
- }
-     };
+const login = async (req, res) => {
+    //          bcrypt.hash(req.body.password, saltRounds, function (err, hash) {     
+    //          const user = new User
+    //          {
+    //           userName:req.body.name;
+    //          password :hash 
+    //      console.log(username);     
+    //  }
+    //      });
+    const sentUser = req.body.name;
+    const user = await User.findOne({ username: sentUser })
+    if (user.username === sentUser) {
+        console.log(user.username)
+        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+
+        bcrypt.compare(req.body.password, user.password, function (err, isMatch) {
+            if (err) {
+                console.log('error')
+            }
+            if (isMatch) {
+                console.log('correct password!')
+
+                // res.send('the login is working')
+                req.session.username = user.username;
+
+                // res.redirect('/index');
+                res.redirect('pages/index');
+            }
+            //callback(null, isMatch);
+            // console.log('incorrect password')
+
+        });
+    }
+
+    // if (req.body.name == username) {
+
+    // }
+    // }
+    // else {
+    //     res.send("WHAAt")
+    // }
+};
 
 const editprofile = async (req, res) => {
 
