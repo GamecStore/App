@@ -23,15 +23,15 @@ const createUser = async (req, res) => {
             const { email, gender, username, password, dob } = req.body;
             if (username || !email || !password || !gender || !dob) {
                 //         return res.render('Name, email, and password are required');
-                res.send("username email password gender dob are required  ")
+                //res.send("username email password gender dob are required  ")
             }
-            const emailRegex = /\S+@\S+\.\S+/;
-            if (!emailRegex.test(email)) {
-                res.send("email is invalid");
-            }
-            if (password <= 8) {
-                res.send("password must be at least 8 characters ");
-            }
+            // const emailRegex = /\S+@\S+\.\S+/;
+            // if (!emailRegex.test(email)) {
+            //     res.send("email is invalid");
+            // }
+            // if (password <= 8) {
+            //     res.send("password must be at least 8 characters ");
+            // }
             user.save()
 
                 .then(() => {
@@ -178,6 +178,23 @@ const deleteUserById = async (req, res) => {
     }
 };
 
+const checkName = (req, res, next) => {
+
+
+    User.find({ username: req.body.name })
+        .then(user => {
+            if (user.length > 0) {
+                res.send("taken")
+            }
+            else {
+                res.send("available")
+            }
+        }).catch(err => {
+            console.log(err)
+        })
+}
+
+
 module.exports = {
     createUser,
     getAllUsers,
@@ -185,4 +202,5 @@ module.exports = {
     updateUserById,
     deleteUserById,
     login,
+    checkName,
 };

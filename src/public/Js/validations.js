@@ -19,6 +19,9 @@ function validate(form) {
         document.getElementById('name').style.border = 'red solid 2px';
         error = false;
     }
+    if (document.getElementById('result') === 'taken') {
+        error = false;
+    }
     if (form.email.value.trim() == '') {
         document.getElementById('emailError').innerHTML = 'Enter an email';
         document.getElementById('emailError').style.color = "red";
@@ -83,6 +86,7 @@ function validate(form) {
         document.getElementById('dobError').style.color = 'red';
         error = false;
     }
+
 
     return error;
 

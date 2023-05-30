@@ -47,7 +47,7 @@ router.get('/cart', (req, res) => {
         }
     ]
     let sum = 0
-    
+
     res.render('pages/cart', { games, sum })
 })
 
@@ -63,7 +63,8 @@ router.get('/users/:id', UserController.getUserById);
 router.put('/users/:id', UserController.updateUserById);
 router.delete('/users/:id', UserController.deleteUserById);
 router.post('/signup', UserController.createUser);
-router.post('/login',UserController.login);
+router.post('/login', UserController.login);
+router.post('/checkName', UserController.checkName);
 
 
 // just in case
