@@ -18,11 +18,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.3/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script defer src="../../public/Js/validations.js"></script>
+
+    <script defer src="../../public/Js/ajax.js"></script>
 
     <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" href="../../public/css/style.css">
-    <script defer src="../../public/Js/validations.js"></script>
-    <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+
 
     <!-- need to change this -->
 
@@ -42,9 +45,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
     <!------------------->
 
     <style>
@@ -72,23 +75,12 @@
                 you!</div>
             <!--grid-->
             <form class="row g-3" action="/signup" method="post" onsubmit="return validate(this)">
-
-                <!-- <div class="col-12">
-                        <label for="name" class="form-label text-white">First Name<span class="asteric">*</span></label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter your first name">
-                        <div class="div" id="nameError"></div>
-                    </div>
-
-                    <div class="col-12">
-                        <label for="name" class="form-label text-white">Last Name<span class="asteric">*</span></label>
-                        <input type="text" class="form-control" id="name" placeholder="Enter your first name">
-                        <div class="div" id="nameError"></div>
-                    </div> -->
-
                 <div class="col-12">
                     <label for="name" class="form-label text-white">User Name<span class="asteric">*</span></label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter your first name">
+                    <div id="result"></div>
                     <div class="div" id="nameError"></div>
+
                 </div>
                 <div class="col-12">
                     <label for="email" class="form-label text-white">Email<span class="asteric">*</span></label>
@@ -175,7 +167,7 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <script src="js/FQAs.js"></script>
-    <script src="../../public/Js/ajax.js"></script>
+
 </body>
 
 </html>

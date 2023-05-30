@@ -94,6 +94,7 @@ const gamepage = (req, res) => {
     })
 }
 
+
 module.exports = {
     createGame,
     getAllGames,
