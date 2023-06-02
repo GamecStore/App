@@ -9,6 +9,8 @@ const fs = require('fs');
 
 const app = express();
 const port = config.port || 3000;
+app.use(express.urlencoded({ extended: true }));
+
 require("colors");
 
 const ProductsRouter = require('./routes/products')
@@ -16,10 +18,9 @@ const AdminindexRouter = require('./routes/adminindex')
 const CustomersRouter = require('./routes/customers')
 const OrdersRouter = require('./routes/orders')
 // const AboutUsRouter=require('./routes/aboutUs')
-const CartRouter = require('./routes/cart')
 const CheckoutRouter = require('./routes/checkout')
 const ContactUsRouter = require('./routes/contactus')
-const HistoryRouter = require('./routes/history')
+const HistoryRouter = require('./routes/user')
 const LibraryRouter = require('./routes/library')
 const WishlistRouter = require('./routes/wishlist')
 const allGamesRouter = require('./routes/allGames')
@@ -49,7 +50,11 @@ app.use(
 //     })
 // );
 
-
+app.use(session({
+    secret: 'my-secret-key',
+    resave: false,
+    saveUninitialized: true
+}));
 
 mongoose.connect(config.mongoURI)
 .then(() => console.log(`[MONGO] Connected to MongoDB`.green))
@@ -62,15 +67,14 @@ mongoose.connect(config.mongoURI)
 
 
 app.use('/', require('./routes/index'))
-app.use('/', require('./routes/gamepage'))
+app.use('/', require('./routes/game'))
 app.use('/', require('./routes/game'));
 app.use('/', require('./routes/user'));
 app.use('/products', ProductsRouter)
 app.use('/orders', OrdersRouter)
 app.use('/customers', CustomersRouter)
 app.use('/adminindex', AdminindexRouter)
-app.use('/cart', CartRouter)
-//app.use('/aboutUs',AboutUsRouter)
+// app.use('/aboutUs',AboutUsRouter)
 app.use('/contactus', ContactUsRouter)
 app.use('/library', LibraryRouter)
 app.use('/wishlist', WishlistRouter)
@@ -78,9 +82,6 @@ app.use('/history', HistoryRouter)
 app.use('/checkout', CheckoutRouter)
 app.use('/allgames', allGamesRouter)
 
-app.get('/signup', (req, res) => {
-    res.render('pages/signup')
-});
 
 app.get('/allGames', (req, res) => {
     res.render('pages/allGames');
@@ -107,5 +108,3 @@ app.use((req, res) => {
 app.listen(port, () => {
     console.log(`[API] Server listening on http://localhost:${port}`.cyan);
 });
-
-//export default app;
