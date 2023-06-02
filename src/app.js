@@ -24,6 +24,7 @@ const HistoryRouter = require('./routes/user')
 const LibraryRouter = require('./routes/library')
 const WishlistRouter = require('./routes/wishlist')
 const allGamesRouter = require('./routes/allGames')
+const AddingGamesRouter = require('./routes/addingGames')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -81,6 +82,7 @@ app.use('/wishlist', WishlistRouter)
 app.use('/history', HistoryRouter)
 app.use('/checkout', CheckoutRouter)
 app.use('/allgames', allGamesRouter)
+app.use('/addingGames', AddingGamesRouter)
 
 app.get('/logout', (req, res) => {
     req.session.destroy();
