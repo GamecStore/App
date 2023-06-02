@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const AllGames = mongoose.Schema({
+
+const allGamesSchema = new Schema({
     adminName:String,
     adminEmail:String,
     gameTitle:String,
@@ -10,5 +12,5 @@ const AllGames = mongoose.Schema({
 });
 
 
-const All_Games = mongoose.model('AllGames', allGames);
+const All_Games = mongoose.model('AllGames', allGamesSchema);
 module.exports = All_Games;

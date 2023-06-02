@@ -9,7 +9,6 @@ const { param } = require('../routes');
 const saltRounds = 10;
 const createUser = async (req, res) => {
     try {
-
         bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
             const user = new User(
                 {

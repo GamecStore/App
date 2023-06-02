@@ -57,7 +57,9 @@ app.use(session({
     saveUninitialized: true
 }));
 
-mongoose.connect(config.mongoURI)
+// mongoose.connect(config.mongoURI)
+mongoose.connect(
+    "mongodb+srv://home:home@cluster1.hlc2rvg.mongodb.net/AllGames?retryWrites=true&w=majority")
 .then(() => console.log(`[MONGO] Connected to MongoDB`.green))
 .catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
 
