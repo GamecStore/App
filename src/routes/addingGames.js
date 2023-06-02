@@ -4,6 +4,7 @@ const AddingGamesContoller = require('../controllers/addingGamesController')
 
 
 router.get('/', AddingGamesContoller.addingGames_get)
+// router.post('/', AddingGamesContoller.addingGames_post)
 
 
 

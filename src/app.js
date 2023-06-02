@@ -60,6 +60,8 @@ app.use(session({
 mongoose.connect(config.mongoURI)
 .then(() => console.log(`[MONGO] Connected to MongoDB`.green))
 .catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
+
+
 // const connection = mongoose.connection;
 // connection.once('open', () => {
 //     console.log(`[MONGO] Connected to MongoDB`.green);

@@ -9,5 +9,6 @@ const AllGames = mongoose.Schema({
     image:String
 });
 
-module.exports = mongoose.model('AllGames', AllGames);
 
+const All_Games = mongoose.model('AllGames', allGames);
+module.exports = All_Games;
