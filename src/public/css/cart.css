@@ -1,6 +1,6 @@
 
 /*body*/
-.btn-primary {
+.btn1-primary {
     font-size: 15px;
     font-weight: bold;
     color: #fff;
@@ -21,6 +21,17 @@
     font-size: 18px;
     color: #fff;
 }
+.alignleft1 {
+    float: left;
+    font-size: 14px;
+    color: #fff;
+}
+
+.alignright1 {
+    float: right;
+    font-size: 14px;
+    color: #fff;
+}
 
 .line {
     height: 0.1px;
@@ -39,13 +50,13 @@
 .card-3 {
     background-color: rgb(32, 32, 32);
     max-width: 540px;
+    
 }
 
 .img-fluid {
     margin: 20px;
 
 }
-
 .cartImage {
     max-width: 300px;
     max-height: 250px;

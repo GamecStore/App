@@ -59,11 +59,13 @@
     <div class="container  my-4 rounded-3">
       <div class="row">
 
-        <% game.sliderImgs.forEach((img, index)=> { %> 
-          <div class="col-12 col-md-8 bg-dark rounded-3 " style="max-height: 200px;">
+        <% games.forEach((game, index)=> { %> 
+<%sum+=game.price %>
+          <div class="col-12 col-md-8 bg-dark rounded-3 mb-5" style="max-height: 200px;">
           <div class="row">
             <div class="col-2 md-2">
-              <img src="<%= game.slideImg %>"
+              <img class="img-fluid"
+                            src="/images/gameimages/<%= game.sideImg %>"
                 alt="An Image of the game <%= game.name %>" class="img-fluid  ">
             </div>
 
@@ -73,7 +75,7 @@
             </div>
 
             <div class="col-5 md-2">
-              <p class=" text-white mt-4 price1"><%=game.price %> </p>
+              <p class=" text-white mt-4 price1">EGP <%=game.price %> </p>
               <br>
               <br>
               <div style="padding-left: 56px; padding-top:25px ;">
@@ -81,25 +83,34 @@
                 <div class=" text-white mt-2 removeText bg-dark btn">Add to Wishlist</div>
               </div>
             </div>
-            <% }) %>
+       
 
 
           </div>
 
         </div>
+        <% }) %>
 
-        <div class="col-12 col-md-4 bg-black text-white px-5">
+        <div  class="col-12 col-md-4 bg-black text-white px-5 ">
           <p class="header">Games and Apps Summary</p>
           <div>
             <p class="alignleft">Price</p>
-            <p class="alignright">EGP 250.99</p>
+            <p class="alignright">EGP <%=sum%>  </p>
           </div>
           <div style="clear: both;"></div>
           <div>
-            <p class="alignleft">Sales Discount</p>
-            <p class="alignright">EGP -50.99</p>
+            <p class="alignleft">Game Details:</p>
+            
           </div>
           <div style="clear: both;"></div>
+          <% games.forEach((game, index)=> { %> 
+          <div>
+            <p class="alignleft1"><%= game.name %></p>
+            <p class="alignright1"> EGP <%= game.price %></p>
+          </div>
+          <div style="clear: both;"></div>
+          <% }) %>
+          
           <div>
             <p class="alignleft">Taxes</p>
             <p style="color: grey;" class="alignright">Calculate at Checkout</p>
@@ -108,16 +119,12 @@
           <div class="line"></div>
           <div>
             <p style="font-weight: bold;" class="alignleft">Subtotal</p>
-            <p style="font-weight: bold;" class="alignright">EGP 200.00</p>
+            <p style="font-weight: bold;" class="alignright">EGP <%=sum%></p>
           </div>
           <div style="clear: both;"></div>
-          <a href="checkout.html" class="btn btn-primary text-center ">CHECK OUT</a>
-
+          <a href="checkout.html" class="btn btn1-primary text-center ">CHECK OUT</a>
         </div>
-
-
       </div>
-
     </div>
     <!--footer-->
     <footer class="footer bg">
@@ -128,12 +135,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
       crossorigin="anonymous"></script>
-
-
-
-
     <!------->
   </body>
-
-
 </html>

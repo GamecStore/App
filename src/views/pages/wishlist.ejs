@@ -58,36 +58,36 @@
 
     <div class="container  my-4 rounded-3">
       <div class="row">
-
-        <div class="col-12 col-md-8 bg-dark rounded-3 " style="max-height: 200px;">
+        <% games.forEach((game, index)=> { %> 
+        <div class="col-12 col-md-8 bg-dark rounded-3 mb-5" style="max-height: 200px;">
           <div class="row">
             <div class="col-2 md-2">
-              <img src="img/red dead redemption.jpg" alt="An Image of the game read dead redemption 2"
-                class="img-fluid  ">
+              <img class="img-fluid"
+                            src="/images/gameimages/<%= game.sideImg %>"
+                alt="An Image of the game <%= game.name %>" class="img-fluid  ">
             </div>
 
             <div class="col-5 md-2">
-              <p class=" text-white mt-4 game-name">Red Dead Redemption 2</p>
+              <p class=" text-white mt-4 game-name">  <%= game.name %></p>
 
             </div>
 
             <div class="col-5 md-2">
-              <p class=" text-white mt-4 price1">EGP 200.00 </p>
+              <p class=" text-white mt-4 price1">EGP <%=game.price %> </p>
               <br>
               <br>
               <div style="padding-left: 56px; padding-top:25px ;">
-                <div class=" text-white mt-2 removeText bg-dark btn ">Remove From Wishlist</div>
-                <div class=" text-white mt-2 removeText bg-dark btn">Add to Cart</div>
+                <div class=" text-white mt-2 removeText bg-dark btn">Remove From Cart</div>
+                <div class=" text-white mt-2 removeText bg-dark btn">Add to Wishlist</div>
               </div>
             </div>
+       
 
-
-
-            <!-- <a href="#" class="col-12 col-md-2 text-white my-7 btn remove ">REMOVE</a>     -->
 
           </div>
 
         </div>
+        <% }) %>
         <div class="col-12 col-md-3 bg-black text-white px-5">
           <div class="row">
             <div class="col-3">

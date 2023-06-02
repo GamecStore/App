@@ -88,14 +88,12 @@ const filterGames = async (req, res) => {
     }
 };
 const gamepage = (req, res) => {
-
     const id = req.params.id;
     game = games.findOne({ _id: id }).then((game) => {
         res.render('pages/gamePage', { game })
     })
-
-
 }
+
 
 module.exports = {
     createGame,
