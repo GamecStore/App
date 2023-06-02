@@ -22,6 +22,8 @@ const ContactUsRouter = require('./routes/contactus')
 const HistoryRouter = require('./routes/history')
 const LibraryRouter = require('./routes/library')
 const WishlistRouter = require('./routes/wishlist')
+const allGamesRouter = require('./routes/allGames')
+
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
 
@@ -49,7 +51,9 @@ app.use(
 
 
 
-mongoose.connect(config.mongoURI).then(() => console.log(`[MONGO] Connected to MongoDB`.green)).catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
+mongoose.connect(config.mongoURI)
+.then(() => console.log(`[MONGO] Connected to MongoDB`.green))
+.catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
 // const connection = mongoose.connection;
 // connection.once('open', () => {
 //     console.log(`[MONGO] Connected to MongoDB`.green);
@@ -72,6 +76,7 @@ app.use('/library', LibraryRouter)
 app.use('/wishlist', WishlistRouter)
 app.use('/history', HistoryRouter)
 app.use('/checkout', CheckoutRouter)
+app.use('/allgames', allGamesRouter)
 
 app.get('/signup', (req, res) => {
     res.render('pages/signup')
