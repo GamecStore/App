@@ -1,7 +1,10 @@
 const express = require("express")
 const router = express.Router()
+const AllGamesContoller = require('../controllers/allGamesContoller')
 
-router.get('/', (req, res) => {
-    res.render('pages/allGames')
-})
+
+router.get('/', AllGamesContoller.allGames_get)
+
+
+
 module.exports = router
