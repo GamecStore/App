@@ -82,11 +82,6 @@ app.use('/history', HistoryRouter)
 app.use('/checkout', CheckoutRouter)
 app.use('/allgames', allGamesRouter)
 
-
-app.get('/allGames', (req, res) => {
-    res.render('pages/allGames');
-});
-
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
