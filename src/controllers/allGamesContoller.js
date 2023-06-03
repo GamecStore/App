@@ -5,20 +5,17 @@ const allGames_get = (req, res) => {
 }
 
 
-let locals = { errorMessage : 'something went wrong' }
 const allGames_post = async (req, res) => {
-    const Games = new AllGames(req.body)
-    // res.send(req.body.adminName);
-    await Games.save()
-    try {
-        console.log("Succesfully saved".yellow);
-        res.redirect('/allGames');
-    } catch (err) {
-        res.send("error");
-        // res.render('pages/addingGames',locals);
-        console.log(err.red);
-    }
-
+    res.render("pages/allGames");
+    //variable = new "model_name()
+    //req.body --> el data el ktbtha fel input
+    const games = new AllGames (req.body);
+    console.log(req.body);
+  
+    //saving data in the database
+    games.save()
+    .then(() => console.log("success"))
+    .catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`)); 
 }
 
 

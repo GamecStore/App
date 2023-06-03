@@ -30,5 +30,5 @@ const allGamesSchema = new Schema({
 });
 
 
-const All_Games = mongoose.model('AllGames', allGamesSchema);
-module.exports = All_Games;
+const AllGames = mongoose.model('AllGames', allGamesSchema);
+module.exports = AllGames;
