@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="img/logo.png" type="image/x-icon">
+        <title>Gamec</title>
+        <!--links-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.3/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <!---->
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+        <!----------->
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <!------------------->
+        <link rel="stylesheet" href="../../public/css/profile.css">
+        <style>
+            body {
+                background-color: black;
+            }
+
+            .payment {
+                padding-left: 12px;
+                margin: 30px;
+            }
+
+            .editprofile {
+                margin: 30px;
+                padding-left: 12px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header class="p-3 menu-fixed bg">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="index.html" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <img src="img/logo.png" alt="logo" width="40" height="40">
+                    </a>
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3 " onsubmit="return validateSearch(this)"
+                            role="search">
+                            <input id="search" type="search" class="form-control" placeholder="Search..."
+                                aria-label="Search">
+                        </form>
+
+                        <li>
+                            <div class="dropdown">
+                                <button type="button" class="btn dropdown text-light" data-bs-toggle="dropdown">Account
+                                </button>
+                                <ul class="dropdown-menu bgcolor">
+                                    <li><a class="dropdown-item text-light lihov" href="profile.html">Profile</a></li>
+                                    <li><a class="dropdown-item text-light lihov" href="library.html">Library</a></li>
+                                    <li><a class="dropdown-item text-light lihov" href="history.html">History</a></li>
+                                    <li><a class="dropdown-item text-light lihov" href="wishlist.html">Wishlist</a></li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                        <li><a href="aboutUs.html" class="nav-link px-2 text-light mt-2">About Us</a></li>
+                        <li><a href="contactus.html" class="nav-link px-2 text-light mt-2">Contact Us</a></li>
+                        <li><a id="scrol_to" class="nav-link px-2 text-light btn mt-2" href="index.html#faq">FAQs</a>
+                        </li>
+
+                    </ul>
+                    <div class="text-end">
+                        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                            <li><a href="login.html" class="btn btn-outline-primary mx-2" href="login.html"
+                                    role="button">Login</a></li>
+                            <li><a class="btn btn-primary" href="signup.html" role="button">Sign up</a></li>
+                            <li><a href="cart.html" class="nav-link px-2 text-light mt-2"><i
+                                        class="bi bi-cart3"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--------->
+        <!--edit profile-->
+        <div class="editprofile needs-validation" novalidate>
+            <div class="row gutters">
+                <div class="col-xl-3 col-lg-3 col-md-15 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body bg-dark ">
+                            <div class="account-settings">
+                                <div class="user-profile">
+                                    <div class="user-avatar">
+                                        <img src="../../public/images/account.png" alt="user account">
+                                    </div>
+                                    <h5 class="user-name">User account</h5>
+                                    <h6 class="user-email">account@gmail.com</h6>
+                                </div>
+                                <div class="about">
+                                    <h5 class="mb-2 text-primary">About</h5>
+                                    <p>user</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--right side in the user-->
+                <div class="col-xl-9 col-lg-9 col-md-15 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body bg-dark text-white">
+                            <div class="row gutters">
+                                <div class="row">
+                                    <div id='form' class="col-8 col-md-4  mx-auto">
+                                        <h3 id="form__head" class="mb-4  ">edit profile</h3>
+                                        <form id="newform" action="#" class="needs-validation" novalidate>
+                                            <div class="form-group p-1">
+                                                <label for="username"> Username </label>
+
+                                                <input type="text" class="form-control" id="username" name="username"
+                                                    required />
+
+                                                <div class="invalid-feedback">username can`t username cannot be blank or
+                                                    have space
+                                                </div>
+                                                <div class="valid-feedback">Looks Good</div>
+
+                                            </div>
+                                            <div class="form-group p-1">
+                                                <label for="email"> Email </label>
+                                                <input type="email" class="form-control" name="email" id="email"
+                                                    required />
+                                                <div id="email-validation" class="invalid-feedback">Please Check Mail
+                                                    again.</div>
+
+                                            </div>
+                                            <div class="form-group p-1">
+                                                <label for="password"> Password </label>
+                                                <input type="password" class="form-control" name="password"
+                                                    id="password" required />
+                                                <div class="invalid-feedback">Please make sure your password contains at
+                                                    least (a
+                                                    Capital
+                                                    letter, a number and a
+                                                    special charcter).</div>
+
+
+                                            </div>
+                                            <button type="submit"
+                                                class=" mt-4 d-block w-100 btn btn-primary">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="text-right">
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--right side in the user-->
+
+                <!--trial-->
+
+                <!--trial-->
+            </div>
+        </div>
+        <!--edit profile-->
+        <!--payment methods-->
+        <div class="payment">
+            <div class="col-md-15 mb-2 ">
+                <div class="card mb-2">
+                    <div class="card-body  bg-dark">
+                        <form>
+                            <h5 class="mb-4" style="color: black;">Payment</h5>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm3"
+                                    checked />
+                                <label class="form-check-label" for="checkoutForm3">
+                                    Credit card
+                                </label>
+                            </div>
+                            <div class="form-check bg-dark ">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="checkoutForm4" />
+                                <label class="form-check-label" for="checkoutForm4">
+                                    Debit card
+                                </label>
+                            </div>
+                            <div class="form-check mb-1">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="checkoutForm5" />
+                                <label class="form-check-label" for="checkoutForm5">
+                                    Paypal
+                                </label>
+                            </div>
+                            <div class="row mb-1">
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="formNameOnCard" class="form-control" />
+                                        <label class="form-label" for="formNameOnCard">Name on card</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-outline">
+                                        <input type="text" id="formCardNumber" class="form-control" />
+                                        <label class="form-label" for="formCardNumber">Credit card number</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-3">
+                                    <div class="form-outline">
+                                        <input type="text" id="formExpiration" class="form-control" />
+                                        <label class="form-label" for="formExpiration">Expiration</label>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="form-outline">
+                                        <input type="text" id="formCVV" class="form-control" />
+                                        <label class="form-label" for="formCVV">CVV</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-warning btn-lg btn-block" type="submit">
+                                Update Info
+                            </button>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--footer-->
+
+        <footer class="footer bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer-about">
+                            <div class="footer-logo">
+                                <a href="index.html"><img src="img/logo.png" alt="logo" width="50%"></a>
+                            </div>
+                            <p>payment methods</p>
+                            <a href="#"><img src="img/payment.png" alt="logo" width="30%"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer-wedget">
+                            <h6>shopping</h6>
+                            <ul>
+                                <li><a href="#">Games </a></li>
+                                <li><a href="#"> trending Games </a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer-wedget">
+                            <h6>LINKS</h6>
+                            <ul>
+                                <li><a href="#">Contact us</a></li>
+                                <li><a href="#"> Payment methods </a></li>
+                                <li><a href="#"> Return and Exchanges </a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="footer-wedget">
+                            <h6>Newsletter</h6>
+                            <div class="footer-newslatter">
+                                <p class="footertext">Be the first to know about new arrivals,sales & promos!
+                                </p>
+                                <form action="#">
+                                    <input type="text" class="footeremail" placeholder="Your Email">
+                                    <button type="submit"><span><i class="fa fa-envelope"
+                                                arial-hidden="true"></i></span>
+                                        submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="footer-copyright-text">
+                            <p class="footertext"> Copyright &copy; 2023 All rights reserved | the template is
+                                made with
+                                <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="aboutUs.html">Gamec
+                                    Group</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!---------------->
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+            integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+            crossorigin="anonymous"></script>
+        <script src="src/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+        <script src="js/FQAs.js"></script>
+        <script src="js/editprofile.js"></script>
+
+        <!------->
+    </body>
+
+
+</html>
