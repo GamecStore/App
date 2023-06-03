@@ -1,7 +1,6 @@
 const AllGames = require('../models/AllGamesSchema');
 
 const allGames_get = (req, res) => {
-    //model.find() --> promise
     AllGames.find()  
     .then((result)=>{
         res.render("pages/allGames",{gamesArray: result});
@@ -12,8 +11,7 @@ const allGames_get = (req, res) => {
 
 const allGames_post = async (req, res) => {
     res.render("pages/allGames");
-    //variable = new "model_name()
-    //req.body --> el data el ktbtha fel input
+
     const games = new AllGames (req.body);
     console.log(req.body);
   
