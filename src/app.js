@@ -1,4 +1,5 @@
 const config = require('./config.json');
+const https = require('https');
 // Express for handling GET and POST request
 const express = require('express');
 const app = express();
@@ -19,7 +20,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
-
+const options = {
+    key: fs.readFileSync(path.join(__dirname, 'certificates','key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'certificates','cert.pem'))
+};
 
 const ProductsRouter = require('./routes/products')
 const AdminindexRouter = require('./routes/adminindex')
@@ -100,6 +104,8 @@ app.use((req, res) => {
     res.status(404).render('pages/ErrorPage');
 })
 
-app.listen(port, () => {
-    console.log(`[API] Server listening on http://localhost:${port}`.cyan);
+
+const s = https.createServer(options, app)
+s.listen(port, () => {
+    console.log(`[API] Server listening on https://localhost:${port}`.cyan);
 });

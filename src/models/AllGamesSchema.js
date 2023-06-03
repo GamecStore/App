@@ -25,8 +25,7 @@ const allGamesSchema = new Schema({
     },
     image:{
         data: Buffer,
-        contentType: String,
-        required: true
+        contentType: String
     }
 });
 
