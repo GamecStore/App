@@ -1,5 +1,5 @@
 const config = require('./config.json');
-const https = require('https');
+const http = require('http');
 // Express for handling GET and POST request
 const express = require('express');
 const app = express();
@@ -22,11 +22,6 @@ app.use(express.urlencoded({ extended: true }));
 // Configuring express to use body-parser as middle-ware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
-
-const options = {
-    key: fs.readFileSync(path.join(__dirname, 'certificates','key.pem')),
-    cert: fs.readFileSync(path.join(__dirname, 'certificates','cert.pem'))
-};
 
 const ProductsRouter = require('./routes/products')
 const AdminindexRouter = require('./routes/adminindex')
@@ -76,9 +71,8 @@ mongoose.connect(config.mongoURI)
 
 
 
-// app.use('/', require('./routes/index'))
+app.use('/', require('./routes/index'))
 app.use('/', require('./routes/game'))
-app.use('/', require('./routes/game'));
 app.use('/', require('./routes/user'));
 app.use('/products', ProductsRouter)
 app.use('/orders', OrdersRouter)
@@ -115,7 +109,7 @@ app.use((req, res) => {
 })
 
 
-const s = https.createServer(options, app)
+const s = http.createServer(app)
 s.listen(port, () => {
-    console.log(`[API] Server listening on https://localhost:${port}`.cyan);
+    console.log(`[API] Server listening on http://localhost:${port}`.cyan);
 });
