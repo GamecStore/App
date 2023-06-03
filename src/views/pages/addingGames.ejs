@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <%- include ('../partials/head.ejs') %>
+
+        <link rel="stylesheet" href="../../public/css/signupstyle.css">
+
+        <style>
+            /* Chrome, Safari, Edge, Opera */
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            /* Firefox */
+            input[type=number] {
+                -moz-appearance: textfield;
+            }
+        </style>
+
+</head>
+
+<body class="bg-black">
+
+    <!-- Header -->
+    <header class="p-3 menu-fixed bg">
+        <%- include ('../partials/header.ejs') %>
+    </header>
+    <!------------>
+
+    <!--Adding games form-->
+
+    <div class="d-flex justify-content-center"> <!--flex centering -->
+        <div class="formlayout w-50 h-25 p-4 m-5">
+            <!--grid-->
+            <form class="row g-3" method="POST" action="/allGames">
+                <div class="col-12">
+                    <label for="adminName" class="form-label text-white">Name<span class="asteric">*</span></label>
+                    <input type="text" class="form-control" id="adminName" name="adminName"
+                        placeholder="Enter your first name">
+                </div>
+                <div class="col-12">
+                    <label for="adminEmail" class="form-label text-white">Email<span class="asteric">*</span></label>
+                    <input type="email" class="form-control" id="adminEmail" name="adminEmail"
+                        placeholder="Enter your email">
+                </div>
+
+                <div class="col-12">
+                    <label for="gameTitle" class="form-label text-white">Game title:<span
+                            class="asteric">*</span></label>
+                    <input type="text" class="form-control" id="gameTitle" name="gameTitle"
+                        placeholder="Enter The title of your game">
+                </div>
+
+                <div class="col-12">
+                    <label for="price" class="form-label text-white">Price:<span class="asteric">*</span></label>
+                    <input type="number" class="form-control" id="price" name="price"
+                        placeholder="Enter the price of your game">
+                </div>
+
+                <div class="col-12">
+                    <div><label for="genre" class="form-label text-white">Game Genre:<span
+                                class="asteric">*</span></label>
+                    </div>
+                    <div><select class="form-control" id="genre" name="genre">
+                            <option value="action">Action</option>
+                            <option value="adventure">Adventure</option>
+                            <option value="casual">casual</option>
+                        </select></div>
+                </div>
+
+                <div class="col-12">
+                    <div><label class="form-label text-white">Game Poster:</label><span class="asteric">*</span></div>
+                    <div><input type="file" class="form-control" id="image" name="image"></div>
+                </div>
+
+                <div class="col-12">
+                    <div class="d-flex justify-content-center">
+                        <a href="/allGames" class="btn btn-outline-primary mt-3 mx-3">Cancel</a>
+                        <button type="submit" class="btn btn-primary mt-3">Add Game</button>
+                    </div>
+                </div>
+            
+            </form>
+        </div>
+    </div>
+    <!---------->
+
+    <!--footer-->
+    <footer class="footer bg ">
+        <%- include('../partials/footer') %>
+    </footer>
+    <!---------------->
+    <!-- Scripts -->
+    <%- include ('../partials/scriptLinks') %>
+
+</body>
+
+</html>
