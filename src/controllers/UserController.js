@@ -64,7 +64,7 @@ const createUser = async (req, res) => {
 const login = async (req, res) => {
     const sentUser = req.body.name;
     const user = await User.findOne({ username: sentUser })
-    if (user.username === sentUser) {
+    if (user?.username === sentUser) {
         console.log(user.username)
         const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
 
@@ -83,10 +83,13 @@ const login = async (req, res) => {
 
         });
     }
+    else {
+        res.send("username or password is incorrect")
+    }
 };
 
 const editProfile = async (req, res) => {
-    
+
 
 }
 
