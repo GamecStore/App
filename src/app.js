@@ -36,6 +36,8 @@ const LibraryRouter = require('./routes/library')
 const WishlistRouter = require('./routes/wishlist')
 const allGamesRouter = require('./routes/allGames')
 const AddingGamesRouter = require('./routes/addingGames')
+const ErrorAddingRouter = require('./routes/errorAdding')
+
 
 const editProfileRouter = require('./routes/user')
 
