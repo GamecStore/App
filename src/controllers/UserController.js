@@ -107,9 +107,10 @@ const login = async (req, res) => {
 
                 // res.send('the login is working')
                 req.session.username = user.username;
+                console.log(req.session.username)
 
                 // res.redirect('/index');
-                res.redirect('pages/index');
+                res.redirect('/');
             }
             //callback(null, isMatch);
             // console.log('incorrect password')
@@ -179,8 +180,6 @@ const deleteUserById = async (req, res) => {
 };
 
 const checkName = (req, res, next) => {
-
-
     User.find({ username: req.body.name })
         .then(user => {
             if (user.length > 0) {
