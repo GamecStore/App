@@ -4,19 +4,21 @@ const allGames_get = (req, res) => {
     res.render("pages/allGames")
 }
 
- 
-const allGames_post = (req, res) => {
-    const Games =  new AllGames(req.body)
+
+let locals = { errorMessage : 'something went wrong' }
+const allGames_post = async (req, res) => {
+    const Games = new AllGames(req.body)
     // res.send(req.body.adminName);
-    Games.save()
-    .then(() =>{ 
+    await Games.save()
+    try {
         console.log("Succesfully saved".yellow);
         res.redirect('/allGames');
-    })
-    .catch((err) => {
-        res.redirect("/errorAdding");
+    } catch (err) {
+        res.send("error");
+        // res.render('pages/addingGames',locals);
         console.log(err.red);
-    })
+    }
+
 }
 
 

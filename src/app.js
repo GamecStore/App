@@ -6,12 +6,10 @@ const path = require('path');
 const session = require('express-session')
 const logger = require('morgan');
 const fs = require('fs');
-const bodyParser = require('body-parser');
 
 const app = express();
 const port = config.port || 3000;
 app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.urlencoded({ limit: '10mb',extended: false }));
 
 require("colors");
 
@@ -27,7 +25,6 @@ const LibraryRouter = require('./routes/library')
 const WishlistRouter = require('./routes/wishlist')
 const allGamesRouter = require('./routes/allGames')
 const AddingGamesRouter = require('./routes/addingGames')
-const ErrorAddingRouter = require('./routes/errorAdding')
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
@@ -88,7 +85,6 @@ app.use('/history', HistoryRouter)
 app.use('/checkout', CheckoutRouter)
 app.use('/allGames', allGamesRouter)
 app.use('/addingGames', AddingGamesRouter)
-app.use('/errorAdding', ErrorAddingRouter)
 
 
 
