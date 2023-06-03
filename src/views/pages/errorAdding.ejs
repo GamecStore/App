@@ -1,10 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <%- include ('../partials/head.ejs') %>
-
-    <link rel="stylesheet" href="../../public/css/errStyle.css">
 </head>
 
 <body class="bg-black">
@@ -13,28 +11,19 @@
         <%- include ('../partials/header.ejs') %>
     </header>
     <!------------>
-
-
     <!-- body -->
     <div class="d-flex justify-content-center align-items-center flex-column mb-5 mt-5">
         <div class="pt-5 pb-2">            
             <img class="mx-auto d-block img-fluid" src="../../public/images/lock.png" alt="Error Message">
         </div>
         <div class="pt-3 p-1">            
-            <h1 class="text-white text-center">This content isn't available at the moment</h1>
-        </div>
-        <div class="p-2">       
-        <p class ="text-white text-center">
-            When this happens, it's usually because the owner only<br>
-            shared it with a small group of people or changed who can<br>
-            see it, or it's been deleted
-        </p>
+            <h1 class="text-white text-center">Error adding the game</h1>
         </div>
         <div class="p-2 pb-5">            
-            <a href="/" class="btn btn-primary rounded" type="button" role="button">Back to Home Page</a>
+            <a href="/" class="btn btn-outline-primary rounded mx-3" type="button" role="button">Back to Home Page</a>
+            <a href="/addingGames" class="btn btn-primary rounded mx-3" type="button" role="button">Add new game</a>
         </div>
     </div>
-
     <!--footer-->
     <footer class="footer bg">
         <%- include('../partials/footer') %>
