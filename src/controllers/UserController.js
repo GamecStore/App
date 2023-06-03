@@ -16,7 +16,6 @@ const createUser = async (req, res) => {
                     gender: req.body.gender,
                     username: req.body.name,
                     password: hash,
-                    // bcrypt: req.body.password.bcrypt,
                     dob: req.body.dob
                 });
             const { email, gender, username, password, dob } = req.body;
@@ -53,7 +52,7 @@ const createUser = async (req, res) => {
                     //         console.error(error)
                     //     })
 
-                    res.send('User saved to database')
+                    res.redirect('/index')
                 })
                 .catch(err => console.error(err));
         });
@@ -61,36 +60,8 @@ const createUser = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-// const validation = async (req, res) => {
-//     const user = new User(
-//         {
-//             email: req.body.email,
-//             gender: req.body.gender,
-//             username: req.body.name,
-//             password: hash,
-//             // bcrypt: req.body.password.bcrypt,
-//             dob: req.body.dob
-//         });
-
-
-//     // if (email ===)
-//     if (!username || !email || !password || !gender || dobb) {
-//         //         return res.render('Name, email, and password are required');
-//         res.render("name,email,password,gender are required")
-
-//     }
-
-// };
 //trial 2
 const login = async (req, res) => {
-    //          bcrypt.hash(req.body.password, saltRounds, function (err, hash) {     
-    //          const user = new User
-    //          {
-    //           userName:req.body.name;
-    //          password :hash 
-    //      console.log(username);     
-    //  }
-    //      });
     const sentUser = req.body.name;
     const user = await User.findOne({ username: sentUser })
     if (user.username === sentUser) {
@@ -103,30 +74,19 @@ const login = async (req, res) => {
             }
             if (isMatch) {
                 console.log('correct password!')
-
-                // res.send('the login is working')
                 req.session.username = user.username;
                 console.log(req.session.username)
 
                 // res.redirect('/index');
                 res.redirect('/');
             }
-            //callback(null, isMatch);
-            // console.log('incorrect password')
 
         });
     }
-
-    // if (req.body.name == username) {
-
-    // }
-    // }
-    // else {
-    //     res.send("WHAAt")
-    // }
 };
 
-const editprofile = async (req, res) => {
+const editProfile = async (req, res) => {
+    
 
 }
 
@@ -201,4 +161,5 @@ module.exports = {
     deleteUserById,
     login,
     checkName,
+    editProfile,
 };

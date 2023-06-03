@@ -3,23 +3,23 @@ const Schema = mongoose.Schema;
 
 
 const allGamesSchema = new Schema({
-    adminName:{
+    adminName: {
         type: String,
         required: true
     },
-    adminEmail:{
+    adminEmail: {
         type: String,
         required: true
     },
-    gameTitle:{
+    gameTitle: {
         type: String,
         required: true
     },
-    price:{
+    price: {
         type: Number,
         required: true
     },
-    genre:{
+    genre: {
         type: String,
         required: true
     },
