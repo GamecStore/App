@@ -1,19 +1,28 @@
 const config = require('./config.json');
+// Express for handling GET and POST request
 const express = require('express');
+const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require('path');
 const session = require('express-session')
 const logger = require('morgan');
-const fs = require('fs');
-const bodyParser = require('body-parser');
-
-const app = express();
+const fs = require('fs');// Requiring file system to use local files
+const bodyParser = require('body-parser');// Parsing the form of body to take input from forms
+const multer = require('multer');
 const port = config.port || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 
 require("colors");
+
+
+app.use(express.urlencoded({ extended: true }));
+// Configuring express to use body-parser as middle-ware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json())
+
+
 
 const ProductsRouter = require('./routes/products')
 const AdminindexRouter = require('./routes/adminindex')
@@ -27,13 +36,13 @@ const LibraryRouter = require('./routes/library')
 const WishlistRouter = require('./routes/wishlist')
 const allGamesRouter = require('./routes/allGames')
 const AddingGamesRouter = require('./routes/addingGames')
-const ErrorAddingRouter = require('./routes/errorAdding')
 
 const editProfileRouter = require('./routes/user')
 
 
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views')
+app.set('views', path.join(__dirname, 'views'));
 
 
 
@@ -41,21 +50,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 app.use('/static', express.static('static'))
-// to read from posts
-app.use(express.urlencoded({ extended: true }));
 
-app.set('views', path.join(__dirname, 'views'));
 
 
 // used to log files
 app.use(
     logger(":method :url :status :res[content-length] - :response-time ms")
 );
-// app.use(
-//     logger("tiny", {
-//         stream: fs.createWriteStream("/logs.access.log", { flags: "a" }),
-//     })
-// );
 
 app.use(session({
     secret: 'my-secret-key',
@@ -66,12 +67,6 @@ app.use(session({
 mongoose.connect(config.mongoURI)
     .then(() => console.log(`[MONGO] Connected to MongoDB`.green))
     .catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
-
-
-// const connection = mongoose.connection;
-// connection.once('open', () => {
-//     console.log(`[MONGO] Connected to MongoDB`.green);
-// });
 
 
 

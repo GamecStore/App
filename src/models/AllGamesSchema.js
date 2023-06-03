@@ -24,11 +24,12 @@ const allGamesSchema = new Schema({
         required: true
     },
     image:{
-        type: String,
+        data: Buffer,
+        contentType: String,
         required: true
     }
 });
 
 
-const All_Games = mongoose.model('AllGames', allGamesSchema);
-module.exports = All_Games;
+const AllGames = mongoose.model('AllGames', allGamesSchema);
+module.exports = AllGames;

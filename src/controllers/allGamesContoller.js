@@ -1,22 +1,24 @@
 const AllGames = require('../models/AllGamesSchema');
 
 const allGames_get = (req, res) => {
-    res.render("pages/allGames")
+    AllGames.find()  
+    .then((result)=>{
+        res.render("pages/allGames",{gamesArray: result});
+    })
+    .catch((err) => (console.error(err)));
 }
 
- 
-const allGames_post = (req, res) => {
-    const Games =  new AllGames(req.body)
-    // res.send(req.body.adminName);
-    Games.save()
-    .then(() =>{ 
-        console.log("Succesfully saved".yellow);
-        res.redirect('/allGames');
-    })
-    .catch((err) => {
-        res.redirect("/errorAdding");
-        console.log(err.red);
-    })
+
+const allGames_post = async (req, res) => {
+    res.render("pages/allGames");
+
+    const games = new AllGames (req.body);
+    console.log(req.body);
+  
+    //saving data in the database
+    games.save()
+    .then(() => console.log("success"))
+    .catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`)); 
 }
 
 

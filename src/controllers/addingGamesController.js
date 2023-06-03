@@ -1,5 +1,5 @@
 const addingGames_get = (req, res) => {
-    res.render('pages/Test_AddingGames')
+    res.render('pages/addingGames')
 }
 
 

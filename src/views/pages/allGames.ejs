@@ -3,8 +3,8 @@
 
 <head>
     <%- include ('../partials/head.ejs') %>
-    <link rel="stylesheet" href="../../public/css/allGamesStyle.css">
-    
+        <link rel="stylesheet" href="../../public/css/allGamesStyle.css">
+
 </head>
 
 <body class="bg-black">
@@ -18,9 +18,15 @@
     <div class="container">
         <div class="row">
             <div class="col-8">
-                <div class="col-sm-12 col-lg-3 text-md-center  my-3 mx-auto" style="width: 15rem ">
-                    <img src="../../public/images/gameimages/Digital Deluxe.png" class=" img-fluid mx-auto  libraryItem  "
-                        alt="Photo of a game">
+                <div class="col-sm-12 col-lg-3 text-md-center my-3 mx-auto" style="width: 15rem ">
+                    <!-- <img src="../../public/images/gameimages/Digital Deluxe.png" class=" img-fluid mx-auto  libraryItem  "
+                        alt="Photo of a game"> -->
+
+                    <% gamesArray.forEach(element=> { %>
+                    <h1> <%= element.adminName %></h1>
+                    <h1> <%= element.adminEmail %></h1>
+                    <%});%> 
+
                 </div>
 
             </div>
@@ -339,7 +345,7 @@
 
     <!-- Scripts -->
     <%- include ('../partials/scriptLinks')%>
-    <!------->
+        <!------->
 </body>
 
 </html>
