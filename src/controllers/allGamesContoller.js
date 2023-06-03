@@ -1,7 +1,12 @@
 const AllGames = require('../models/AllGamesSchema');
 
 const allGames_get = (req, res) => {
-    res.render("pages/allGames")
+    //model.find() --> promise
+    AllGames.find()  
+    .then((result)=>{
+        res.render("pages/allGames",{gamesArray: result});
+    })
+    .catch((err) => (console.error(err)));
 }
 
 
