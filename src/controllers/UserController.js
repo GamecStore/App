@@ -68,7 +68,7 @@ const createUser = async (req, res) => {
                     //         console.error(error)
                     //     })
 
-                    res.redirect("/index");
+                    res.redirect("/");
                 })
                 .catch((err) => console.error(err));
         });
@@ -114,7 +114,7 @@ const editProfile = async (req, res) => {
         user.dob = req.body.dob;
         user.username = req.body.username;
         await user.save();
-        res.redirect('/editprofile');
+        res.redirect('/editprofile', { user: req.session.user });
     } else {
         res.status(404).send('User not found');
     }
@@ -217,7 +217,7 @@ const viewcart = async (req, res) => {
         }
         console.log(cartgames);
         let sum = 0;
-        res.render('pages/cart', { games: cartgames, sum });
+        res.render('pages/cart', { games: cartgames, sum, user: req.session.user });
     } else {
         res.redirect('/');
     }
@@ -242,7 +242,12 @@ const deletecart = async (req, res) => {
 
 
 const signupPage = (req, res) => {
-    res.render('pages/signup');
+    res.render('pages/signup', { user: req.session.user });
+};
+
+const homepage = (req, res) => {
+
+    res.render('pages/index', { user: req.session.user });
 };
 
 module.exports = {
@@ -258,5 +263,6 @@ module.exports = {
     addcart,
     viewcart,
     deletecart,
-    signupPage
+    signupPage,
+    homepage
 };

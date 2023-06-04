@@ -14,15 +14,23 @@ router.get('/orders', (req, res) => {
 router.get('/signup', UserController.signupPage);
 
 router.get('/login', (req, res) => {
-    res.render('pages/login')
+    res.render('pages/login', { user: req.session.user })
 })
 
 router.get('/editProfile', (req, res) => {
-    res.render('pages/editProfile')
+    res.render('pages/editProfile', { user: req.session.user })
 })
 router.get('/contactus', (req, res) => {
-res.render('pages/contactus');
+    res.render('pages/contactus', { user: req.session.user });
 });
+
+
+router.get('/', UserController.homepage);
+
+
+
+
+
 
 
 // router.get('/cart', (req, res) => {

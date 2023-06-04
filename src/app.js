@@ -80,8 +80,8 @@ app.use(session({
 }));
 
 mongoose.connect(config.mongoURI)
-.then(() => console.log(`[MONGO] Connected to MongoDB`.green))
-.catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
+    .then(() => console.log(`[MONGO] Connected to MongoDB`.green))
+    .catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
 
 
 
@@ -100,6 +100,7 @@ app.use('/allGames', allGamesRouter)
 app.use('/addingGames', AddingGamesRouter)
 app.use('/errorAdding', ErrorAddingRouter)
 app.use('/editprofile', editProfileRouter)
+
 
 
 app.get('/logout', (req, res) => {
