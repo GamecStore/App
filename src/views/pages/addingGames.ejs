@@ -9,15 +9,14 @@
 
 <body class="bg-black">
 
-    <!-- Header -->
-    <!-- <header class="p-3 menu-fixed bg"> -->
-    <!-- </header> -->
+    <!-- <header class="p-3 menu-fixed bg">
+    </header> -->
     <!------------>
 
     <!--Adding games form-->
 
     <div class="d-flex justify-content-center"> <!--flex centering -->
-        <div class="formlayout w-50 h-25 p-4 m-5">
+        <div class="formlayout w-50 h-25 p-4 m-5 rounded-2">
             <!--grid-->
             <form class="row g-3" enctype="multipart/form-data" method="POST" action="/allGames">
                 <div class="col-12">
@@ -35,14 +34,14 @@
                     <label for="gameTitle" class="form-label text-white">Game title:<span
                             class="asteric">*</span></label>
                     <input type="text" class="form-control" id="gameTitle" name="gameTitle"
-                        placeholder="Enter The title of your game">
+                        placeholder="Enter the title of your game">
                 </div>
 
                 <div class="col-12">
                     <label for="gameTitle" class="form-label text-white">Game description:<span
                             class="asteric">*</span></label>
                     <textarea class="form-control" aria-label="With textarea" id="description" name="description"
-                    placeholder="Enter The description of your game"></textarea>
+                    placeholder="Enter the description of your game"></textarea>
                 </div>
 
                 <div class="col-12">
@@ -58,7 +57,8 @@
                             </label>
                     </div>
                     <div>
-                        <select class="form-control" id="genre" name="genre">
+                        <select class="form-select" id="genre" name="genre">
+                            <option selected>Open this select menu</option>
                             <option value="action">Action</option>
                             <option value="adventure">Adventure</option>
                             <option value="casual">casual</option>
@@ -71,16 +71,20 @@
                                 class="asteric">*</span> </label>
                     </div>
                     <div>
-                        <select class="form-control" id="platform" name="platform">
+                        <select class="form-select" id="platform" name="platform">
+                            <option selected>Open this select menu</option>
                             <option value="macos">Mac OS</option>
                             <option value="windows">Windows</option>
+                            <option value="mac_windows">Mac OS & Windows</option>
                         </select>
                     </div>
                 </div>
+
                 <div class="col-12">
-                    <div><label class="form-label text-white">Game Poster:</label><span class="asteric">*</span></div>
-                    <div><input type="file" class="form-control" id="poster" name="poster"></div>
+                    <div><label class="form-label text-white" for = "poster">Game Poster:</label><span class="asteric">*</span></div>
+                    <div class="input-group mb-3"><input type="file" class="form-control" id="poster" name="poster"></div>
                 </div>
+
                 <div class="col-12">
                     <div class="d-flex justify-content-center">
                         <a href="/allGames" class="btn btn-outline-primary mt-3 mx-3">Cancel</a>
