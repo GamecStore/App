@@ -15,7 +15,7 @@ const multer = require('multer');
 const { Configuration, OpenAIApi } = require('openai');
 
 
-const port = config.port || 3000;
+// const port = config.port || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 
