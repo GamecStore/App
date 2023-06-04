@@ -4,30 +4,14 @@
 <head>
     <%- include ('../partials/head.ejs') %>
 
-        <link rel="stylesheet" href="../../public/css/signupstyle.css">
-
-        <style>
-            /* Chrome, Safari, Edge, Opera */
-            input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
-
-            /* Firefox */
-            input[type=number] {
-                -moz-appearance: textfield;
-            }
-        </style>
-
+        <link rel="stylesheet" href="../../public/css/addingGameStyle.css">
 </head>
 
 <body class="bg-black">
 
     <!-- Header -->
-    <header class="p-3 menu-fixed bg">
-        <%- include ('../partials/header.ejs') %>
-    </header>
+    <!-- <header class="p-3 menu-fixed bg"> -->
+    <!-- </header> -->
     <!------------>
 
     <!--Adding games form-->
@@ -55,6 +39,13 @@
                 </div>
 
                 <div class="col-12">
+                    <label for="gameTitle" class="form-label text-white">Game description:<span
+                            class="asteric">*</span></label>
+                    <textarea class="form-control" aria-label="With textarea" id="description" name="description"
+                    placeholder="Enter The description of your game"></textarea>
+                </div>
+
+                <div class="col-12">
                     <label for="price" class="form-label text-white">Price:<span class="asteric">*</span></label>
                     <input type="number" class="form-control" id="price" name="price"
                         placeholder="Enter the price of your game">
@@ -74,17 +65,22 @@
                         </select>
                     </div>
                 </div>
-
+                <div class="col-12">
+                    <div>
+                        <label for="platform" class="form-label text-white">Platfrom:<span
+                                class="asteric">*</span> </label>
+                    </div>
+                    <div>
+                        <select class="form-control" id="platform" name="platform">
+                            <option value="macos">Mac OS</option>
+                            <option value="windows">Windows</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="col-12">
                     <div><label class="form-label text-white">Game Poster:</label><span class="asteric">*</span></div>
-                    <div><input type="file" class="form-control" id="image" name="image"></div>
+                    <div><input type="file" class="form-control" id="poster" name="poster"></div>
                 </div>
-
-                <div class="col-12">
-                    <div><label class="form-label text-white">Date created:</label></div>
-                    <div><input type="date" class="form-control" id="createdAt" name="createdAt"></div>
-                </div>
-
                 <div class="col-12">
                     <div class="d-flex justify-content-center">
                         <a href="/allGames" class="btn btn-outline-primary mt-3 mx-3">Cancel</a>
@@ -98,9 +94,8 @@
     <!---------->
 
     <!--footer-->
-    <footer class="footer bg ">
-        <%- include('../partials/footer') %>
-    </footer>
+    <!-- <footer class="footer bg ">
+    </footer> -->
     <!---------------->
     <!-- Scripts -->
     <%- include ('../partials/scriptLinks') %>

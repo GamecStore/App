@@ -13,18 +13,27 @@ const allGamesSchema = new Schema({
     },
     gameTitle: {
         type: String,
-        required: [true, "Uploaded file must have a game title"]
+        required: [true, "A game must have a title"]
+    },
+    description: {
+        type: String,
+        required: [true, "A game must have a description"]
     },
     price: {
         type: Number,
-        required: true
+        required:  [true, "A game must have a price"]
     },
     genre: {
         type: String,
-        required: true
+        required:  [true, "A game must have a genre"]
     },
-    image:{
-        data:String
+    platform: {
+        type: String,
+        required:  [true, "A game must have a platform"]
+    },
+    poster:{
+        type:String,
+        required:  [true, "A game must have a poster"]
     }
 },{timestamps: true});
 

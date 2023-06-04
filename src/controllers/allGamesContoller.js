@@ -8,11 +8,13 @@ const allGames_get = (req, res) => {
     .catch((err) => (console.error(err)));
 }
 
-
 const allGames_post = (req, res) => {
     res.render("pages/allGames");
     const games = new AllGames (req.body);
     console.log(req.body);
+    if(req.file){
+        games.poster = req.file.path;
+    }
 
     //saving data in the database
     games.save()
@@ -33,4 +35,3 @@ module.exports = {
     allGames_get,
     allGames_post
 };
-

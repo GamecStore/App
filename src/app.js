@@ -11,10 +11,7 @@ const session = require('express-session')
 const logger = require('morgan');
 const fs = require('fs');// Requiring file system to use local files
 const bodyParser = require('body-parser');//mount the data coming from the form of body to take input from forms 
-const multer = require('multer');
-const { Configuration, OpenAIApi } = require('openai');
-
-
+// const { Configuration, OpenAIApi } = require('openai');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
@@ -27,17 +24,17 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 //set up OpenAI credentials
-const apiKey = config.openaikey;
+// const apiKey = config.openaikey;
 
-//configure OpenAI with our generated api key
-const configuration = new Configuration
-    ({
-        apiKey
-    })
-const openai = new OpenAIApi(configuration)
+// //configure OpenAI with our generated api key
+// const configuration = new Configuration
+//     ({
+//         apiKey
+//     })
+// const openai = new OpenAIApi(configuration)
 
-//set the api keyfor openai instance
-openai.apiKey = apiKey
+// //set the api keyfor openai instance
+// openai.apiKey = apiKey
 
 
 
@@ -55,11 +52,11 @@ app.use('/static', express.static('static'))
 
 const AdminRouter = require('./routes/admin')
 const AboutUsRouter = require('./routes/aboutUs')
-const CheckoutRouter = require('./routes/checkout')
+const CheckoutRouter = require('./routes/user')
 const ContactUsRouter = require('./routes/user')
 const HistoryRouter = require('./routes/user')
 const LibraryRouter = require('./routes/library')
-const WishlistRouter = require('./routes/wishlist')
+const WishlistRouter = require('./routes/user')
 const allGamesRouter = require('./routes/allGames')
 const AddingGamesRouter = require('./routes/addingGames')
 const ErrorAddingRouter = require('./routes/errorAdding')
@@ -80,8 +77,8 @@ app.use(session({
 }));
 
 mongoose.connect(config.mongoURI)
-.then(() => console.log(`[MONGO] Connected to MongoDB`.green))
-.catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
+    .then(() => console.log(`[MONGO] Connected to MongoDB`.green))
+    .catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
 
 
 
@@ -100,6 +97,7 @@ app.use('/allGames', allGamesRouter)
 app.use('/addingGames', AddingGamesRouter)
 app.use('/errorAdding', ErrorAddingRouter)
 app.use('/editprofile', editProfileRouter)
+
 
 
 app.get('/logout', (req, res) => {

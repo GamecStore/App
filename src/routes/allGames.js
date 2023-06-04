@@ -1,11 +1,9 @@
 const express = require("express")
 const router = express.Router()
 const AllGamesContoller = require('../controllers/allGamesContoller')
-const multer = require('multer');
-const upload = multer({ dest: "../imagesFile" });
-
+const upload = require('../middleware/upload')
 
 router.get('/', AllGamesContoller.allGames_get)
-router.post('/', upload.single("image"), AllGamesContoller.allGames_post)
+router.post('/', upload.single('poster'), AllGamesContoller.allGames_post)
 
 module.exports = router; 
