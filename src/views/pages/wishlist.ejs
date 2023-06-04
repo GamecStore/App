@@ -73,12 +73,15 @@
             </div>
 
             <div class="col-5 md-2">
-              <p class=" text-white mt-4 price1">EGP <%=game.price %> </p>
+              <p class=" text-white mt-4 price1">EGP <%=game.price[1] %> </p>
               <br>
               <br>
               <div style="padding-left: 56px; padding-top:25px ;">
-                <div class=" text-white mt-2 removeText bg-dark btn">Remove From Cart</div>
-                <div class=" text-white mt-2 removeText bg-dark btn">Add to Wishlist</div>
+                <form action="/Game/<%= game.id %>/deletewishlist" method="POST">
+                <!-- <div class=" text-white mt-2 removeText bg-dark btn">Remove From Wishlist</div> -->
+                <button class="col-12 buyButton rosunded-3 my-3">Remove From Wishlist</button>
+                </form>
+                <div class=" text-white mt-2 removeText bg-dark btn">Add to Cart</div>
               </div>
             </div>
        

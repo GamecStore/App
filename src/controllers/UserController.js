@@ -214,6 +214,7 @@ const addcart = async (req, res) => {
     res.send()
 
 }
+
 const viewcart = async (req, res) => {
     let cartgames = [];
     const user = await User.findOne({ username: req.session.username });
@@ -284,14 +285,7 @@ const homepage = (req, res) => {
     res.render('pages/index', { user: req.session.user });
 };
 
-// const addwishlist = async (req, res) => {
-//     console.log(req.session.username)
-//     const user = await User.findOne({ username: req.session.username })
-//     user.wishlishtids.push(req.params.id)
-//     await user.save()
-//     res.send()
 
-// }
 const addwishlist = async (req, res) => {
     try {
         const user = await User.findOne({ username: req.session.username });
@@ -309,8 +303,43 @@ const addwishlist = async (req, res) => {
         console.error(error);
         res.redirect('/error-page');
     }
-};
+  };
 
+const viewwishlist = async (req, res) => {
+    try {
+      let wishlistgames = [];
+      const user = await User.findOne({ username: req.session.username });
+      if (user !== undefined) {
+        console.log(user.wishlistids);
+        for (const gameid of user.wishlistids) {
+          const wishlistgame = await game.findById(gameid);
+          wishlistgames.push(wishlistgame);
+        }
+        console.log(wishlistgames);
+        let sum = 0;
+        res.render('pages/wishlist', { games: wishlistgames, sum, user: req.session.user });
+      } else {
+        res.redirect('/');
+      }
+    } catch (error) {
+      console.error(error);
+      res.redirect('/error-page');
+    }
+  };
+
+  const deletewishlist = async (req, res) => {
+    try {
+        const user = await User.findOne({ username: req.session.username });
+        await User.updateOne(
+            { _id: user._id },
+            { $pull: { wishlistids: req.params.id } }
+        );
+        res.redirect('/wishlist'); // Update the redirect URL with the correct path
+    } catch (error) {
+        console.error(error);
+        res.redirect('/error-page'); // Redirect to an error page if an error occurs
+    }
+};
 
 const checkoutpage = (req, res) => {
     res.render('pages/checkout', { user: req.session.user });
@@ -355,4 +384,6 @@ module.exports = {
     homepage,
     checkout,
     homepage,
+    viewwishlist,
+    deletewishlist,
 };

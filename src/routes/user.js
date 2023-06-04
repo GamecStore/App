@@ -14,7 +14,6 @@ router.get('/login', UserController.loginPage);
 router.get('/history', UserController.historyPage);
 router.get('/contactus', UserController.contactusPage);
 router.get('/editProfile', UserController.editProfilePage);
-router.get('/wishlist', UserController.wishlistPage);
 
 router.get('/', UserController.homepage);
 
@@ -74,6 +73,8 @@ router.post('/Game/:id/deletecart', UserController.deletecart);
 // router.get('/checkout', UserController.checkout);
 
 router.post('/Game/:id/addwishlist', UserController.addwishlist);
+router.get('/wishlist', UserController.viewwishlist);
+router.post('/Game/:id/deletewishlist', UserController.deletewishlist);
 // just in case
 // router.get('/', UserController.getAllUsers);
 // router.get('/:id', UserController.getUserById);
