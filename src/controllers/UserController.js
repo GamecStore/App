@@ -313,13 +313,12 @@ module.exports = {
     viewcart,
     deletecart,
     signupPage,
-    addwishlist,,
+    addwishlist,
     checkoutpage,
     loginPage,
     historyPage,
     contactusPage,
     editProfilePage,
     wishlistPage,
-
-    homepage
+    homepage,
 };
