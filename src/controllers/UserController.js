@@ -199,6 +199,22 @@ const addcart = async (req, res) => {
     res.send()
   
   }
+  const viewcart = async (req, res) => {
+    let cartgames = [];
+    const user = await User.findOne({ username: req.session.username });
+    if (user !== undefined) {
+      console.log(user.gameids);
+      for (const gameid of user.gameids) {
+        const cartgame = await game.findById(gameid);
+        cartgames.push(cartgame);
+      }
+      console.log(cartgames);
+      let sum = 0;
+      res.render('pages/cart', { games:cartgames, sum });
+    } else {
+      res.redirect('/');
+    }
+  };
 
 
 module.exports = {
@@ -212,4 +228,5 @@ module.exports = {
     editProfile,
     contactus,
     addcart,
+    viewcart,
 };
