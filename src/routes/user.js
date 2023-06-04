@@ -67,6 +67,7 @@ router.post('/checkName', UserController.checkName);
 router.post('/editprofile', UserController.editProfile);
 router.post('/Game/:id/addcart', UserController.addcart);
 router.post('/contactus', UserController.contactus);
+router.get('/cart', UserController.viewcart);
 // just in case
 // router.get('/', UserController.getAllUsers);
 // router.get('/:id', UserController.getUserById);
