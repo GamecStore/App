@@ -1,4 +1,5 @@
 const config = require('./config.json');
+const port = config.port || 3000;
 const http = require('http');
 // Express for handling GET and POST request
 const express = require('express');
@@ -20,6 +21,10 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 
 require("colors");
 
+app.set('view engine', 'ejs')
+app.set('views', __dirname + '/views')
+app.set('views', path.join(__dirname, 'views'));
+
 
 //set up OpenAI credentials
 const apiKey = config.openaikey;
@@ -38,8 +43,15 @@ openai.apiKey = apiKey
 
 app.use(express.urlencoded({ extended: true }));
 // Configuring express to use body-parser as middle-ware
+// middleware --> something that is going to run between the time that the server gets the request and 
+// the server sends the response
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
+app.use(cors());
+app.use(express.json());
+app.use(express.static('public'));
+app.use('/static', express.static('static'))
 
 const AdminRouter = require('./routes/admin')
 const AboutUsRouter = require('./routes/aboutUs')
@@ -51,21 +63,8 @@ const WishlistRouter = require('./routes/wishlist')
 const allGamesRouter = require('./routes/allGames')
 const AddingGamesRouter = require('./routes/addingGames')
 const ErrorAddingRouter = require('./routes/errorAdding')
-
-
 const editProfileRouter = require('./routes/user')
 
-
-app.set('view engine', 'ejs')
-app.set('views', __dirname + '/views')
-app.set('views', path.join(__dirname, 'views'));
-
-
-
-app.use(cors());
-app.use(express.json());
-app.use(express.static('public'));
-app.use('/static', express.static('static'))
 
 
 
@@ -81,8 +80,8 @@ app.use(session({
 }));
 
 mongoose.connect(config.mongoURI)
-    .then(() => console.log(`[MONGO] Connected to MongoDB`.green))
-    .catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
+.then(() => console.log(`[MONGO] Connected to MongoDB`.green))
+.catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
 
 
 
@@ -91,7 +90,6 @@ app.use('/', require('./routes/game'))
 app.use('/', require('./routes/user'));
 
 app.use('/admin', AdminRouter)
-
 app.use('/aboutUs', AboutUsRouter)
 app.use('/contactus', ContactUsRouter)
 app.use('/library', LibraryRouter)
