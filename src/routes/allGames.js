@@ -7,8 +7,9 @@ const multer = require('multer');
 
 //image validations
 const storage = multer.diskStorage({
-    destination:'../public/images/uploads/',  //location where the file will be saved
-    
+    destination:function(req,file,cb) {   //location where the file will be saved
+        cb(null,'src/public/images/uploads/')
+    },
     filename: function(req,file,cb) {  //rename the file withtimestamp and extension (always unique)
         const ext = path.extname(file.originalname);
         cb(null,Date.now() + ext);
