@@ -136,7 +136,9 @@
                         </div>
                         <div class="col-12 mx-1 text-start text-white">$<%= game.price[2] %>
                         </div>
+                        <form action="/Game/<%= game.id %>/addcart" method="POST">
                         <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
+                        </form>
                     </div>
                 </div>
             </div>

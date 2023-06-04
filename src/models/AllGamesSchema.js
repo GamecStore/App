@@ -23,15 +23,11 @@ const allGamesSchema = new Schema({
         type: String,
         required: true
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
     image:{
-        data: Buffer,
-        contentType: String
+        data:String
     }
-});
+},{timestamps: true});
+
 
 
 const AllGames = mongoose.model('AllGames', allGamesSchema);
