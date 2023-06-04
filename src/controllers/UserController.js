@@ -270,7 +270,7 @@ const editProfilePage = (req, res) => {
     res.render('pages/editProfile', { user: req.session.user });
 };
 const wishlistPage = (req, res) => {
-    res.render('pages/wishlist');
+    res.render('pages/wishlist', { user: req.session.user });
 };
 module.exports = {
     createUser,
