@@ -11,9 +11,7 @@ router.get('/orders', (req, res) => {
     res.render('pages/admin/orders')
 })
 
-router.get('/signup', (req, res) => {
-    res.render('pages/signup');
-});
+router.get('/signup', UserController.signupPage);
 
 router.get('/login', (req, res) => {
     res.render('pages/login')

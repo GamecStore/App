@@ -35,6 +35,9 @@ const createUser = async (req, res) => {
                 .then(() => {
                     req.session.username = user.username;
                     req.session.password = user.password;
+                    req.session.type = user.role;
+                    req.session.user = user;
+                    console.log(req.session.user);
                     // const msg = {
                     //     to: user.email, // Change to your recipient
                     //     from: 'gamecyt2@gmail.com', // Change to your verified sender
@@ -75,6 +78,10 @@ const login = async (req, res) => {
             if (isMatch) {
                 console.log("correct password!");
                 req.session.username = user.username;
+                req.session.password = user.password;
+                req.session.type = user.role;
+                req.session.user = user;
+                console.log(req.session.user);
                 if (user.role === "admin") {
                     res.redirect("/admin/home");
                 } else {
@@ -164,6 +171,10 @@ const checkName = (req, res, next) => {
         });
 };
 
+const signupPage = (req, res) => {
+    res.render('pages/signup');
+};
+
 module.exports = {
     createUser,
     getAllUsers,
@@ -173,4 +184,5 @@ module.exports = {
     login,
     checkName,
     editProfile,
+    signupPage
 };
