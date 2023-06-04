@@ -238,7 +238,7 @@ const deletecart = async (req, res) => {
 };
 
 
-}
+
 
 
 const signupPage = (req, res) => {
