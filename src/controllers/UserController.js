@@ -253,6 +253,33 @@ const homepage = (req, res) => {
     res.render('pages/index', { user: req.session.user });
 };
 
+// const addwishlist = async (req, res) => {
+//     console.log(req.session.username)
+//     const user = await User.findOne({ username: req.session.username })
+//     user.wishlishtids.push(req.params.id)
+//     await user.save()
+//     res.send()
+
+// }
+const addwishlist = async (req, res) => {
+    try {
+      const user = await User.findOne({ username: req.session.username });
+      if (user) {
+        if (!user.wishlistids) {
+          user.wishlistids = []; // Initialize the wishlistids array if it doesn't exist
+        }
+        user.wishlistids.push(req.params.id);
+        await user.save();
+        res.redirect('/wishlist');
+      } else {
+        res.redirect('/');
+      }
+    } catch (error) {
+      console.error(error);
+      res.redirect('/error-page');
+    }
+  };
+  
 
 const checkoutpage = (req, res) => {
     res.render('pages/checkout', { user: req.session.user });
@@ -286,12 +313,12 @@ module.exports = {
     viewcart,
     deletecart,
     signupPage,
+    addwishlist,
     checkoutpage,
     loginPage,
     historyPage,
     contactusPage,
     editProfilePage,
     wishlistPage,
-
-    homepage
+    homepage,
 };

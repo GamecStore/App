@@ -1,0 +1,40 @@
+.bgimg{
+    background-image: url("../images/bkg.gif");
+}
+
+.asteric {
+    color: red;
+}
+
+strong{
+    font-weight: bolder;
+}
+
+.acc {
+    color: #f7f8f8bf;
+}
+
+.bullets {
+    display: flex;
+    align-items: center;
+}
+
+.err{
+    color: red;
+}
+
+.formlayout{
+    background-color: rgb(33, 37, 41,0.8);
+}
+
+/*to remove arrows in number input*/
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}

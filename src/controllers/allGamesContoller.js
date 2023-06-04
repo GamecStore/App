@@ -16,9 +16,6 @@ const allGames_post = (req, res) => {
         games.poster = req.file.path;
     }
 
-
-
-
     //saving data in the database
     games.save()
     .then(() => console.log("success"))
