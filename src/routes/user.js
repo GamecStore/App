@@ -4,25 +4,24 @@ const UserController = require('../controllers/UserController');
 const bcrypt = require('bcrypt');
 
 
-router.get('/history', (req, res) => {
-    res.render('pages/history');
-});
 router.get('/orders', (req, res) => {
     res.render('pages/admin/orders')
 })
 
 router.get('/signup', UserController.signupPage);
+router.get('/checkout', UserController.checkoutpage);
+router.get('/login', UserController.loginPage);
+router.get('/history', UserController.historyPage);
+router.get('/contactus', UserController.contactusPage);
+router.get('/editProfile', UserController.editProfilePage);
+router.get('/wishlist', UserController.wishlistPage);
 
-router.get('/login', (req, res) => {
-    res.render('pages/login')
-})
+router.get('/', UserController.homepage);
 
-router.get('/editProfile', (req, res) => {
-    res.render('pages/editProfile')
-})
-router.get('/contactus', (req, res) => {
-res.render('pages/contactus');
-});
+
+
+
+
 
 
 // router.get('/cart', (req, res) => {

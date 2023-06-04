@@ -68,7 +68,7 @@ const createUser = async (req, res) => {
                     //         console.error(error)
                     //     })
 
-                    res.redirect("/index");
+                    res.redirect("/");
                 })
                 .catch((err) => console.error(err));
         });
@@ -114,7 +114,7 @@ const editProfile = async (req, res) => {
         user.dob = req.body.dob;
         user.username = req.body.username;
         await user.save();
-        res.redirect('/editprofile');
+        res.redirect('/editprofile', { user: req.session.user });
     } else {
         res.status(404).send('User not found');
     }
@@ -123,13 +123,22 @@ const editProfile = async (req, res) => {
 const contactus = async (req, res) => {
     try {
         //extract the question from the form 
-        const { question } = req.body;
-        const completion = await openai.createCompletion({
 
+        const response = await openai.createCompletion({
+            model: 'text-davinci-003',
+            prompt: req.body.prompt,
+            temperature: 0,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+            max_tokens: 1024
+        });
+        response.then((data = {}) => {
+            res.send({ message: data.data.choices[0].text })
         });
     }
     catch (error) {
-
+        res.status(500).json({ message: error.message });
     }
 };
 const getAllUsers = async (req, res) => {
@@ -196,8 +205,6 @@ const checkName = (req, res, next) => {
         });
 };
 
-
-
 const addcart = async (req, res) => {
     console.log(req.session.username)
     const user = await User.findOne({ username: req.session.username })
@@ -217,7 +224,7 @@ const viewcart = async (req, res) => {
         }
         console.log(cartgames);
         let sum = 0;
-        res.render('pages/cart', { games: cartgames, sum });
+        res.render('pages/cart', { games: cartgames, sum, user: req.session.user });
     } else {
         res.redirect('/');
     }
@@ -237,14 +244,34 @@ const deletecart = async (req, res) => {
     }
 };
 
-
-
-
-
 const signupPage = (req, res) => {
-    res.render('pages/signup');
+    res.render('pages/signup', { user: req.session.user });
 };
 
+const homepage = (req, res) => {
+
+    res.render('pages/index', { user: req.session.user });
+};
+
+
+const checkoutpage = (req, res) => {
+    res.render('pages/checkout', { user: req.session.user });
+};
+const loginPage = (req, res) => {
+    res.render('pages/login', { user: req.session.user });
+};
+const historyPage = (req, res) => {
+    res.render('pages/history', { user: req.session.user });
+};
+const contactusPage = (req, res) => {
+    res.render('pages/contactus', { user: req.session.user });
+};
+const editProfilePage = (req, res) => {
+    res.render('pages/editProfile', { user: req.session.user });
+};
+const wishlistPage = (req, res) => {
+    res.render('pages/wishlist', { user: req.session.user });
+};
 module.exports = {
     createUser,
     getAllUsers,
@@ -258,5 +285,13 @@ module.exports = {
     addcart,
     viewcart,
     deletecart,
-    signupPage
+    signupPage,
+    checkoutpage,
+    loginPage,
+    historyPage,
+    contactusPage,
+    editProfilePage,
+    wishlistPage,
+
+    homepage
 };

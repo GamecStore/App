@@ -52,11 +52,11 @@ app.use('/static', express.static('static'))
 
 const AdminRouter = require('./routes/admin')
 const AboutUsRouter = require('./routes/aboutUs')
-const CheckoutRouter = require('./routes/checkout')
+const CheckoutRouter = require('./routes/user')
 const ContactUsRouter = require('./routes/user')
 const HistoryRouter = require('./routes/user')
 const LibraryRouter = require('./routes/library')
-const WishlistRouter = require('./routes/wishlist')
+const WishlistRouter = require('./routes/user')
 const allGamesRouter = require('./routes/allGames')
 const AddingGamesRouter = require('./routes/addingGames')
 const ErrorAddingRouter = require('./routes/errorAdding')
@@ -77,8 +77,8 @@ app.use(session({
 }));
 
 mongoose.connect(config.mongoURI)
-.then(() => console.log(`[MONGO] Connected to MongoDB`.green))
-.catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
+    .then(() => console.log(`[MONGO] Connected to MongoDB`.green))
+    .catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
 
 
 
@@ -97,6 +97,7 @@ app.use('/allGames', allGamesRouter)
 app.use('/addingGames', AddingGamesRouter)
 app.use('/errorAdding', ErrorAddingRouter)
 app.use('/editprofile', editProfileRouter)
+
 
 
 app.get('/logout', (req, res) => {
