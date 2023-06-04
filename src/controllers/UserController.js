@@ -245,6 +245,33 @@ const signupPage = (req, res) => {
     res.render('pages/signup');
 };
 
+// const addwishlist = async (req, res) => {
+//     console.log(req.session.username)
+//     const user = await User.findOne({ username: req.session.username })
+//     user.wishlishtids.push(req.params.id)
+//     await user.save()
+//     res.send()
+
+// }
+const addwishlist = async (req, res) => {
+    try {
+      const user = await User.findOne({ username: req.session.username });
+      if (user) {
+        if (!user.wishlistids) {
+          user.wishlistids = []; // Initialize the wishlistids array if it doesn't exist
+        }
+        user.wishlistids.push(req.params.id);
+        await user.save();
+        res.redirect('/wishlist');
+      } else {
+        res.redirect('/');
+      }
+    } catch (error) {
+      console.error(error);
+      res.redirect('/error-page');
+    }
+  };
+  
 module.exports = {
     createUser,
     getAllUsers,
@@ -258,5 +285,6 @@ module.exports = {
     addcart,
     viewcart,
     deletecart,
-    signupPage
+    signupPage,
+    addwishlist,
 };
