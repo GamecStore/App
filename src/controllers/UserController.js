@@ -215,6 +215,20 @@ const addcart = async (req, res) => {
       res.redirect('/');
     }
   };
+  const deletecart = async (req, res) => {
+    try {
+      const user = await User.findOne({ username: req.session.username });
+      await User.updateOne(
+        { _id: user._id },
+        { $pull: { gameids: req.params.id } }
+      );
+      res.redirect('/cart'); // Update the redirect URL with the correct path
+    } catch (error) {
+      console.error(error);
+      res.redirect('/error-page'); // Redirect to an error page if an error occurs
+    }
+  };
+
 
 
 module.exports = {
@@ -229,4 +243,5 @@ module.exports = {
     contactus,
     addcart,
     viewcart,
+    deletecart,
 };
