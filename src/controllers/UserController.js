@@ -123,14 +123,22 @@ const editProfile = async (req, res) => {
 const contactus = async (req, res) => {
     try {
         //extract the question from the form 
-        const { question } = req.body;
-        const completion = await openai.createCompletion({
-            model: 'text'
 
+        const response = await openai.createCompletion({
+            model: 'text-davinci-003',
+            prompt: req.body.prompt,
+            temperature: 0,
+            top_p: 1,
+            frequency_penalty: 0,
+            presence_penalty: 0,
+            max_tokens: 1024
+        });
+        response.then((data = {}) => {
+            res.send({ message: data.data.choices[0].text })
         });
     }
     catch (error) {
-
+        res.status(500).json({ message: error.message });
     }
 };
 const getAllUsers = async (req, res) => {
@@ -261,7 +269,9 @@ const contactusPage = (req, res) => {
 const editProfilePage = (req, res) => {
     res.render('pages/editProfile', { user: req.session.user });
 };
-
+const wishlistPage = (req, res) => {
+    res.render('pages/wishlist');
+};
 module.exports = {
     createUser,
     getAllUsers,
@@ -281,5 +291,7 @@ module.exports = {
     historyPage,
     contactusPage,
     editProfilePage,
+    wishlistPage,
+
     homepage
 };

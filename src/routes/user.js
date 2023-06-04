@@ -14,8 +14,7 @@ router.get('/login', UserController.loginPage);
 router.get('/history', UserController.historyPage);
 router.get('/contactus', UserController.contactusPage);
 router.get('/editProfile', UserController.editProfilePage);
-
-
+router.get('/wishlist', UserController.wishlistPage);
 
 router.get('/', UserController.homepage);
 
