@@ -13,7 +13,7 @@ const allGamesSchema = new Schema({
     },
     gameTitle: {
         type: String,
-        required: true
+        required: [true, "Uploaded file must have a game title"]
     },
     price: {
         type: Number,
@@ -22,6 +22,10 @@ const allGamesSchema = new Schema({
     genre: {
         type: String,
         required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
     },
     image:{
         data: Buffer,

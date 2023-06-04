@@ -9,7 +9,7 @@ const path = require('path');
 const session = require('express-session')
 const logger = require('morgan');
 const fs = require('fs');// Requiring file system to use local files
-const bodyParser = require('body-parser');// Parsing the form of body to take input from forms
+const bodyParser = require('body-parser');//mount the data coming from the form of body to take input from forms 
 const multer = require('multer');
 const port = config.port || 3000;
 app.use(express.urlencoded({ extended: true }));
