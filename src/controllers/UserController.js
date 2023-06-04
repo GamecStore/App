@@ -1,5 +1,16 @@
 const User = require("../models/User");
 const config = require("../config.json");
+const { Configuration, OpenAIApi } = require('openai');
+
+const apiKey = config.openaikey;
+
+//configure OpenAI with our generated api key
+const configuration = new Configuration
+    ({
+        apiKey
+    })
+const openai = new OpenAIApi(configuration)
+
 
 //const sgMail = require('@sendgrid/mail')
 //sgMail.setApiKey(config.gridsend)
@@ -94,12 +105,24 @@ const editProfile = async (req, res) => {
         user.dob = req.body.dob;
         user.username = req.body.username;
         await user.save();
-        res.redirect('/profile');
+        res.redirect('/editprofile');
     } else {
         res.status(404).send('User not found');
     }
 };
 
+const contactus = async (req, res) => {
+    try {
+        //extract the question from the form 
+        const { question } = req.body;
+        const completion = await openai.createCompletion({
+
+        });
+    }
+    catch (error) {
+
+    }
+};
 const getAllUsers = async (req, res) => {
     try {
         const users = await User.find();
@@ -164,6 +187,9 @@ const checkName = (req, res, next) => {
         });
 };
 
+
+
+
 module.exports = {
     createUser,
     getAllUsers,
@@ -173,4 +199,5 @@ module.exports = {
     login,
     checkName,
     editProfile,
+    contactus,
 };

@@ -11,6 +11,14 @@ const session = require('express-session')
 const logger = require('morgan');
 const fs = require('fs');// Requiring file system to use local files
 const bodyParser = require('body-parser');//mount the data coming from the form of body to take input from forms 
+const multer = require('multer');
+const { Configuration, OpenAIApi } = require('openai');
+
+
+const port = config.port || 3000;
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
+
 require("colors");
 
 app.set('view engine', 'ejs')
@@ -18,6 +26,22 @@ app.set('views', __dirname + '/views')
 app.set('views', path.join(__dirname, 'views'));
 
 
+//set up OpenAI credentials
+const apiKey = config.openaikey;
+
+//configure OpenAI with our generated api key
+const configuration = new Configuration
+    ({
+        apiKey
+    })
+const openai = new OpenAIApi(configuration)
+
+//set the api keyfor openai instance
+openai.apiKey = apiKey
+
+
+
+app.use(express.urlencoded({ extended: true }));
 // Configuring express to use body-parser as middle-ware
 // middleware --> something that is going to run between the time that the server gets the request and 
 // the server sends the response
@@ -32,7 +56,7 @@ app.use('/static', express.static('static'))
 const AdminRouter = require('./routes/admin')
 const AboutUsRouter = require('./routes/aboutUs')
 const CheckoutRouter = require('./routes/checkout')
-const ContactUsRouter = require('./routes/contactus')
+const ContactUsRouter = require('./routes/user')
 const HistoryRouter = require('./routes/user')
 const LibraryRouter = require('./routes/library')
 const WishlistRouter = require('./routes/wishlist')
