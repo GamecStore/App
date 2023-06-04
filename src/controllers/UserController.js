@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const config = require('../config.json');
+const game = require('../models/Game');
 
 //const sgMail = require('@sendgrid/mail')
 //sgMail.setApiKey(config.gridsend)
@@ -155,6 +156,15 @@ const checkName = (req, res, next) => {
         })
 }
 
+const addcart = async (req, res) => {
+    console.log( req.session.username)
+    const user=await User.findOne({ username:req.session.username})
+  user.gameids.push(req.params.id)
+    await user.save()
+    res.send()
+  
+  }
+
 
 module.exports = {
     createUser,
@@ -165,4 +175,6 @@ module.exports = {
     login,
     checkName,
     editProfile,
+    addcart,
+   
 };
