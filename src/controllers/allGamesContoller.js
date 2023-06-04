@@ -8,7 +8,6 @@ const allGames_get = (req, res) => {
     .catch((err) => (console.error(err)));
 }
 
-
 const allGames_post = (req, res) => {
     res.render("pages/allGames");
     const games = new AllGames (req.body);
@@ -33,4 +32,3 @@ module.exports = {
     allGames_get,
     allGames_post
 };
-
