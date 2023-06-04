@@ -23,7 +23,11 @@ const allGamesSchema = new Schema({
         type: String,
         required: true
     },
-    image:{
+    platform: {
+        type: String,
+        required: true
+    },
+    poster:{
         type:String,
         required: true
     }
