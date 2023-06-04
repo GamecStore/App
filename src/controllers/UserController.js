@@ -246,16 +246,30 @@ const deletecart = async (req, res) => {
     }
 };
 const checkout = async (req, res) => {
+    const order = new order();
+
     try {
+        const user = await User.findOne({ _id: req.session.id });
+        if (user !== undefined) {
+            console.log(user.gameids);
+            for (const gameid of user.gameids) {
+                const cartgame = await game.findById(gameid);
+                order.games.push(cartgame)
+                order.save();
+             order.price+= game.price[1];
+            }
+            
 
-        const userId = req.user.id;
-        const gameIds = req.body.games;
+        }
+    } catch (eror) {
 
+    }
 
+    try {
         const games = await Game.find({ _id: { $in: gameIds } });
         const totalPrice = games.reduce((total, game) => total + game.price, 0);
 
-        const order = new Order({ user: userId, games, totalPrice });
+        const order = new order({ user: userId, games, totalPrice });
         await order.save();
 
         const user = await User.findById(userId);
@@ -303,31 +317,31 @@ const addwishlist = async (req, res) => {
         console.error(error);
         res.redirect('/error-page');
     }
-  };
+};
 
 const viewwishlist = async (req, res) => {
     try {
-      let wishlistgames = [];
-      const user = await User.findOne({ username: req.session.username });
-      if (user !== undefined) {
-        console.log(user.wishlistids);
-        for (const gameid of user.wishlistids) {
-          const wishlistgame = await game.findById(gameid);
-          wishlistgames.push(wishlistgame);
+        let wishlistgames = [];
+        const user = await User.findOne({ username: req.session.username });
+        if (user !== undefined) {
+            console.log(user.wishlistids);
+            for (const gameid of user.wishlistids) {
+                const wishlistgame = await game.findById(gameid);
+                wishlistgames.push(wishlistgame);
+            }
+            console.log(wishlistgames);
+            let sum = 0;
+            res.render('pages/wishlist', { games: wishlistgames, sum, user: req.session.user });
+        } else {
+            res.redirect('/');
         }
-        console.log(wishlistgames);
-        let sum = 0;
-        res.render('pages/wishlist', { games: wishlistgames, sum, user: req.session.user });
-      } else {
-        res.redirect('/');
-      }
     } catch (error) {
-      console.error(error);
-      res.redirect('/error-page');
+        console.error(error);
+        res.redirect('/error-page');
     }
-  };
+};
 
-  const deletewishlist = async (req, res) => {
+const deletewishlist = async (req, res) => {
     try {
         const user = await User.findOne({ username: req.session.username });
         await User.updateOne(
