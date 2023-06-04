@@ -1,17 +1,17 @@
 const User = require('../models/User');
 const config = require('../config.json');
 const game = require('../models/Game');
-const { Configuration, OpenAIApi } = require('openai');
+// const { Configuration, OpenAIApi } = require('openai');
 
 
-const apiKey = config.openaikey;
+// const apiKey = config.openaikey;
 
 //configure OpenAI with our generated api key
-const configuration = new Configuration
-    ({
-        apiKey
-    })
-const openai = new OpenAIApi(configuration)
+// const configuration = new Configuration
+//     ({
+//         apiKey
+//     })
+// const openai = new OpenAIApi(configuration)
 
 
 //const sgMail = require('@sendgrid/mail')
