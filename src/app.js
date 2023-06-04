@@ -20,6 +20,9 @@ require("colors");
 
 app.use(express.urlencoded({ extended: true }));
 // Configuring express to use body-parser as middle-ware
+// middleware --> something that is going to run between the time that the server gets the request and 
+// the server sends the response
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
