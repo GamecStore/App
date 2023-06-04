@@ -1,8 +1,10 @@
-const User = require("../models/User");
-const config = require("../config.json");
-// const { Configuration, OpenAIApi } = require('openai');
+const User = require('../models/User');
+const config = require('../config.json');
+const game = require('../models/Game');
+const { Configuration, OpenAIApi } = require('openai');
 
-// const apiKey = config.openaikey;
+
+const apiKey = config.openaikey;
 
 //configure OpenAI with our generated api key
 // const configuration = new Configuration
@@ -46,6 +48,9 @@ const createUser = async (req, res) => {
                 .then(() => {
                     req.session.username = user.username;
                     req.session.password = user.password;
+                    req.session.type = user.role;
+                    req.session.user = user;
+                    console.log(req.session.user);
                     // const msg = {
                     //     to: user.email, // Change to your recipient
                     //     from: 'gamecyt2@gmail.com', // Change to your verified sender
@@ -86,6 +91,10 @@ const login = async (req, res) => {
             if (isMatch) {
                 console.log("correct password!");
                 req.session.username = user.username;
+                req.session.password = user.password;
+                req.session.type = user.role;
+                req.session.user = user;
+                console.log(req.session.user);
                 if (user.role === "admin") {
                     res.redirect("/admin/home");
                 } else {
@@ -189,6 +198,52 @@ const checkName = (req, res, next) => {
 
 
 
+const addcart = async (req, res) => {
+    console.log(req.session.username)
+    const user = await User.findOne({ username: req.session.username })
+    user.gameids.push(req.params.id)
+    await user.save()
+    res.send()
+
+}
+const viewcart = async (req, res) => {
+    let cartgames = [];
+    const user = await User.findOne({ username: req.session.username });
+    if (user !== undefined) {
+        console.log(user.gameids);
+        for (const gameid of user.gameids) {
+            const cartgame = await game.findById(gameid);
+            cartgames.push(cartgame);
+        }
+        console.log(cartgames);
+        let sum = 0;
+        res.render('pages/cart', { games: cartgames, sum });
+    } else {
+        res.redirect('/');
+    }
+};
+
+const deletecart = async (req, res) => {
+    try {
+        const user = await User.findOne({ username: req.session.username });
+        await User.updateOne(
+            { _id: user._id },
+            { $pull: { gameids: req.params.id } }
+        );
+        res.redirect('/cart'); // Update the redirect URL with the correct path
+    } catch (error) {
+        console.error(error);
+        res.redirect('/error-page'); // Redirect to an error page if an error occurs
+    }
+};
+
+
+
+
+
+const signupPage = (req, res) => {
+    res.render('pages/signup');
+};
 
 module.exports = {
     createUser,
@@ -200,4 +255,8 @@ module.exports = {
     checkName,
     editProfile,
     contactus,
+    addcart,
+    viewcart,
+    deletecart,
+    signupPage
 };

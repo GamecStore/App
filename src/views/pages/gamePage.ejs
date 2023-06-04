@@ -103,6 +103,8 @@
                         </div>
                         <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
 
+                        <button class="col-12 buyButton rounded-3 my-3">Wishlist</button>
+
                     </div>
                 </div>
                 <div class="col-12 col-md-4"><img class="img-fluid" src="/images/gameimages/Standard+ps5.png" alt="">
@@ -116,6 +118,8 @@
                         <div class="col-12 mx-1 text-start text-white">$<%= game.price[1] %>
                         </div>
                         <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
+
+                        <button class="col-12 buyButton rounded-3 my-3">Wishlist</button>
 
                     </div>
                 </div>
@@ -136,7 +140,11 @@
                         </div>
                         <div class="col-12 mx-1 text-start text-white">$<%= game.price[2] %>
                         </div>
-                        <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
+                        <form action="/Game/<%= game.id %>/addcart" method="POST">
+                            <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
+
+                        </form>
+                        <button class="col-12 buyButton rounded-3 my-3">Wishlist</button>
                     </div>
                 </div>
             </div>

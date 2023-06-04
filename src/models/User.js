@@ -8,8 +8,9 @@ const User = mongoose.Schema
         password: { type: String, required: true },
         dob: { type: Date },
         role: { type: String, default: 'user' },
-        // created: { type: Date, default: Date.now }
-
+        created: { type: Date, default: Date.now },
+        gameids: { type: Array, default: [] },
+        // game ids for cart
     });
 
 module.exports = mongoose.model('User', User);
