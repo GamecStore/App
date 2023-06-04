@@ -90,7 +90,8 @@ const filterGames = async (req, res) => {
 const gamepage = (req, res) => {
     const id = req.params.id;
     game = games.findOne({ _id: id }).then((game) => {
-        res.render('pages/gamePage', { game }, { user: req.session.user })
+        console.log(game)
+        res.render('pages/gamePage', { game, user: req.session.user })
     })
 }
 
