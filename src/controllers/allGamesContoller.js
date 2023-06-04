@@ -10,7 +10,17 @@ const allGames_get = (req, res) => {
 
 const allGames_post = (req, res) => {
     res.render("pages/allGames");
-    const games = new AllGames (req.body);
+    const gamePoster = req.file.filename;
+    const games = new AllGames ({
+        adminName: req.body.adminName,
+        adminEmail: req.body.adminEmail,
+        gameTitle: req.body.gameTitle,
+        description:req.body.description,
+        price:req.body.price,
+        genre: req.body.genre,
+        platform: req.body.platform,
+        poster:gamePoster
+    });
     console.log(req.body);
     if(req.file){
         games.poster = req.file.path;
@@ -19,7 +29,7 @@ const allGames_post = (req, res) => {
     //saving data in the database
     games.save()
     .then(() => console.log("success"))
-    .catch((err) => console.log(`[MONGO] Error in svaing data in database: ${err}`)); 
+    .catch((err) => console.log(`[MONGO] Error in saving data in database: ${err}`)); 
 }
 
 

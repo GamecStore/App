@@ -34,10 +34,6 @@ const allGamesSchema = new Schema({
     poster: {
         type: String,
         required: true
-    },
-    poster:{
-        type:String,
-        required: true
     }
 }, { timestamps: true });
 const AllGames = mongoose.model('AllGames', allGamesSchema);
