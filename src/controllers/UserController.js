@@ -244,35 +244,22 @@ const homepage = (req, res) => {
 
     res.render('pages/index', { user: req.session.user });
 };
+
+
 const checkoutpage = (req, res) => {
-    res.render('pages/checkout');
+    res.render('pages/checkout', { user: req.session.user });
 };
 const loginPage = (req, res) => {
-    res.render('pages/login');
+    res.render('pages/login', { user: req.session.user });
 };
 const historyPage = (req, res) => {
-    res.render('pages/history');
+    res.render('pages/history', { user: req.session.user });
 };
 const contactusPage = (req, res) => {
-    res.render('pages/contactus');
+    res.render('pages/contactus', { user: req.session.user });
 };
 const editProfilePage = (req, res) => {
-    res.render('pages/editProfile');
-};
-const checkoutpage = (req, res) => {
-    res.render('pages/checkout');
-};
-const loginPage = (req, res) => {
-    res.render('pages/login');
-};
-const historyPage = (req, res) => {
-    res.render('pages/history');
-};
-const contactusPage = (req, res) => {
-    res.render('pages/contactus');
-};
-const editProfilePage = (req, res) => {
-    res.render('pages/editProfile');
+    res.render('pages/editProfile', { user: req.session.user });
 };
 
 module.exports = {
