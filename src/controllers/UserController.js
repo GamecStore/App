@@ -125,6 +125,7 @@ const contactus = async (req, res) => {
         //extract the question from the form 
         const { question } = req.body;
         const completion = await openai.createCompletion({
+            model: 'text'
 
         });
     }
@@ -196,8 +197,6 @@ const checkName = (req, res, next) => {
         });
 };
 
-
-
 const addcart = async (req, res) => {
     console.log(req.session.username)
     const user = await User.findOne({ username: req.session.username })
@@ -237,12 +236,23 @@ const deletecart = async (req, res) => {
     }
 };
 
-
-
-
-
 const signupPage = (req, res) => {
     res.render('pages/signup');
+};
+const checkoutpage = (req, res) => {
+    res.render('pages/checkout');
+};
+const loginPage = (req, res) => {
+    res.render('pages/login');
+};
+const historyPage = (req, res) => {
+    res.render('pages/history');
+};
+const contactusPage = (req, res) => {
+    res.render('pages/contactus');
+};
+const editProfilePage = (req, res) => {
+    res.render('pages/editProfile');
 };
 
 module.exports = {
@@ -258,5 +268,10 @@ module.exports = {
     addcart,
     viewcart,
     deletecart,
-    signupPage
+    signupPage,
+    checkoutpage,
+    loginPage,
+    historyPage,
+    contactusPage,
+    editProfilePage
 };
