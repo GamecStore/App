@@ -23,10 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 
-const ProductsRouter = require('./routes/products')
-const AdminindexRouter = require('./routes/adminindex')
-const CustomersRouter = require('./routes/customers')
-const OrdersRouter = require('./routes/orders')
+const AdminRouter = require('./routes/admin')
 const AboutUsRouter = require('./routes/aboutUs')
 const CheckoutRouter = require('./routes/checkout')
 const ContactUsRouter = require('./routes/contactus')
@@ -74,10 +71,9 @@ mongoose.connect(config.mongoURI)
 app.use('/', require('./routes/index'))
 app.use('/', require('./routes/game'))
 app.use('/', require('./routes/user'));
-app.use('/products', ProductsRouter)
-app.use('/orders', OrdersRouter)
-app.use('/customers', CustomersRouter)
-app.use('/adminindex', AdminindexRouter)
+
+app.use('/admin', AdminRouter)
+
 app.use('/aboutUs', AboutUsRouter)
 app.use('/contactus', ContactUsRouter)
 app.use('/library', LibraryRouter)
