@@ -1,0 +1,32 @@
+<%-include('../../partials/adminHeader.ejs') %>
+
+<div class="dashboard-page">
+  <div class="container px-lg-5">
+    <div class="row home">
+      <h1>Home</h1>
+      <p>
+        <strong>Welcome back, <%= user.username %>!</strong><br />Here are your
+        latest insights:
+      </p>
+      <br /><br /><br />
+      <div class="col-sm-6">
+        <div class="card card-sales">
+          <div class="card-body">
+            <h5 class="card-title">Monthly Sales</h5>
+            <p class="card-text">$<%= stats.salesThisMonth %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="card card-customers">
+          <div class="card-body">
+            <h5 class="card-title">New Customers</h5>
+            <p class="card-text"><%= stats.newCustomers %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%-include('../../partials/adminFooter.ejs') %>

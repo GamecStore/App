@@ -35,14 +35,14 @@
     <div class="d-flex justify-content-center"> <!--flex centering -->
         <div class="formlayout w-50 h-25 p-4 m-5">
             <!--grid-->
-            <form class="row g-3" method="POST" action="/allGames">
+            <form class="row g-3" enctype="multipart/form-data" method="POST" action="/allGames">
                 <div class="col-12">
-                    <label for="adminName" class="form-label text-white">Name<span class="asteric">*</span></label>
+                    <label for="adminName" class="form-label text-white">Name:<span class="asteric">*</span></label>
                     <input type="text" class="form-control" id="adminName" name="adminName"
                         placeholder="Enter your first name">
                 </div>
                 <div class="col-12">
-                    <label for="adminEmail" class="form-label text-white">Email<span class="asteric">*</span></label>
+                    <label for="adminEmail" class="form-label text-white">Email:<span class="asteric">*</span></label>
                     <input type="email" class="form-control" id="adminEmail" name="adminEmail"
                         placeholder="Enter your email">
                 </div>
@@ -61,19 +61,28 @@
                 </div>
 
                 <div class="col-12">
-                    <div><label for="genre" class="form-label text-white">Game Genre:<span
-                                class="asteric">*</span></label>
+                    <div>
+                        <label for="genre" class="form-label text-white">Game Genre:<span
+                                class="asteric">*</span>
+                            </label>
                     </div>
-                    <div><select class="form-control" id="genre" name="genre">
+                    <div>
+                        <select class="form-control" id="genre" name="genre">
                             <option value="action">Action</option>
                             <option value="adventure">Adventure</option>
                             <option value="casual">casual</option>
-                        </select></div>
+                        </select>
+                    </div>
                 </div>
 
                 <div class="col-12">
                     <div><label class="form-label text-white">Game Poster:</label><span class="asteric">*</span></div>
                     <div><input type="file" class="form-control" id="image" name="image"></div>
+                </div>
+
+                <div class="col-12">
+                    <div><label class="form-label text-white">Date created:</label></div>
+                    <div><input type="date" class="form-control" id="createdAt" name="createdAt"></div>
                 </div>
 
                 <div class="col-12">

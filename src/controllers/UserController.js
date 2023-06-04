@@ -1,24 +1,35 @@
 const User = require('../models/User');
 const config = require('../config.json');
 const game = require('../models/Game');
+const { Configuration, OpenAIApi } = require('openai');
+
+
+const apiKey = config.openaikey;
+
+//configure OpenAI with our generated api key
+const configuration = new Configuration
+    ({
+        apiKey
+    })
+const openai = new OpenAIApi(configuration)
+
 
 //const sgMail = require('@sendgrid/mail')
 //sgMail.setApiKey(config.gridsend)
 
-const bcrypt = require('bcrypt');
-const { param } = require('../routes');
+const bcrypt = require("bcrypt");
+const { param } = require("../routes");
 const saltRounds = 10;
 const createUser = async (req, res) => {
     try {
         bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-            const user = new User(
-                {
-                    email: req.body.email,
-                    gender: req.body.gender,
-                    username: req.body.name,
-                    password: hash,
-                    dob: req.body.dob
-                });
+            const user = new User({
+                email: req.body.email,
+                gender: req.body.gender,
+                username: req.body.name,
+                password: hash,
+                dob: req.body.dob,
+            });
             const { email, gender, username, password, dob } = req.body;
             if (username || !email || !password || !gender || !dob) {
                 //         return res.render('Name, email, and password are required');
@@ -31,7 +42,8 @@ const createUser = async (req, res) => {
             // if (password <= 8) {
             //     res.send("password must be at least 8 characters ");
             // }
-            user.save()
+            user
+                .save()
 
                 .then(() => {
                     req.session.username = user.username;
@@ -53,9 +65,9 @@ const createUser = async (req, res) => {
                     //         console.error(error)
                     //     })
 
-                    res.redirect('/index')
+                    res.redirect("/index");
                 })
-                .catch(err => console.error(err));
+                .catch((err) => console.error(err));
         });
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -64,36 +76,55 @@ const createUser = async (req, res) => {
 //trial 2
 const login = async (req, res) => {
     const sentUser = req.body.name;
-    const user = await User.findOne({ username: sentUser })
+    const user = await User.findOne({ username: sentUser });
     if (user?.username === sentUser) {
-        console.log(user.username)
+        console.log(user.username);
         const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
 
         bcrypt.compare(req.body.password, user.password, function (err, isMatch) {
             if (err) {
-                console.log('error')
+                console.log("error");
             }
             if (isMatch) {
-                console.log('correct password!')
+                console.log("correct password!");
                 req.session.username = user.username;
-                console.log(req.session.username)
-
-                // res.redirect('/index');
-                res.redirect('/');
+                if (user.role === "admin") {
+                    res.redirect("/admin/home");
+                } else {
+                    res.redirect("/");
+                }
             }
-
         });
+    } else {
+        res.send("username or password is incorrect");
     }
-    else {
-        res.send("username or password is incorrect")
+};
+const editProfile = async (req, res) => {
+    const user = await User.findOne({ username: req.session.username });
+    if (user) {
+        user.email = req.body.email;
+        user.gender = req.body.gender;
+        user.dob = req.body.dob;
+        user.username = req.body.username;
+        await user.save();
+        res.redirect('/editprofile');
+    } else {
+        res.status(404).send('User not found');
     }
 };
 
-const editProfile = async (req, res) => {
+const contactus = async (req, res) => {
+    try {
+        //extract the question from the form 
+        const { question } = req.body;
+        const completion = await openai.createCompletion({
 
+        });
+    }
+    catch (error) {
 
-}
-
+    }
+};
 const getAllUsers = async (req, res) => {
     try {
         const users = await User.find();
@@ -107,11 +138,13 @@ const getUserById = async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+            return res.status(404).json({ message: "User not found" });
         }
         res.status(200).json(user);
     } catch (error) {
-        res.status(500).json({ message: 'User ID not found , Do you want to regester instead' });
+        res
+            .status(500)
+            .json({ message: "User ID not found , Do you want to regester instead" });
     }
 };
 
@@ -119,7 +152,7 @@ const updateUserById = async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+            return res.status(404).json({ message: "User not found" });
         }
         Object.assign(user, req.body);
         await user.save();
@@ -133,10 +166,10 @@ const deleteUserById = async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+            return res.status(404).json({ message: "User not found" });
         }
         await user.delete();
-        res.status(200).json({ message: 'User deleted successfully' });
+        res.status(200).json({ message: "User deleted successfully" });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -144,17 +177,19 @@ const deleteUserById = async (req, res) => {
 
 const checkName = (req, res, next) => {
     User.find({ username: req.body.name })
-        .then(user => {
+        .then((user) => {
             if (user.length > 0) {
-                res.send("taken")
+                res.send("taken");
+            } else {
+                res.send("available");
             }
-            else {
-                res.send("available")
-            }
-        }).catch(err => {
-            console.log(err)
         })
-}
+        .catch((err) => {
+            console.log(err);
+        });
+};
+
+
 
 const addcart = async (req, res) => {
     console.log( req.session.username)
@@ -175,6 +210,6 @@ module.exports = {
     login,
     checkName,
     editProfile,
+    contactus,
     addcart,
-   
 };

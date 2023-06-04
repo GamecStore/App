@@ -1,4 +1,5 @@
 const config = require('./config.json');
+const port = config.port || 3000;
 const http = require('http');
 // Express for handling GET and POST request
 const express = require('express');
@@ -9,48 +10,61 @@ const path = require('path');
 const session = require('express-session')
 const logger = require('morgan');
 const fs = require('fs');// Requiring file system to use local files
-const bodyParser = require('body-parser');// Parsing the form of body to take input from forms
+const bodyParser = require('body-parser');//mount the data coming from the form of body to take input from forms 
 const multer = require('multer');
+const { Configuration, OpenAIApi } = require('openai');
+
+
 const port = config.port || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 
 require("colors");
 
+app.set('view engine', 'ejs')
+app.set('views', __dirname + '/views')
+app.set('views', path.join(__dirname, 'views'));
+
+
+//set up OpenAI credentials
+const apiKey = config.openaikey;
+
+//configure OpenAI with our generated api key
+const configuration = new Configuration
+    ({
+        apiKey
+    })
+const openai = new OpenAIApi(configuration)
+
+//set the api keyfor openai instance
+openai.apiKey = apiKey
+
+
 
 app.use(express.urlencoded({ extended: true }));
 // Configuring express to use body-parser as middle-ware
+// middleware --> something that is going to run between the time that the server gets the request and 
+// the server sends the response
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
+app.use(cors());
+app.use(express.json());
+app.use(express.static('public'));
+app.use('/static', express.static('static'))
 
-const ProductsRouter = require('./routes/products')
-const AdminindexRouter = require('./routes/adminindex')
-const CustomersRouter = require('./routes/customers')
-const OrdersRouter = require('./routes/orders')
+const AdminRouter = require('./routes/admin')
 const AboutUsRouter = require('./routes/aboutUs')
 const CheckoutRouter = require('./routes/checkout')
-const ContactUsRouter = require('./routes/contactus')
+const ContactUsRouter = require('./routes/user')
 const HistoryRouter = require('./routes/user')
 const LibraryRouter = require('./routes/library')
 const WishlistRouter = require('./routes/wishlist')
 const allGamesRouter = require('./routes/allGames')
 const AddingGamesRouter = require('./routes/addingGames')
 const ErrorAddingRouter = require('./routes/errorAdding')
-
-
 const editProfileRouter = require('./routes/user')
 
-
-app.set('view engine', 'ejs')
-app.set('views', __dirname + '/views')
-app.set('views', path.join(__dirname, 'views'));
-
-
-
-app.use(cors());
-app.use(express.json());
-app.use(express.static('public'));
-app.use('/static', express.static('static'))
 
 
 
@@ -66,18 +80,16 @@ app.use(session({
 }));
 
 mongoose.connect(config.mongoURI)
-    .then(() => console.log(`[MONGO] Connected to MongoDB`.green))
-    .catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
+.then(() => console.log(`[MONGO] Connected to MongoDB`.green))
+.catch((err) => console.log(`[MONGO] Error connecting to MongoDB: ${err}`.red));
 
 
 
 app.use('/', require('./routes/index'))
 app.use('/', require('./routes/game'))
 app.use('/', require('./routes/user'));
-app.use('/products', ProductsRouter)
-app.use('/orders', OrdersRouter)
-app.use('/customers', CustomersRouter)
-app.use('/adminindex', AdminindexRouter)
+
+app.use('/admin', AdminRouter)
 app.use('/aboutUs', AboutUsRouter)
 app.use('/contactus', ContactUsRouter)
 app.use('/library', LibraryRouter)

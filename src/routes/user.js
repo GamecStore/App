@@ -22,6 +22,11 @@ router.get('/login', (req, res) => {
 router.get('/editProfile', (req, res) => {
     res.render('pages/editProfile')
 })
+router.get('/contactus', (req, res) => {
+res.render('pages/contactus');
+});
+
+
 // router.get('/cart', (req, res) => {
 //     games = [
 //         {
@@ -54,8 +59,6 @@ router.get('/editProfile', (req, res) => {
 //     res.render('pages/cart', { games, sum })
 // })
 
-
-
 router.get('/users', UserController.getAllUsers);
 router.get('/users/:id', UserController.getUserById);
 router.put('/users/:id', UserController.updateUserById);
@@ -65,8 +68,7 @@ router.post('/login', UserController.login);
 router.post('/checkName', UserController.checkName);
 router.post('/editprofile', UserController.editProfile);
 router.post('/Game/:id/addcart', UserController.addcart);
-
-
+router.post('/contactus', UserController.contactus);
 // just in case
 // router.get('/', UserController.getAllUsers);
 // router.get('/:id', UserController.getUserById);

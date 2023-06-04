@@ -13,7 +13,7 @@ const allGamesSchema = new Schema({
     },
     gameTitle: {
         type: String,
-        required: true
+        required: [true, "Uploaded file must have a game title"]
     },
     price: {
         type: Number,
@@ -24,10 +24,10 @@ const allGamesSchema = new Schema({
         required: true
     },
     image:{
-        data: Buffer,
-        contentType: String
+        data:String
     }
-});
+},{timestamps: true});
+
 
 
 const AllGames = mongoose.model('AllGames', allGamesSchema);
