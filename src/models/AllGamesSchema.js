@@ -24,8 +24,7 @@ const allGamesSchema = new Schema({
         required: true
     },
     image:{
-        data:String,
-        required: true
+        data:String
     }
 },{timestamps: true});
 
