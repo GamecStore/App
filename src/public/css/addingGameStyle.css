@@ -1,13 +1,8 @@
-.bgimg{
-    background-image: url("../images/bkg.gif");
+body{
+    font-family: 'Noto Sans', sans-serif;
 }
-
 .asteric {
     color: red;
-}
-
-strong{
-    font-weight: bolder;
 }
 
 .acc {

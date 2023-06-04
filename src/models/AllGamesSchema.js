@@ -31,13 +31,14 @@ const allGamesSchema = new Schema({
         type: String,
         required:  [true, "A game must have a platform"]
     },
+    poster: {
+        type: String,
+        required: true
+    },
     poster:{
         type:String,
-        required:  [true, "A game must have a poster"]
+        required: true
     }
-},{timestamps: true});
-
-
-
+}, { timestamps: true });
 const AllGames = mongoose.model('AllGames', allGamesSchema);
 module.exports = AllGames;

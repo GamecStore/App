@@ -1,8 +1,9 @@
 const User = require('../models/User');
 const config = require('../config.json');
 const game = require('../models/Game');
-// const { Configuration, OpenAIApi } = require('openai');
+const order = require('../models/Order');
 
+// const { Configuration, OpenAIApi } = require('openai');
 
 // const apiKey = config.openaikey;
 
@@ -244,6 +245,26 @@ const deletecart = async (req, res) => {
         res.redirect('/error-page'); // Redirect to an error page if an error occurs
     }
 };
+const checkout = async (req, res) => {
+    // const userId = req.user.id;
+    // const { games, totalPrice } = req.body;
+
+    // try {
+    //     const user = await User.findById(userId);
+    //     const order = new Order({ user: userId, games, totalPrice });
+    //     await order.save();
+
+    //     for (const gameId of games) {
+    //         const game = await Game.findById(gameId);
+    //         game.stock -= 1;
+    //         await game.save();
+    //     }
+    // }
+    // catch (error) {
+    // }
+
+};
+
 
 const signupPage = (req, res) => {
     res.render('pages/signup', { user: req.session.user });
@@ -349,6 +370,9 @@ module.exports = {
     contactusPage,
     editProfilePage,
     wishlistPage,
+
+    homepage,
+    checkout,
     homepage,
     viewwishlist,
     deletewishlist,
