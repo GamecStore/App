@@ -8,7 +8,7 @@ const Game = mongoose.Schema({
     publisher: { type: String, default: 'N/A' },
     price: { type: Array, default: [] },
     genre: { type: Array, default: [] },
-
+    created: { type: Date, default: Date.now },
     releaseDate: { type: Date, default: Date.now },
     sliderImgs: { type: Array, default: [] },
     sideImg: { type: String, default: 'N/A' },
