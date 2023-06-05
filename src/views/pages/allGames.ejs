@@ -64,14 +64,12 @@
                     <% gamesArray.forEach(element => { %>
                         <% count++ %>
                         <div class="col">
-                            <div class="card w-100 h-100">
-                                <% const p = element.poster %>
-                                <%= p %>
+                            <div class="card w-100 h-100 bg-dark">
                                 <img src="/images/uploads/<%= element.poster %>"
                                 class="card-img-top" alt="<%=element.gameTitle %> poster" >
                                 <div class="card-body">
-                                    <h5 class="card-title"><%= element.gameTitle %></h5>
-                                    <p class="card-text"><%= element.price %></p>
+                                    <h5 class="card-title text-light"><%= element.gameTitle %></h5>
+                                    <p class="card-text text-light"><%= element.price %> $</p>
                                 </div>
                             </div>
                         </div>
