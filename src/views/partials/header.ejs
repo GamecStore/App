@@ -40,17 +40,17 @@
             <div class="text-end">
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 
-                    <% if(user===undefined) {%>
+                    <!--% if(user===undefined) {%-->
                         <li><a href="/login" class="btn btn-outline-primary mx-2" role="button">Login</a>
                         </li>
                         <li><a class="btn btn-primary" href="/signup" role="button">Sign up</a></li>
-                        <% } else { %>
+                        <!--% } else { %-->
                             <li><a class="btn btn-primary" href="/logout" role="button">log out</a></li>
-                            <% } %>
+                        <!--% } %-->
 
-                                <li><a href="/cart" class="nav-link px-2 text-light mt-2"><i
-                                            class="bi bi-cart3"></i></a>
-                                </li>
+                        <li><a href="/cart" class="nav-link px-2 text-light mt-2">
+                            <i class="bi bi-cart3"></i></a>
+                        </li>
                 </ul>
             </div>
         </div>

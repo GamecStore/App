@@ -3,42 +3,34 @@
 <div class="dashboard-page">
   <div class="container px-lg-5">
     <div class="row">
-      <h1>Customers</h1>
+      <h1>Users</h1>
       <table class="table table-dark table-striped" style="width: 100vw">
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Username</th>
             <th>E-mail</th>
-            <th>Order Count</th>
+            <th>Role</th>
+            <th>Created</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
+          <% users.forEach((user, index)=> { %>
           <tr>
-            <td class="table-user">
-              <img
-                src="https://github.com/actuallyhoss.png"
-                alt="table-user"
-                class="me-2 rounded-circle"
-                width="32px"
-              />
-              Ahmed Hossam
+            <td class="table-user"><%= user.username %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+            <td><%= user.created?.toDateString() %></td>
+            <td>
+              <form action="/admin/users/<%= user._id %>?_method=DELETE" method="POST" style="float:left;padding-right:10px">
+                <button class="btn btn-danger btn-sm">Delete</button>
+              </form>
+              <form action="/admin/users/<%= user._id %>?_method=PUT" method="POST">
+                <button class="btn btn-secondary btn-sm">Switch Roles</button>
+              </form>
             </td>
-            <td>hoss@gamec.store</td>
-            <td>3</td>
           </tr>
-          <tr>
-            <td class="table-user">
-              <img
-                src="https://github.com/yehia12.png"
-                alt="table-user"
-                class="me-2 rounded-circle"
-                width="32px"
-              />
-              Ahmed Yehia
-            </td>
-            <td>yehia@gamec.store</td>
-            <td>0</td>
-          </tr>
+          <% }) %>
         </tbody>
       </table>
     </div>

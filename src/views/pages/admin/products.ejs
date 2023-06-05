@@ -9,31 +9,36 @@
           <tr>
             <th></th>
             <th>Name</th>
+            <th>Developer</th>
+            <th>Genre</th>
             <th>Price</th>
-            <th>Actions</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
+          <% products.forEach((game, index)=> { %>
           <tr>
             <td>
               <img
-                src="https://upload.wikimedia.org/wikipedia/en/a/a5/Grand_Theft_Auto_V.png"
-                alt="table-user"
+                src="../images/gameimages/<%= game.sideImg %>"
                 class="me-2"
                 width="64px"
               />
             </td>
-            <td>Grand Theft Auto V</td>
-            <td>$45.99</td>
+            <td><%= game.name %></td>
+            <td><%= game.developer %></td>
+            <td><%= game.genre %></td>
+            <td><%= game.price %></td>
             <td>
-              <button type="button" class="btn btn-outline-primary btn-sm">
-                Edit
-              </button>
-              <button type="button" class="btn btn-outline-danger btn-sm">
-                Delete
-              </button>
+              <form action="/admin/products/<%= user._id %>?_method=DELETE" method="POST" style="float:left;padding-right:10px">
+                <button class="btn btn-danger btn-sm">Delete</button>
+              </form>
+              <form action="/admin/products/<%= user._id %>?_method=PUT" method="POST">
+                <button class="btn btn-secondary btn-sm">Edit</button>
+              </form>
             </td>
           </tr>
+          <% }) %>
         </tbody>
       </table>
     </div>

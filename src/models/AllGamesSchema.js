@@ -4,12 +4,10 @@ const Schema = mongoose.Schema;
 
 const allGamesSchema = new Schema({
     adminName: {
-        type: String,
-        required: true
+        type: String
     },
     adminEmail: {
-        type: String,
-        required: true
+        type: String
     },
     gameTitle: {
         type: String,
@@ -21,24 +19,22 @@ const allGamesSchema = new Schema({
     },
     price: {
         type: Number,
-        required:  [true, "A game must have a price"]
+        required: [true, "A game must have a price"]
     },
     genre: {
         type: String,
-        required:  [true, "A game must have a genre"]
+        required: [true, "A game must have a genre"]
     },
     platform: {
         type: String,
-        required:  [true, "A game must have a platform"]
+        required: [true, "A game must have a platform"]
     },
     poster: {
         type: String,
-        required: true
-    },
-    poster:{
-        type:String,
-        required: true
+        required: [true, "A game must have a poster"]
     }
 }, { timestamps: true });
+
+
 const AllGames = mongoose.model('AllGames', allGamesSchema);
 module.exports = AllGames;
