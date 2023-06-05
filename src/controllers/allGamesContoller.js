@@ -33,8 +33,6 @@ const allGames_post = (req, res) => {
 
     
     const games = new AllGames ({
-        adminName: req.body.adminName,
-        adminEmail: req.body.adminEmail,
         gameTitle: req.body.gameTitle,
         description:req.body.description,
         price:req.body.price,

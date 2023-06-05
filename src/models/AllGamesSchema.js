@@ -4,12 +4,10 @@ const Schema = mongoose.Schema;
 
 const allGamesSchema = new Schema({
     adminName: {
-        type: String,
-        required: true
+        type: String
     },
     adminEmail: {
-        type: String,
-        required: true
+        type: String
     },
     gameTitle: {
         type: String,

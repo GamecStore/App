@@ -3,7 +3,7 @@
 
 <head>
     <%- include ('../partials/head.ejs') %>
-    <link rel="stylesheet" href="../../public/css/addingGameStyle.css">
+        <link rel="stylesheet" href="../../public/css/addingGameStyle.css">
 </head>
 
 <body class="bg-black">
@@ -16,21 +16,29 @@
     <!------------>
 
     <!--Adding games form-->
- 
+
     <div class="d-flex justify-content-center"> <!--flex centering -->
         <div class="formlayout w-50 h-25 p-4 m-5 rounded-2">
             <div class="h3 text-white mb-5 text-center"><b>Add Your Game</b></div>
             <!--grid-->
             <form class="row g-3" enctype="multipart/form-data" method="POST" action="/allGames">
                 <div class="col-12">
-                    <label for="adminName" class="form-label text-white">Name:<span class="asteric">*</span></label>
-                    <input type="text" class="form-control" id="adminName" name="adminName"
-                        placeholder="Enter your first name">
+                    <div class="mb-3 row">
+                        <label for="staticName" class="col-sm-2 col-form-label text-white">Name:</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext text-white" id="staticName"
+                                value="name">
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12">
-                    <label for="adminEmail" class="form-label text-white">Email:<span class="asteric">*</span></label>
-                    <input type="email" class="form-control" id="adminEmail" name="adminEmail"
-                        placeholder="Enter your email">
+                    <div class="mb-3 row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label text-white">Email:</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control-plaintext text-white" id="staticEmail"
+                                value="email@example.com">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-12">
@@ -44,7 +52,7 @@
                     <label for="gameTitle" class="form-label text-white">Game description:<span
                             class="asteric">*</span></label>
                     <textarea class="form-control" aria-label="With textarea" id="description" name="description"
-                    placeholder="Enter the description of your game"></textarea>
+                        placeholder="Enter the description of your game"></textarea>
                 </div>
 
                 <div class="col-12">
@@ -55,9 +63,8 @@
 
                 <div class="col-12">
                     <div>
-                        <label for="genre" class="form-label text-white">Game Genre:<span
-                                class="asteric">*</span>
-                            </label>
+                        <label for="genre" class="form-label text-white">Game Genre:<span class="asteric">*</span>
+                        </label>
                     </div>
                     <div>
                         <select class="form-select" id="genre" name="genre">
@@ -105,8 +112,8 @@
                 </div>
                 <div class="col-12">
                     <div>
-                        <label for="platform" class="form-label text-white">Platfrom:<span
-                                class="asteric">*</span> </label>
+                        <label for="platform" class="form-label text-white">Platfrom:<span class="asteric">*</span>
+                        </label>
                     </div>
                     <div>
                         <select class="form-select" id="platform" name="platform">
@@ -119,8 +126,10 @@
                 </div>
 
                 <div class="col-12">
-                    <div><label class="form-label text-white" for = "poster">Game Poster:</label><span class="asteric">*</span></div>
-                    <div class="input-group mb-3"><input type="file" class="form-control" id="poster" name="poster"></div>
+                    <div><label class="form-label text-white" for="poster">Game Poster:</label><span
+                            class="asteric">*</span></div>
+                    <div class="input-group mb-3"><input type="file" class="form-control" id="poster" name="poster">
+                    </div>
                 </div>
 
                 <div class="col-12">
@@ -129,7 +138,7 @@
                         <button type="submit" class="btn btn-primary mt-3">Add Game</button>
                     </div>
                 </div>
-            
+
             </form>
         </div>
     </div>
@@ -140,7 +149,7 @@
         <%- include('../partials/footer') %>
     </footer>
     <!---------------->
-    
+
     <!-- Scripts -->
     <%- include ('../partials/scriptLinks') %>
 
