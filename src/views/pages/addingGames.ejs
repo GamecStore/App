@@ -8,8 +8,11 @@
 
 <body class="bg-black">
 
-    <!-- <header class="p-3 menu-fixed bg">
-    </header> -->
+    <header class="p-3 menu-fixed bg">
+        <%-include('../partials/header.ejs') %>
+    </header>
+
+
     <!------------>
 
     <!--Adding games form-->
@@ -98,9 +101,11 @@
     <!---------->
 
     <!--footer-->
-    <!-- <footer class="footer bg ">
-    </footer> -->
+    <footer class="footer bg">
+        <%- include('../partials/footer') %>
+    </footer>
     <!---------------->
+    
     <!-- Scripts -->
     <%- include ('../partials/scriptLinks') %>
 

@@ -32,7 +32,7 @@ const allGamesSchema = new Schema({
         required: [true, "A game must have a platform"]
     },
     poster: {
-        type: String,
+        type: Buffer,
         required: [true, "A game must have a poster"]
     }
 }, { timestamps: true });
