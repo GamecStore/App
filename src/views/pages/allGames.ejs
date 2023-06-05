@@ -53,7 +53,6 @@
 <body class="bg-black">
     <!-- Header -->
     <header class="p-3 menu-fixed bg">
-        <%- include ('../partials/header.ejs') %>
     </header>
 
     <!-------body-------> 
@@ -68,7 +67,7 @@
                             <div class="card w-100 h-100">
                                 <% const p = element.poster %>
                                 <%= p %>
-                                <img src="../../public/images/uploads/<% element.poster %>"
+                                <img src="/images/uploads/<%= element.poster %>"
                                 class="card-img-top" alt="<%=element.gameTitle %> poster" >
                                 <div class="card-body">
                                     <h5 class="card-title"><%= element.gameTitle %></h5>
