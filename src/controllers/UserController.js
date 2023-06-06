@@ -20,6 +20,7 @@ sgMail.setApiKey(config.gridsend)
 
 const bcrypt = require("bcrypt");
 const { param } = require("../routes");
+const Game = require('../models/Game');
 const saltRounds = 10;
 const createUser = async (req, res) => {
     try {
@@ -462,8 +463,33 @@ const deletewishlist = async (req, res) => {
     }
 };
 
-const checkoutpage = (req, res) => {
-    res.render('pages/checkout', { user: req.session.user });
+const checkoutpage = async (req, res) => {
+
+
+    if (req.session.user !== undefined) {
+        try {
+            const user = await User.findOne({ _id: req.session.user });
+
+            if (user !== undefined) {
+                let games = [];
+
+
+                for (const gameid of user.gameids) {
+                    const cartgame = await game.findById(gameid);
+                    games.push(cartgame);
+
+                }
+                let sum = 0;
+                res.render('pages/checkout', { games: games, user: req.session.user, sum })
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    } else {
+        res.redirect('/login');
+    }
+
+    res.render('pages/checkout', { user: req.session.user, });
 };
 const loginPage = (req, res) => {
     res.render('pages/login', { user: req.session.user });
