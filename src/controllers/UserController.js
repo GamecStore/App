@@ -234,7 +234,7 @@ const viewcart = async (req, res) => {
                 const cartgame = await game.findById(gameid);
                 cartgames.push(cartgame);
             }
-            console.log(cartgames);
+
             let sum = 0;
             res.render('pages/cart', { games: cartgames, sum, user: req.session.user });
         } else {
@@ -263,7 +263,6 @@ const deletecart = async (req, res) => {
 
 
 const checkout = async (req, res) => {
-    console.log('s;ldslfjalfksl;afksal;gsagksal;kga;gk;lasgjs;aljls;agjl;askgsa;lgks;lks ')
     if (req.session.user !== undefined) {
         try {
             const user = await User.findOne({ _id: req.session.user });
