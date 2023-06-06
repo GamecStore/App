@@ -1,15 +1,10 @@
 const Game = require('../models/Game.js')
 const user = require('../models/User.js')
-const games = require('../models/Game')
-
-
-
-
 
 
 const gamepage = (req, res) => {
     const id = req.params.id;
-    game = games.findOne({ _id: id }).then((game) => {
+    game = Game.findOne({ _id: id }).then((game) => {
         console.log(game)
         res.render('pages/gamePage', { game, user: req.session.user })
     })
@@ -17,12 +12,11 @@ const gamepage = (req, res) => {
 
 const searchGame = (req, res) => {
     const search = req.body.search;
-    games.findOne({ name: { $regex: search, $options: 'i' } }).then((game) => {
+    Game.findOne({ name: { $regex: search, $options: 'i' } }).then((game) => {
         // res.render('pages/gamePage', { game, user: req.session.user })
         res.redirect('/gamepage/' + game._id)
     })
 }
-
 
 
 
@@ -47,14 +41,6 @@ const allGames_post = async (req, res) => {
         platform: req.body.platform,
         sideImg: gamePoster
     });
-    if (req.files) {
-        let path = '';
-        req.files.forEach(function (files, index, arr) {
-            path = path + files.path + '/';
-        })
-        path = path.substring(0, path.indexOf('/'))
-        games.sliderImgs = path;
-    }
     res.redirect('/admin/products');
 
     //saving data in the database
@@ -65,8 +51,6 @@ const allGames_post = async (req, res) => {
 
 
 module.exports = {
-
-
     gamepage,
     searchGame,
     allGames_get,

@@ -9,14 +9,17 @@ const mongoose = require('mongoose');
 const path = require('path');
 const session = require('express-session')
 const logger = require('morgan');
-const fs = require('fs');// Requiring file system to use local files
 const bodyParser = require('body-parser');//mount the data coming from the form of body to take input from forms 
 // const { Configuration, OpenAIApi } = require('openai');
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 
 require("colors");
 
 app.set('view engine', 'ejs')
-// app.set('views', __dirname + '/views')
+app.set('views', __dirname + '/views')
 app.set('views', path.join(__dirname, 'views'));
 
 
@@ -35,6 +38,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 
+app.use(express.urlencoded({ extended: true }));
 // Configuring express to use body-parser as middle-ware
 // middleware --> something that is going to run between the time that the server gets the request and 
 // the server sends the response
@@ -93,6 +97,11 @@ app.use('/editprofile', editProfileRouter)
 app.use('/game', gamePageRouter)
 
 
+app.get('/logout', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+});
+
 app.get('/public/:dir/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);
 });
@@ -101,9 +110,11 @@ app.get('/:dir/:dir2/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.dir2}/${req.params.file}`);
 });
 
+
 app.use((req, res) => {
     res.status(404).render('pages/ErrorPage', { user: req.session.user });
 })
+
 
 const s = http.createServer(app)
 s.listen(port, () => {
