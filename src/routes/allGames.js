@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router()
-const GameContoller = require('../controllers/GameController')
 const path = require('path');
 const multer = require('multer');
+const GameContoller = require('../controllers/GameController')
 
 
 //image validations
@@ -42,5 +42,6 @@ const upload = multer({
 
 
 router.get('/', GameContoller.allGames_get)
-router.post('/', upload.single('poster'), GameContoller.allGames_post)
+router.get('/gamePage/:id', GameContoller.allGames_id_get)
+router.post('/', upload.single('sideImg'), GameContoller.allGames_post)
 module.exports = router; 

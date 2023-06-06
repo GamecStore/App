@@ -86,6 +86,7 @@ const filterGames = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
 const gamepage = (req, res) => {
     const id = req.params.id;
     game = games.findOne({ _id: id }).then((game) => {
@@ -93,6 +94,7 @@ const gamepage = (req, res) => {
         res.render('pages/gamePage', { game, user: req.session.user })
     })
 }
+
 const searchGame = (req, res) => {
     const search = req.body.search;
     games.findOne({ name: { $regex: search, $options: 'i' } }).then((game) => {
@@ -100,6 +102,23 @@ const searchGame = (req, res) => {
         res.redirect('/gamepage/' + game._id)
     })
 }
+
+
+
+
+
+const allGames_id_get =(req,res) =>{
+    Game.findById(req.params.id)
+    .then((result) => 
+        res.status(200).json({objGames:result})
+    ).catch(err => {
+        console.log(err)
+    });
+
+
+}
+
+
 
 
 
@@ -113,7 +132,7 @@ const allGames_get = (req, res) => {
 } 
 
 
-const allGames_post = (req, res) => {
+const allGames_post = async (req, res) => {
     const gamePoster = req.file.filename;
     const games = new Game ({
         name: req.body.name,
@@ -125,13 +144,11 @@ const allGames_post = (req, res) => {
         sideImg:gamePoster
     });
 
-    console.log(req.body);
-    res.render("pages/allGames");
-
-    //saving data in the database
-    games.save()
+    await games.save()
     .then(() => console.log("success"))
     .catch((err) => console.log(`[MONGO] Error in saving data in database: ${err}`)); 
+
+    res.redirect('/admin/products');
 }
 
 
@@ -145,5 +162,6 @@ module.exports = {
     gamepage,
     searchGame,
     allGames_get,
-    allGames_post
+    allGames_post,
+    allGames_id_get
 };

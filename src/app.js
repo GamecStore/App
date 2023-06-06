@@ -59,7 +59,6 @@ const HistoryRouter = require('./routes/user')
 const LibraryRouter = require('./routes/library')
 const WishlistRouter = require('./routes/user')
 const allGamesRouter = require('./routes/allGames')
-const AddingGamesRouter = require('./routes/addingGames')
 const editProfileRouter = require('./routes/user')
 const gamePageRouter = require('./routes/game')
 
@@ -95,16 +94,9 @@ app.use('/wishlist', WishlistRouter)
 app.use('/history', HistoryRouter)
 app.use('/checkout', CheckoutRouter)
 app.use('/allGames', allGamesRouter)
-app.use('/addingGames', AddingGamesRouter)
 app.use('/editprofile', editProfileRouter)
 app.use('/game', gamePageRouter)
 
-
-
-app.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/');
-});
 
 app.get('/public/:dir/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);
@@ -114,11 +106,9 @@ app.get('/:dir/:dir2/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.dir2}/${req.params.file}`);
 });
 
-
 app.use((req, res) => {
     res.status(404).render('pages/ErrorPage', { user: req.session.user });
 })
-
 
 const s = http.createServer(app)
 s.listen(port, () => {
