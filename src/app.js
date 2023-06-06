@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
 require("colors");
 
 app.set('view engine', 'ejs')
-app.set('views', __dirname + '/views')
+// app.set('views', __dirname + '/views')
 app.set('views', path.join(__dirname, 'views'));
 
 
@@ -39,7 +39,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 
 
-app.use(express.urlencoded({ extended: true }));
+
 // Configuring express to use body-parser as middle-ware
 // middleware --> something that is going to run between the time that the server gets the request and 
 // the server sends the response
