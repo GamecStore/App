@@ -88,7 +88,8 @@
                                 <div class="row">
                                     <div id='form' class="col-8 col-md-4  mx-auto">
                                         <h3 id="form__head" class="mb-4  ">edit profile</h3>
-                                        <form id="newform" action="#" class="needs-validation" novalidate>
+                                        <form id="newform" action="/editProfile" method="post" class="needs-validation"
+                                            novalidate>
                                             <div class="form-group p-1">
                                                 <label for="username"> Username </label>
 
@@ -121,10 +122,10 @@
 
 
                                             </div>
-                                            <form action="/editProfile">
-                                                <button type="submit"
-                                                    class=" mt-4 d-block w-100 btn btn-primary">Submit</button>
-                                            </form>
+
+                                            <button type="submit"
+                                                class=" mt-4 d-block w-100 btn btn-primary">Submit</button>
+
                                         </form>
                                     </div>
                                 </div>
@@ -203,7 +204,7 @@
                                 </div>
                             </div>
                         </div>
-                        <form action="post">
+                        <form action="/user/editprofile" method="post">
                             <button class="btn btn-warning btn-lg btn-block" type="submit">
                                 Update Info
                             </button>

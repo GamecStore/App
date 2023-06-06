@@ -78,8 +78,25 @@ router.get("/users", (req, res) => {
   handlePage(req, res, "users");
 });
 
+router.post("/users/delete/:id", async (req, res) => {
+  await User.findByIdAndDelete(req.params.id);
+  res.redirect("/admin/users");
+});
+
+router.post("/users/switchrole/:id", async (req, res) => {
+  let user = await User.findById(req.params.id);
+  user.role = user.role === "user" ? "admin" : "user";
+  await user.save();
+  res.redirect("/admin/users");
+});
+
 router.get("/products", (req, res) => {
   handlePage(req, res, "products");
+});
+
+router.post("/products/delete/:id", async (req, res) => {
+  await Game.findByIdAndDelete(req.params.id);
+  res.redirect("/admin/products");
 });
 
 module.exports = router;

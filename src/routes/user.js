@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const UserController = require('../controllers/UserController');
 const bcrypt = require('bcrypt');
+const User = require('../models/User');
 
 
 router.get('/orders', (req, res) => {
@@ -14,6 +15,7 @@ router.get('/login', UserController.loginPage);
 router.get('/history', UserController.historyPage);
 router.get('/contactus', UserController.contactusPage);
 router.get('/editProfile', UserController.editProfilePage);
+router.get('/logout', UserController.logout);
 
 router.get('/', UserController.homepage);
 
@@ -69,7 +71,7 @@ router.post('/contactus', UserController.contactus);
 router.get('/cart', UserController.viewcart);
 router.post('/Game/:id/deletecart', UserController.deletecart);
 router.post('/checkout', UserController.checkout);
-
+router.post('/editprofile',UserController.editProfile);
 
 // router.get('/checkout', UserController.checkout);
 
