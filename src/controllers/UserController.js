@@ -270,70 +270,16 @@ const checkout = async (req, res) => {
                 }
                 order.save();
                 console.log(order);
-                order.price += game.price[1];
-            console.log(price);
             }
-
         }
         catch (eror) {
         }
     }
     else {
         res.redirect('/login');
-    } catch (eror) {
-
-    }
-
-    // try {
-    //     const games = await Game.find({ _id: { $in: gameIds } });
-    //     const totalPrice = games.reduce((total, game) => total + game.price, 0);
-
-    //     const order = new order({ user: userId, games, totalPrice });
-    //     await order.save();
-
-    //     const user = await User.findById(userId);
-    //     user.gameIds = [];
-    //     await user.save();
-
-    //     for (const game of games) {
-    //         game.stock -= 1;
-    //         await game.save();
-    //     }
 
     }
 }
-
-
-        // try {
-        //     const games = await Game.find({ _id: { $in: gameIds } });
-        //     const totalPrice = games.reduce((total, game) => total + game.price, 0);
-
-        //     const order = new order({ user: userId, games, totalPrice });
-        //     await order.save();
-
-        //     const user = await User.findById(userId);
-        //     user.gameIds = [];
-        //     await user.save();
-
-        //     for (const game of games) {
-        //         game.stock -= 1;
-        //         await game.save();
-        //     }
-
-        //     res.redirect('/history');
-        // } catch (error) {
-        //     console.error(error);
-        //     res.status(500).send('An error occurred while processing your order.');
-        // }
-    // };
-    //     res.redirect('/history');
-    // } catch (error) {
-    //     console.error(error);
-    //     res.status(500).send('An error occurred while processing your order.');
-    // }
-};
-
-
 
 const signupPage = (req, res) => {
     res.render('pages/signup', { user: req.session.user });
