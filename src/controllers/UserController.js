@@ -208,11 +208,11 @@ const checkName = (req, res, next) => {
 
 const addcart = async (req, res) => {
     if (req.session.user !== undefined) {
-    console.log(req.session.username)
-    const user = await User.findOne({ username: req.session.username })
-    user.gameids.push(req.params.id)
-    await user.save()
-    res.redirect('/cart')
+        console.log(req.session.username)
+        const user = await User.findOne({ username: req.session.username })
+        user.gameids.push(req.params.id)
+        await user.save()
+        res.redirect('/cart')
     }
     else {
         res.redirect('/login');
@@ -221,24 +221,24 @@ const addcart = async (req, res) => {
 
 const viewcart = async (req, res) => {
     if (req.session.user !== undefined) {
-    let cartgames = [];
-    const user = await User.findOne({ username: req.session.username });
-    if (user !== undefined) {
-        console.log(user.gameids);
-        for (const gameid of user.gameids) {
-            const cartgame = await game.findById(gameid);
-            cartgames.push(cartgame);
+        let cartgames = [];
+        const user = await User.findOne({ username: req.session.username });
+        if (user !== undefined) {
+            console.log(user.gameids);
+            for (const gameid of user.gameids) {
+                const cartgame = await game.findById(gameid);
+                cartgames.push(cartgame);
+            }
+            console.log(cartgames);
+            let sum = 0;
+            res.render('pages/cart', { games: cartgames, sum, user: req.session.user });
+        } else {
+            res.redirect('/login');
         }
-        console.log(cartgames);
-        let sum = 0;
-        res.render('pages/cart', { games: cartgames, sum, user: req.session.user });
-    } else {
+    }
+    else {
         res.redirect('/login');
     }
-}
-else{
-    res.redirect('/login');
-}
 };
 
 const deletecart = async (req, res) => {
@@ -256,46 +256,53 @@ const deletecart = async (req, res) => {
 };
 const checkout = async (req, res) => {
     const order = new order();
+    if (req.session.user !== undefined) {
+        try {
+            const user = await User.findOne({ _id: req.session.id });
+            if (user !== undefined) {
+                console.log(user.gameids);
+                for (const gameid of user.gameids) {
+                    const cartgame = await game.findById(gameid);
+                    order.games.push(cartgame)
 
-    try {
-        const user = await User.findOne({ _id: req.session.id });
-        if (user !== undefined) {
-            console.log(user.gameids);
-            for (const gameid of user.gameids) {
-                const cartgame = await game.findById(gameid);
-                order.games.push(cartgame)
+                    order.price += game.price[1];
 
-                order.price += game.price[1];
-
+                }
+                order.save();
             }
-            order.save();
         }
-    } catch (eror) {
+        catch (eror) {
+        }
+    }
+    else {
+        res.redirect('/login');
 
     }
+}
 
-    // try {
-    //     const games = await Game.find({ _id: { $in: gameIds } });
-    //     const totalPrice = games.reduce((total, game) => total + game.price, 0);
 
-    //     const order = new order({ user: userId, games, totalPrice });
-    //     await order.save();
+        // try {
+        //     const games = await Game.find({ _id: { $in: gameIds } });
+        //     const totalPrice = games.reduce((total, game) => total + game.price, 0);
 
-    //     const user = await User.findById(userId);
-    //     user.gameIds = [];
-    //     await user.save();
+        //     const order = new order({ user: userId, games, totalPrice });
+        //     await order.save();
 
-    //     for (const game of games) {
-    //         game.stock -= 1;
-    //         await game.save();
-    //     }
+        //     const user = await User.findById(userId);
+        //     user.gameIds = [];
+        //     await user.save();
 
-    //     res.redirect('/history');
-    // } catch (error) {
-    //     console.error(error);
-    //     res.status(500).send('An error occurred while processing your order.');
-    // }
-};
+        //     for (const game of games) {
+        //         game.stock -= 1;
+        //         await game.save();
+        //     }
+
+        //     res.redirect('/history');
+        // } catch (error) {
+        //     console.error(error);
+        //     res.status(500).send('An error occurred while processing your order.');
+        // }
+    // };
 
 
 
@@ -311,53 +318,53 @@ const homepage = (req, res) => {
 
 const addwishlist = async (req, res) => {
     if (req.session.user !== undefined) {
-    try {
-        const user = await User.findOne({ username: req.session.username });
-        if (user) {
-            if (!user.wishlistids) {
-                user.wishlistids = []; // Initialize the wishlistids array if it doesn't exist
+        try {
+            const user = await User.findOne({ username: req.session.username });
+            if (user) {
+                if (!user.wishlistids) {
+                    user.wishlistids = []; // Initialize the wishlistids array if it doesn't exist
+                }
+                user.wishlistids.push(req.params.id);
+                await user.save();
+                res.redirect('/wishlist');
+            } else {
+                res.redirect('/login');
             }
-            user.wishlistids.push(req.params.id);
-            await user.save();
-            res.redirect('/wishlist');
-        } else {
-            res.redirect('/login');
+        } catch (error) {
+            console.error(error);
+            res.redirect('/error-page');
         }
-    } catch (error) {
-        console.error(error);
-        res.redirect('/error-page');
     }
-}
-else {
-    res.redirect('/login');
-}
+    else {
+        res.redirect('/login');
+    }
 };
 
 const viewwishlist = async (req, res) => {
     if (req.session.user !== undefined) {
-    try {
-        let wishlistgames = [];
-        const user = await User.findOne({ username: req.session.username });
-        if (user !== undefined) {
-            console.log(user.wishlistids);
-            for (const gameid of user.wishlistids) {
-                const wishlistgame = await game.findById(gameid);
-                wishlistgames.push(wishlistgame);
+        try {
+            let wishlistgames = [];
+            const user = await User.findOne({ username: req.session.username });
+            if (user !== undefined) {
+                console.log(user.wishlistids);
+                for (const gameid of user.wishlistids) {
+                    const wishlistgame = await game.findById(gameid);
+                    wishlistgames.push(wishlistgame);
+                }
+                console.log(wishlistgames);
+                let sum = 0;
+                res.render('pages/wishlist', { games: wishlistgames, sum, user: req.session.user });
+            } else {
+                res.redirect('/');
             }
-            console.log(wishlistgames);
-            let sum = 0;
-            res.render('pages/wishlist', { games: wishlistgames, sum, user: req.session.user });
-        } else {
-            res.redirect('/');
+        } catch (error) {
+            console.error(error);
+            res.redirect('/login');
         }
-    } catch (error) {
-        console.error(error);
-        res.redirect('/login');
     }
-}
-else{
-    res.redirect('/login')
-}
+    else {
+        res.redirect('/login')
+    }
 };
 
 const deletewishlist = async (req, res) => {
