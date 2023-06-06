@@ -94,6 +94,14 @@ const gamepage = (req, res) => {
         res.render('pages/gamePage', { game, user: req.session.user })
     })
 }
+const searchGame = (req, res) => {
+    const search = req.params.search;
+    games.findOne({ name: { $regex: search, $options: 'i' } }).then((game) => {
+        // res.render('pages/gamePage', { game, user: req.session.user })
+        res.redirect('/gamepage/' + game._id)
+    })
+}
+
 
 
 module.exports = {
@@ -104,4 +112,5 @@ module.exports = {
     deleteGameById,
     filterGames,
     gamepage,
+    searchGame
 };

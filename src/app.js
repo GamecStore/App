@@ -115,7 +115,7 @@ app.get('/:dir/:dir2/:file', (req, res) => {
 
 
 app.use((req, res) => {
-    res.status(404).render('pages/ErrorPage');
+    res.status(404).render('pages/ErrorPage', { user: req.session.user });
 })
 
 

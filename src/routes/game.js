@@ -8,6 +8,8 @@ router.post('/games', GameController.createGame);
 router.put('/games/:id', GameController.updateGameById);
 router.delete('/games/:id', GameController.deleteGameById);
 router.get('/gamepage/:id', GameController.gamepage);
+router.get('/search:id', GameController.searchGame);
+
 
 
 
