@@ -53,23 +53,25 @@
 <body class="bg-black">
     <!-- Header -->
     <header class="p-3 menu-fixed bg">
+        <%- include ('../partials/header')%>
     </header>
 
     <!-------body-------> 
-    <div class="container mb-5">
+    <div class="container mb-5 font">
         <div class="row">
             <div class="col-8 mt-5">
-                <div class="row row-cols-2 row-cols-md-2 row-cols-lg-3 g-3">
+                <div class="row row-cols-2 row-cols-md-2 row-cols-lg-4 g-3">
                     <% let count = 0%>
                     <% gamesArray.forEach(element => { %>
                         <% count++ %>
                         <div class="col">
-                            <div class="card w-100 h-100 bg-dark">
-                                <img class="w-100 h-100" src="/images/uploads/<%= element.poster %>"
+                            <div class="card w-100 h-100 bg-dark gameCard">
+                                <img class="w-100 h-100 rounded-2" src="/images/uploads/<%= element.poster %>"
                                 class="card-img-top" alt="<%=element.gameTitle %> poster" >
                                 <div class="card-body">
-                                    <h5 class="card-title text-light"><%= element.gameTitle %></h5>
-                                    <p class="card-text text-light"><%= element.price %> $</p>
+                                    <h5 class="card-title text-light title"><%= element.gameTitle %></h5>
+                                    <h6 class="card-subtitle mb-2 text-muted genre"><%= element.genre %></h6>
+                                    <p class="card-text text-light price" style="border:none"> $<%= element.price %></p>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +83,7 @@
             </div> 
 
 
-            <div class="col-4 mt-5 mb-5">
+            <div class="col-3 mt-5 mb-5 ms-5 me-2">
                 <% let counter = 0 %>
                 <div>
                     <label class="text-light mb-2">Filters </label>

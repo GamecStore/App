@@ -95,7 +95,7 @@ const gamepage = (req, res) => {
     })
 }
 const searchGame = (req, res) => {
-    const search = req.params.search;
+    const search = req.body.search;
     games.findOne({ name: { $regex: search, $options: 'i' } }).then((game) => {
         // res.render('pages/gamePage', { game, user: req.session.user })
         res.redirect('/gamepage/' + game._id)

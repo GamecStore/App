@@ -3,7 +3,7 @@ const AllGames = require('../models/AllGamesSchema');
 const allGames_get = (req, res) => {
     AllGames.find()  
     .then((result)=>{
-        res.render("pages/allGames",{gamesArray: result});
+        res.render("pages/allGames",{gamesArray: result, user: req.session.user });
     })
     .catch((err) => (console.error(err)));    
 }
