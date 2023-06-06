@@ -11,6 +11,7 @@
     box-shadow: none;
     border: 1px solid white;
 }
+
 .accordion-button:hover{
     cursor: pointer;
     color:white;

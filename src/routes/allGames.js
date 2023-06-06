@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const AllGamesContoller = require('../controllers/allGamesContoller')
+const AllGamesContoller = require('../controllers/allGamesController')
 const path = require('path');
 const multer = require('multer');
 
@@ -30,7 +30,7 @@ const upload = multer({
         }
         else{
             console.log("Only jpg & png files are supported!");
-            callback(null,true);
+            callback(null,false);
         }
     },
     limits:{

@@ -15,8 +15,8 @@ const order = require('../models/Order');
 // const openai = new OpenAIApi(configuration)
 
 
-//const sgMail = require('@sendgrid/mail')
-//sgMail.setApiKey(config.gridsend)
+const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(config.gridsend)
 
 const bcrypt = require("bcrypt");
 const { param } = require("../routes");
@@ -52,22 +52,22 @@ const createUser = async (req, res) => {
                     req.session.type = user.role;
                     req.session.user = user;
                     console.log(req.session.user);
-                    // const msg = {
-                    //     to: user.email, // Change to your recipient
-                    //     from: 'gamecyt2@gmail.com', // Change to your verified sender
-                    //     subject: 'Sending with SendGrid is Fun',
-                    //     text: 'and easy to do anywhere, even with Node.js',
-                    //     html: '<strong>Welcome to gamec.store</strong>',
-                    // }
-                    // sgMail
-                    //     .send(msg)
-                    //     .then((response) => {
-                    //         console.log(response[0].statusCode)
-                    //         console.log(response[0].headers)
-                    //     })
-                    //     .catch((error) => {
-                    //         console.error(error)
-                    //     })
+                    const msg = {
+                        to: user.email, // Change to your recipient
+                        from: 'gamecyt2@gmail.com', // Change to your verified sender
+                        subject: 'Sending with SendGrid is Fun',
+                        text: 'and easy to do anywhere, even with Node.js',
+                        html: '<strong>Welcome to gamec.store</strong>',
+                    }
+                    sgMail
+                        .send(msg)
+                        .then((response) => {
+                            console.log(response[0].statusCode)
+                            console.log(response[0].headers)
+                        })
+                        .catch((error) => {
+                            console.error(error)
+                        })
 
                     res.redirect("/");
                 })
@@ -256,9 +256,9 @@ const checkout = async (req, res) => {
                 const cartgame = await game.findById(gameid);
                 order.games.push(cartgame)
                 order.save();
-             order.price+= game.price[1];
+                order.price += game.price[1];
             }
-            
+
 
         }
     } catch (eror) {
