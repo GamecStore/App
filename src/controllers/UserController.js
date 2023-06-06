@@ -52,7 +52,6 @@ const createUser = async (req, res) => {
                     req.session.password = user.password;
                     req.session.type = user.role;
                     req.session.user = user;
-                    console.log(req.session.user);
                     const msg = {
                         to: user.email, // Change to your recipient
                         from: 'gamecyt2@gmail.com', // Change to your verified sender
@@ -83,8 +82,8 @@ const login = async (req, res) => {
     const sentUser = req.body.name;
     const user = await User.findOne({ username: sentUser });
     if (user?.username === sentUser) {
-        console.log(user.username);
-        const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
+
+        //const hashedPassword = await bcrypt.hash(req.body.password, saltRounds);
 
         bcrypt.compare(req.body.password, user.password, function (err, isMatch) {
             if (err) {
