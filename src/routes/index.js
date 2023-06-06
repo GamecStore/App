@@ -1,12 +1,12 @@
 const express = require('express')
 const router = express.Router()
-const AllGames = require('../models/AllGamesSchema');
+const AllGames = require('../models/Game');
 
 router.get = ('/',(req, res) => {
     AllGames.find()  
     .then((result)=>{
         res.render("/",{gamesArray: result});
-        console.log(gamesArray);
+        console.log(result);
     })
     .catch((err) => (console.error(err)));    
 }); 
