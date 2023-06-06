@@ -6,26 +6,24 @@ const Game = require("../models/Game.js");
 const Order = require("../models/Order.js");
 
 async function getStats() {
+  const lastMonthStartDate = new Date();
+  lastMonthStartDate.setMonth(lastMonthStartDate.getMonth() - 1);
+  lastMonthStartDate.setHours(0, 0, 0, 0);
   return {
     salesThisMonth: await Order.aggregate([
       {
         $match: {
-          date: {
-            $gte: new Date(new Date().setDate(1)),
-            $lt: new Date(new Date().setDate(1)).setMonth(
-              new Date().getMonth() + 1
-            ),
-          },
+          date: { $gte: lastMonthStartDate },
         },
       },
       {
         $group: {
           _id: null,
-          total: { $sum: "$totalPrice" },
+          totalSales: { $sum: "$totalPrice" },
         },
       },
     ]).then((res) => {
-      return displayCurrency(res[0]?.total || 0);
+      return displayCurrency(res[0]?.totalSales || 0);
     }),
     newCustomers: await User.countDocuments({
       role: "user",
@@ -35,6 +33,16 @@ async function getStats() {
       },
     }),
   };
+}
+
+async function getOrders() {
+  let orders = await Order.find({}).sort({ date: -1 });
+  let ordersWithUsers = [];
+  for (let order of orders) {
+    let user = await User.findById(order.user);
+    ordersWithUsers.push({ ...order._doc, user: user });
+  }
+  return ordersWithUsers;
 }
 
 async function handlePage(req, res, page) {
@@ -48,7 +56,7 @@ async function handlePage(req, res, page) {
     } else {
       res.render(`pages/admin/${page}`, {
         user: user,
-        orders: await Order.find({}).sort({ date: -1 }),
+        orders: await getOrders(),
         users: await User.find({}).sort({ created: -1 }),
         products: await Game.find({}).sort({ created: -1 }),
         stats: await getStats(),
@@ -78,8 +86,25 @@ router.get("/users", (req, res) => {
   handlePage(req, res, "users");
 });
 
+router.post("/users/delete/:id", async (req, res) => {
+  await User.findByIdAndDelete(req.params.id);
+  res.redirect("/admin/users");
+});
+
+router.post("/users/switchrole/:id", async (req, res) => {
+  let user = await User.findById(req.params.id);
+  user.role = user.role === "user" ? "admin" : "user";
+  await user.save();
+  res.redirect("/admin/users");
+});
+
 router.get("/products", (req, res) => {
   handlePage(req, res, "products");
+});
+
+router.post("/products/delete/:id", async (req, res) => {
+  await Game.findByIdAndDelete(req.params.id);
+  res.redirect("/admin/products");
 });
 
 module.exports = router;

@@ -39,7 +39,7 @@ const Game = mongoose.Schema({
     },
     sliderImgs: { 
         type: Array,
-        default: [] 
+        required: [true, "A game must have a some images"]
     },
     sideImg: {
         type: String,
