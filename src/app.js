@@ -97,10 +97,6 @@ app.use('/allGames', allGamesRouter)
 app.use('/editprofile', editProfileRouter)
 app.use('/game', gamePageRouter)
 
-app.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/');
-});
 
 app.get('/public/:dir/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);
