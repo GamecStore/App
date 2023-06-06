@@ -113,7 +113,7 @@ const allGames_get = (req, res) => {
 } 
 
 
-const allGames_post = (req, res) => {
+const allGames_post = async (req, res) => {
     const gamePoster = req.file.filename;
     const games = new Game ({
         name: req.body.name,
@@ -125,13 +125,11 @@ const allGames_post = (req, res) => {
         sideImg:gamePoster
     });
 
-    console.log(req.body);
-    res.render("pages/allGames");
-
-    //saving data in the database
-    games.save()
+    await games.save()
     .then(() => console.log("success"))
     .catch((err) => console.log(`[MONGO] Error in saving data in database: ${err}`)); 
+
+    res.redirect('/admin/products');
 }
 
 

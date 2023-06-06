@@ -3,7 +3,19 @@
 <div class="dashboard-page">
   <div class="container px-lg-5">
     <div class="row">
-      <h1>Products</h1>
+      <h1>
+        Products<br />
+        <button
+          type="button"
+          class="btn btn-primary btn-sm"
+          data-bs-toggle="modal"
+          data-bs-target="#addModal"
+          style="width: fit-content"
+        >
+          Add new product
+        </button>
+      </h1>
+
       <table class="table table-dark table-striped" style="width: 100vw">
         <thead>
           <tr>
@@ -20,7 +32,7 @@
           <tr>
             <td>
               <img
-                src="../images/gameimages/<%= game.sideImg %>"
+                src="../images/uploads/<%= game.sideImg %>"
                 class="me-2"
                 width="64px"
               />
@@ -30,10 +42,17 @@
             <td><%= game.genre %></td>
             <td><%= game.price %></td>
             <td>
-              <form action="/admin/products/<%= user._id %>?_method=DELETE" method="POST" style="float:left;padding-right:10px">
+              <form
+                action="/admin/products/delete/<%= game._id %>"
+                method="POST"
+                style="float: left; padding-right: 10px"
+              >
                 <button class="btn btn-danger btn-sm">Delete</button>
               </form>
-              <form action="/admin/products/<%= user._id %>?_method=PUT" method="POST">
+              <form
+                action="/admin/products/edit/<%= game._id %>"
+                method="POST"
+              >
                 <button class="btn btn-secondary btn-sm">Edit</button>
               </form>
             </td>
@@ -42,6 +61,172 @@
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="addModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="addModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addModalLabel">Add new product</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!--grid-->
+        <form
+          class="row g-3"
+          enctype="multipart/form-data"
+          method="POST"
+          action="/allGames"
+        >
+          <div class="col-12">
+            <label for="name" class="form-label"
+              >Game title:<span class="asteric">*</span></label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              placeholder="Enter the title of your game"
+            />
+          </div>
+
+          <div class="col-12">
+            <label for="mainDescription" class="form-label"
+              >Game Main Description:<span class="asteric">*</span></label
+            >
+            <textarea
+              class="form-control"
+              aria-label="With textarea"
+              id="mainDescription"
+              name="mainDescription"
+              placeholder="Enter the main description of your game"
+            ></textarea>
+          </div>
+
+          <div class="col-12">
+            <label for="sideDescription" class="form-label"
+              >Game Details<span class="asteric">*</span></label
+            >
+            <textarea
+              class="form-control"
+              aria-label="With textarea"
+              id="sideDescription"
+              name="sideDescription"
+              placeholder="Enter the side description of your game"
+            ></textarea>
+          </div>
+
+          <div class="col-12">
+            <label for="price" class="form-label"
+              >Price:<span class="asteric">*</span></label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              name="price"
+              placeholder="Enter the price of your game"
+            />
+          </div>
+
+          <div class="col-12">
+            <div>
+              <label for="genre" class="form-label"
+                >Game Genre:<span class="asteric">*</span>
+              </label>
+            </div>
+            <div>
+              <select class="form-select" id="genre" name="genre">
+                <option selected>Open this select menu</option>
+                <option value="Action">Action</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Cards">Cards</option>
+                <option value="Casual">Casual</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Exploration">Exploration</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Fighting">Fighting</option>
+                <option value="FPS">FPS</option>
+                <option value="Horror">Horror</option>
+                <option value="Indie">Indie</option>
+                <option value="MOBA">MOBA</option>
+                <option value="Music">Music</option>
+                <option value="Party">Party</option>
+                <option value="Platformer">Platformer</option>
+                <option value="Puzzle">Puzzle</option>
+                <option value="Racing">Racing</option>
+                <option value="Retro">Retro</option>
+                <option value="RPG">RPG</option>
+                <option value="Shooter">Shooter</option>
+                <option value="Simulation">Simulation</option>
+                <option value="Space">Space</option>
+                <option value="Sports">Sports</option>
+                <option value="Stealth">Stealth</option>
+                <option value="Strategy">Strategy</option>
+                <option value="Survival">Survival</option>
+                <option value="Trivia">Trivia</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-12">
+            <div>
+              <label for="platform" class="form-label"
+                >Platform:<span class="asteric">*</span>
+              </label>
+            </div>
+            <div>
+              <select class="form-select" id="platform" name="platform">
+                <option selected>Open this select menu</option>
+                <option value="MacOS">Mac OS</option>
+                <option value="Windows">Windows</option>
+                <option value="All">All</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div>
+              <label class="form-label" for="sideImg">Game Poster:</label
+              ><span class="asteric">*</span>
+            </div>
+            <div class="input-group mb-3">
+              <input
+                type="file"
+                class="form-control"
+                id="sideImg"
+                name="sideImg"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-outline-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        </div>
+        </form>
+      </div>
+
   </div>
 </div>
 

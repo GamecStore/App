@@ -22,10 +22,10 @@
             <td><%= user.role %></td>
             <td><%= user.created?.toDateString() %></td>
             <td>
-              <form action="/admin/users/<%= user._id %>?_method=DELETE" method="POST" style="float:left;padding-right:10px">
+              <form action="/admin/users/delete/<%= user._id %>" method="POST" style="float:left;padding-right:10px">
                 <button class="btn btn-danger btn-sm">Delete</button>
               </form>
-              <form action="/admin/users/<%= user._id %>?_method=PUT" method="POST">
+              <form action="/admin/users/switchrole/<%= user._id %>" method="POST">
                 <button class="btn btn-secondary btn-sm">Switch Roles</button>
               </form>
             </td>
