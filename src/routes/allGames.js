@@ -7,36 +7,36 @@ const GameContoller = require('../controllers/GameController')
 
 //image validations
 const storage = multer.diskStorage({
-    destination:function(req,file,cb) {   //location where the file will be saved
-        cb(null,'src/public/images/uploads/')
+    destination: function (req, file, cb) {   //location where the file will be saved
+        cb(null, 'src/public/images/uploads/')
     },
-    filename: function(req,file,cb) {  //rename the file withtimestamp and extension (always unique)
+    filename: function (req, file, cb) {  //rename the file withtimestamp and extension (always unique)
         const ext = path.extname(file.originalname);
-        cb(null,Date.now() + ext);
+        cb(null, Date.now() + ext);
     }
 });
 
 
 // image extensions
 const upload = multer({
-    storage:storage,
-    fileFilter:function(req,file,callback){
-        if(
-            file.mimetype == 'image/jpeg'||
-            file.mimetype == 'image/jpg'||
-            file.mimetype == 'image/png'||
-            file.mimetype == 'image/jfif'||
+    storage: storage,
+    fileFilter: function (req, file, callback) {
+        if (
+            file.mimetype == 'image/jpeg' ||
+            file.mimetype == 'image/jpg' ||
+            file.mimetype == 'image/png' ||
+            file.mimetype == 'image/jfif' ||
             file.mimetype == 'image/webp'
-        ){
-            callback(null,true);
+        ) {
+            callback(null, true);
         }
-        else{
+        else {
             console.log("Only jpg, png, jfif & webp files are supported!");
-            callback(null,false);
+            callback(null, false);
         }
     },
-    limits:{
-        fileSize:1024 * 1024 * 2 
+    limits: {
+        fileSize: 1024 * 1024 * 2
     }
 });
 

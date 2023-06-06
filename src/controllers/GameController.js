@@ -108,39 +108,39 @@ const searchGame = (req, res) => {
 
 // all games page
 const allGames_get = (req, res) => {
-    Game.find()  
-    .then((result)=>{
-        res.render("pages/allGames",{gamesArray: result, user: req.session.user });
-    })
-    .catch((err) => (console.error(err)));    
-} 
+    Game.find()
+        .then((result) => {
+            res.render("pages/allGames", { gamesArray: result, user: req.session.user });
+        })
+        .catch((err) => (console.error(err)));
+}
 
 
 const allGames_post = async (req, res) => {
     const gamePoster = req.file.filename;
-    const games = new Game ({
+    const games = new Game({
         name: req.body.name,
-        sideDescription:req.body.sideDescription,
-        mainDescription:req.body.mainDescription,
-        price:req.body.price,
+        sideDescription: req.body.sideDescription,
+        mainDescription: req.body.mainDescription,
+        price: req.body.price,
         genre: req.body.genre,
         platform: req.body.platform,
-        sideImg:gamePoster
+        sideImg: gamePoster
     });
-    if(req.files){
-        let path ='';
-        req.files.forEach(function(files,index,arr){
-            path = path + files.path + '/' ;
+    if (req.files) {
+        let path = '';
+        req.files.forEach(function (files, index, arr) {
+            path = path + files.path + '/';
         })
-        path = path.substring(0,path.indexOf('/'))
+        path = path.substring(0, path.indexOf('/'))
         games.sliderImgs = path;
     }
-    res.render("pages/allGames");
+    res.redirect('/admin/products');
 
     //saving data in the database
     games.save()
-    .then(() => console.log("success"))
-    .catch((err) => console.log(`[MONGO] Error in saving data in database: ${err}`)); 
+        .then(() => console.log("success"))
+        .catch((err) => console.log(`[MONGO] Error in saving data in database: ${err}`));
 }
 
 
