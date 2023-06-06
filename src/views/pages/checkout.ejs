@@ -92,7 +92,7 @@
         <!------------>
         <!--header-->
         <!--checkout option-->
-        <form action="/checkout" method="post"></form>
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -257,9 +257,11 @@
                                     <div class="col-8" style="color:aliceblue;"><b>Total</b></div>
                                     <div class="ms-auto" style="color:aliceblue;"><b class="text-success">E£185.00</b>
                                     </div>
-                                    <button>
-                                        <a href="/libary" class="btn btn1-primary text-center ">CHECK OUT</a>
-                                    </button>
+                                    <form action="/checkout" method="post">
+                                        <button>
+                                            <input type="submit">checkout
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

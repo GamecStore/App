@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const config = require('../config.json');
 const game = require('../models/Game');
-const order = require('../models/Order');
+const Order = require('../models/Order');
 
 // const { Configuration, OpenAIApi } = require('openai');
 
@@ -254,57 +254,137 @@ const deletecart = async (req, res) => {
         res.redirect('/error-page'); // Redirect to an error page if an error occurs
     }
 };
+//trial one
+// const checkout = async (req, res) => {
+//     // const order = new Order();
+//     let games = [];
+//     let price = 0;
+
+//     if (req.session.user !== undefined) {
+//         try {
+//             // const user = await User.findOne({ _id: req.session.id });
+//             const user = await User.findOne({ _id: req.session.user });
+
+//             if (user !== undefined) {
+
+//                 console.log(user.gameids);
+//                 for (const gameid of user.gameids) {
+//                     const cartgame = await game.findById(gameid);
+//                     // order.games.push(cartgame)
+//                     games.push(cartgame)
+//                     price = game.price;
+
+//                 }
+//                 // order.save();
+//                 // console.log(order);
+
+//                 console.log(user.gameids);
+//                 const order = new Order()
+//                 {
+//                     user: order.user
+//                     games: order.games
+//                     price += order.totalPrice
+//                 }
+//                 // order.save();
+//                 // .then(() => {
+//                 order.save();
+
+//             }
+//         }
+//         catch (err) { console.log(err); }
+//     }
+//     else {
+//         res.redirect('/login');
+
+//     }
+// }
+
+//trail two
 const checkout = async (req, res) => {
-    const order = new order();
+    console.log('s;ldslfjalfksl;afksal;gsagksal;kga;gk;lasgjs;aljls;agjl;askgsa;lgks;lks ')
     if (req.session.user !== undefined) {
         try {
-            const user = await User.findOne({ _id: req.session.id });
+            const user = await User.findOne({ _id: req.session.user });
+
             if (user !== undefined) {
-                console.log(user.gameids);
+                let games = [];
+                let price = 0;
+
                 for (const gameid of user.gameids) {
                     const cartgame = await game.findById(gameid);
-                    order.games.push(cartgame)
-
-                    order.price += game.price[1];
-
+                    games.push(cartgame);
+                    price += cartgame.price;
                 }
-                order.save();
+
+                const order = new Order({
+                    user: user._id,
+                    games: games,
+                    totalPrice: price,
+                });
+
+                order.save()
+                    .then(() => {
+                        console.log("Order saved");
+                    })
+                    .catch((err) => {
+                        console.error("Error saving order:", err);
+                    });
             }
+        } catch (err) {
+            console.log(err);
         }
-        catch (eror) {
-        }
-    }
-    else {
+    } else {
         res.redirect('/login');
-
     }
-}
+};
 
 
-        // try {
-        //     const games = await Game.find({ _id: { $in: gameIds } });
-        //     const totalPrice = games.reduce((total, game) => total + game.price, 0);
+// if (req.session.user !== undefined) {
+//     try {
+//         const user = await User.findOne({ _id: req.session.id });
+//         if (user !== undefined) {
+//             console.log(user.gameids);
+//             for (const gameid of user.gameids) {
+//                 const cartgame = await game.findById(gameid);
+//                 // order.games.push(cartgame)
+//                 games.push(cartgame)
 
-        //     const order = new order({ user: userId, games, totalPrice });
-        //     await order.save();
+//                 order.price += game.price[1];
 
-        //     const user = await User.findById(userId);
-        //     user.gameIds = [];
-        //     await user.save();
+//             }
+//             order.save();
+//             console.log(order);
+//         }
+//     }
+//     catch (eror) {
+//     }
+// }
+// else {
+//     res.redirect('/login');
 
-        //     for (const game of games) {
-        //         game.stock -= 1;
-        //         await game.save();
-        //     }
+// }
+// try {
+//     const games = await Game.find({ _id: { $in: gameIds } });
+//     const totalPrice = games.reduce((total, game) => total + game.price, 0);
 
-        //     res.redirect('/history');
-        // } catch (error) {
-        //     console.error(error);
-        //     res.status(500).send('An error occurred while processing your order.');
-        // }
-    // };
+//     const order = new order({ user: userId, games, totalPrice });
+//     await order.save();
 
+//     const user = await User.findById(userId);
+//     user.gameIds = [];
+//     await user.save();
 
+//     for (const game of games) {
+//         game.stock -= 1;
+//         await game.save();
+//     }
+
+//     res.redirect('/history');
+// } catch (error) {
+//     console.error(error);
+//     res.status(500).send('An error occurred while processing your order.');
+// }
+// };
 
 const signupPage = (req, res) => {
     res.render('pages/signup', { user: req.session.user });
