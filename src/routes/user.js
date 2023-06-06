@@ -69,7 +69,7 @@ router.post('/contactus', UserController.contactus);
 router.get('/cart', UserController.viewcart);
 router.post('/Game/:id/deletecart', UserController.deletecart);
 router.post('/checkout', UserController.checkout);
-
+router.post('/editprofile',UserController.editProfile);
 
 // router.get('/checkout', UserController.checkout);
 
