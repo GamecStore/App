@@ -106,22 +106,6 @@ const searchGame = (req, res) => {
 
 
 
-
-const allGames_id_get =(req,res) =>{
-    Game.findById(req.params.id)
-    .then((result) => 
-        res.status(200).json({objGames:result})
-    ).catch(err => {
-        console.log(err)
-    });
-
-
-}
-
-
-
-
-
 // all games page
 const allGames_get = (req, res) => {
     Game.find()  
@@ -143,6 +127,30 @@ const allGames_post = (req, res) => {
         platform: req.body.platform,
         sideImg:gamePoster
     });
+    if(req.files){
+        let path ='';
+        req.files.forEach(function(files,index,arr){
+            path = path + files.path + '/' ;
+        })
+        path = path.substring(0,path.indexOf('/'))
+        games.sliderImgs = path;
+    }
+    res.render("pages/allGames");
+
+    //saving data in the database
+    games.save()
+    .then(() => console.log("success"))
+    .catch((err) => console.log(`[MONGO] Error in saving data in database: ${err}`)); 
+}
+
+const allGames_multiple_post= (req, res) => {
+    const files = req.files;
+    if(!files){
+        const error = new Error("No files uploaded!");
+        error.httpStatusCode = 400;
+        return next(error);
+    }
+
 
     console.log(req.body);
     res.render("pages/allGames");
@@ -152,6 +160,7 @@ const allGames_post = (req, res) => {
     .then(() => console.log("success"))
     .catch((err) => console.log(`[MONGO] Error in saving data in database: ${err}`)); 
 }
+
 
 
 module.exports = {
@@ -165,5 +174,5 @@ module.exports = {
     searchGame,
     allGames_get,
     allGames_post,
-    allGames_id_get
+    allGames_multiple_post
 };
