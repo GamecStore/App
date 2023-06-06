@@ -13,10 +13,6 @@ const fs = require('fs');// Requiring file system to use local files
 const bodyParser = require('body-parser');//mount the data coming from the form of body to take input from forms 
 // const { Configuration, OpenAIApi } = require('openai');
 
-
-app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
-
 require("colors");
 
 app.set('view engine', 'ejs')
@@ -36,7 +32,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 // //set the api keyfor openai instance
 // openai.apiKey = apiKey
-
 
 
 

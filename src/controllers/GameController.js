@@ -106,22 +106,6 @@ const searchGame = (req, res) => {
 
 
 
-
-const allGames_id_get =(req,res) =>{
-    Game.findById(req.params.id)
-    .then((result) => 
-        res.status(200).json({objGames:result})
-    ).catch(err => {
-        console.log(err)
-    });
-
-
-}
-
-
-
-
-
 // all games page
 const allGames_get = (req, res) => {
     Game.find()  
@@ -143,12 +127,20 @@ const allGames_post = async (req, res) => {
         platform: req.body.platform,
         sideImg:gamePoster
     });
+    if(req.files){
+        let path ='';
+        req.files.forEach(function(files,index,arr){
+            path = path + files.path + '/' ;
+        })
+        path = path.substring(0,path.indexOf('/'))
+        games.sliderImgs = path;
+    }
+    res.render("pages/allGames");
 
-    await games.save()
+    //saving data in the database
+    games.save()
     .then(() => console.log("success"))
     .catch((err) => console.log(`[MONGO] Error in saving data in database: ${err}`)); 
-
-    res.redirect('/admin/products');
 }
 
 
@@ -162,6 +154,5 @@ module.exports = {
     gamepage,
     searchGame,
     allGames_get,
-    allGames_post,
-    allGames_id_get
+    allGames_post
 };

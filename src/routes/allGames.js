@@ -42,6 +42,6 @@ const upload = multer({
 
 
 router.get('/', GameContoller.allGames_get)
-router.get('/gamePage/:id', GameContoller.allGames_id_get)
 router.post('/', upload.single('sideImg'), GameContoller.allGames_post)
+router.post('/', upload.array('sliderImgs[]'), GameContoller.allGames_multiple_post)
 module.exports = router; 
