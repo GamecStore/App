@@ -12,6 +12,8 @@ const logger = require('morgan');
 const fs = require('fs');// Requiring file system to use local files
 const bodyParser = require('body-parser');//mount the data coming from the form of body to take input from forms 
 // const { Configuration, OpenAIApi } = require('openai');
+const AllGames = require('./models/AllGamesSchema');
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: false }));
@@ -59,7 +61,6 @@ const LibraryRouter = require('./routes/library')
 const WishlistRouter = require('./routes/user')
 const allGamesRouter = require('./routes/allGames')
 const AddingGamesRouter = require('./routes/addingGames')
-const ErrorAddingRouter = require('./routes/errorAdding')
 const editProfileRouter = require('./routes/user')
 
 
@@ -95,7 +96,6 @@ app.use('/history', HistoryRouter)
 app.use('/checkout', CheckoutRouter)
 app.use('/allGames', allGamesRouter)
 app.use('/addingGames', AddingGamesRouter)
-app.use('/errorAdding', ErrorAddingRouter)
 app.use('/editprofile', editProfileRouter)
 
 
