@@ -302,7 +302,6 @@ const deletecart = async (req, res) => {
 
 //trail two
 const checkout = async (req, res) => {
-    console.log('s;ldslfjalfksl;afksal;gsagksal;kga;gk;lasgjs;aljls;agjl;askgsa;lgks;lks ')
     if (req.session.user !== undefined) {
         try {
             const user = await User.findOne({ _id: req.session.user });
@@ -324,13 +323,16 @@ const checkout = async (req, res) => {
                 });
 
                 order.save()
-                    .then(() => {
+                    .then(async () => {
                         console.log("Order saved");
+                        let x = [];
+                      let u =  await User.findOneAndUpdate({ _id: user._id }, {gameids : x} )
                     })
                     .catch((err) => {
                         console.error("Error saving order:", err);
                     });
                 console.log(order);
+                res.redirect('/library');
             }
         } catch (err) {
             console.log(err);
