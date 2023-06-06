@@ -143,7 +143,7 @@ const allGames_post = async (req, res) => {
     .catch((err) => console.log(`[MONGO] Error in saving data in database: ${err}`)); 
 }
 
-const allGames_multiple_post= (req, res) => {
+const allGames_multiple_post= async (req, res) => {
     const files = req.files;
     if(!files){
         const error = new Error("No files uploaded!");
