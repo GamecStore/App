@@ -62,6 +62,7 @@ const WishlistRouter = require('./routes/user')
 const allGamesRouter = require('./routes/allGames')
 const AddingGamesRouter = require('./routes/addingGames')
 const editProfileRouter = require('./routes/user')
+const gamePageRouter = require('./routes/game')
 
 
 
@@ -97,6 +98,7 @@ app.use('/checkout', CheckoutRouter)
 app.use('/allGames', allGamesRouter)
 app.use('/addingGames', AddingGamesRouter)
 app.use('/editprofile', editProfileRouter)
+app.use('/game', gamePageRouter)
 
 
 

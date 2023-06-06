@@ -329,6 +329,7 @@ const checkout = async (req, res) => {
                     .catch((err) => {
                         console.error("Error saving order:", err);
                     });
+                console.log(order);
             }
         } catch (err) {
             console.log(err);

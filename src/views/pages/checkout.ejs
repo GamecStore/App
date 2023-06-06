@@ -219,43 +219,34 @@
                                 <div class="p-2 me-3">
                                     <h4 style="color: white;">Order Recap</h4>
                                 </div>
-                                <div class="p-2 d-flex">
-                                    <div class="col-8"><img src="img/Age Of Wonders 4.jpg " alt="">
+                                <!-- <div class="p-2 d-flex">
+                                    <div class="col-8"><img src="/images/gameimages/" >
                                     </div>
                                     <div class="ms-auto">
-                                        <h5 style="color: aliceblue;">Age Of Wonders</h5>
+                                        <h5 style="color: aliceblue;"></h5>
                                     </div>
-                                </div>
+                                </div> -->
 
-
+                                <% games.forEach((game, index)=> { %>
+                                    <%sum+=game.price %>
                                 <div class="border-top px-2 mx-2"></div>
                                 <div class="p-2 d-flex pt-3">
-                                    <div class="col-8" style="color:aliceblue;">After Discount</div>
-                                    <div class="ms-auto" style="color:aliceblue;">E£40</div>
+                                    <div class="col-8" style="color:aliceblue;"><% game.name %></div>
+                                    <div class="ms-auto" style="color:aliceblue;"><% game.price %></div>
                                 </div>
-                                <div class="p-2 d-flex">
+                                <% }) %>
+                                <!-- <div class="p-2 d-flex">
                                     <div class="col-8" style="color:aliceblue;">
                                         shipping
                                     </div>
                                     <div class="ms-auto">
-                                        <h6 style="color: aliceblue;">E£50 </h6>
+                                        <h6 style="color: aliceblue;"> </h6>
                                     </div>
-                                </div>
-                                <div class="border-top px-2 mx-2"></div>
-                                <div class="p-2 d-flex pt-3">
-                                    <div class="col-8" style="color:aliceblue;">before tax</div>
-                                    <div class="ms-auto" style="color:aliceblue;"><b>E£71.76</b></div>
-                                </div>
-                                <div class="p-2 d-flex">
-                                    <div class="col-8" style="color:aliceblue;">
-                                        after tax <span class="fa fa-question-circle text-dark"></span>
-                                    </div>
-                                    <div class="ms-auto" style="color:aliceblue;"><b>E£100</b></div>
-                                </div>
+                                </div> -->
                                 <div class="border-top px-2 mx-2"></div>
                                 <div class="p-2 d-flex pt-3">
                                     <div class="col-8" style="color:aliceblue;"><b>Total</b></div>
-                                    <div class="ms-auto" style="color:aliceblue;"><b class="text-success">E£185.00</b>
+                                    <div class="ms-auto" style="color:aliceblue;"><b class="text-success"><%=sum %></b>
                                     </div>
                                     <form action="/checkout" method="post">
                                         <button>

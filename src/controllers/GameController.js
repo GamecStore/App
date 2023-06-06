@@ -1,6 +1,5 @@
 const Game = require('../models/Game.js')
 const user = require('../models/User.js')
-
 const games = require('../models/Game')
 
 const createGame = async (req, res) => {
@@ -104,6 +103,38 @@ const searchGame = (req, res) => {
 
 
 
+// all games page
+const allGames_get = (req, res) => {
+    Game.find()  
+    .then((result)=>{
+        res.render("pages/allGames",{gamesArray: result, user: req.session.user });
+    })
+    .catch((err) => (console.error(err)));    
+} 
+
+
+const allGames_post = (req, res) => {
+    const gamePoster = req.file.filename;
+    const games = new Game ({
+        name: req.body.name,
+        sideDescription:req.body.sideDescription,
+        mainDescription:req.body.mainDescription,
+        price:req.body.price,
+        genre: req.body.genre,
+        platform: req.body.platform,
+        poster:gamePoster
+    });
+
+    console.log(req.body);
+    res.render("pages/allGames");
+
+    //saving data in the database
+    games.save()
+    .then(() => console.log("success"))
+    .catch((err) => console.log(`[MONGO] Error in saving data in database: ${err}`)); 
+}
+
+
 module.exports = {
     createGame,
     getAllGames,
@@ -112,5 +143,7 @@ module.exports = {
     deleteGameById,
     filterGames,
     gamepage,
-    searchGame
+    searchGame,
+    allGames_get,
+    allGames_post
 };
