@@ -1,6 +1,6 @@
 const express = require("express")
 const router = express.Router()
-const AllGamesContoller = require('../controllers/allGamesController')
+const GameContoller = require('../controllers/GameController')
 const path = require('path');
 const multer = require('multer');
 
@@ -24,12 +24,14 @@ const upload = multer({
         if(
             file.mimetype == 'image/jpeg'||
             file.mimetype == 'image/jpg'||
-            file.mimetype == 'image/png'
+            file.mimetype == 'image/png'||
+            file.mimetype == 'image/jfif'||
+            file.mimetype == 'image/webp'
         ){
             callback(null,true);
         }
         else{
-            console.log("Only jpg & png files are supported!");
+            console.log("Only jpg, png, jfif & webp files are supported!");
             callback(null,false);
         }
     },
@@ -39,6 +41,6 @@ const upload = multer({
 });
 
 
-router.get('/', AllGamesContoller.allGames_get)
-router.post('/', upload.single('poster'), AllGamesContoller.allGames_post)
+router.get('/', GameContoller.allGames_get)
+router.post('/', upload.single('poster'), GameContoller.allGames_post)
 module.exports = router; 
