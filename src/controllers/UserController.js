@@ -256,7 +256,6 @@ const deletecart = async (req, res) => {
 };
 const checkout = async (req, res) => {
     const order = new order();
-
     try {
         const user = await User.findOne({ _id: req.session.id });
         if (user !== undefined) {
@@ -265,36 +264,37 @@ const checkout = async (req, res) => {
                 const cartgame = await game.findById(gameid);
                 order.games.push(cartgame)
                 order.save();
+                console.log(order);
                 order.price += game.price[1];
+            console.log(price);
             }
-
 
         }
     } catch (eror) {
 
     }
 
-    try {
-        const games = await Game.find({ _id: { $in: gameIds } });
-        const totalPrice = games.reduce((total, game) => total + game.price, 0);
+    // try {
+    //     const games = await Game.find({ _id: { $in: gameIds } });
+    //     const totalPrice = games.reduce((total, game) => total + game.price, 0);
 
-        const order = new order({ user: userId, games, totalPrice });
-        await order.save();
+    //     const order = new order({ user: userId, games, totalPrice });
+    //     await order.save();
 
-        const user = await User.findById(userId);
-        user.gameIds = [];
-        await user.save();
+    //     const user = await User.findById(userId);
+    //     user.gameIds = [];
+    //     await user.save();
 
-        for (const game of games) {
-            game.stock -= 1;
-            await game.save();
-        }
+    //     for (const game of games) {
+    //         game.stock -= 1;
+    //         await game.save();
+    //     }
 
-        res.redirect('/history');
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('An error occurred while processing your order.');
-    }
+    //     res.redirect('/history');
+    // } catch (error) {
+    //     console.error(error);
+    //     res.status(500).send('An error occurred while processing your order.');
+    // }
 };
 
 
