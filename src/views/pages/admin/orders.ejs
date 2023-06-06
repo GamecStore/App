@@ -7,31 +7,21 @@
       <table class="table table-dark table-striped" style="width: 100vw">
         <thead>
           <tr>
-            <th>Order</th>
+            <th>Order ID</th>
+            <th>User</th>
+            <th>Total Price</th>
             <th>Date</th>
-            <th>Status</th>
-            <th>Total</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>#3791245567 Betty Messa</td>
-            <td>Mar 20, 2023</td>
-            <td><span class="badge bg-primary">Completed</span></td>
-            <td>$4.95</td>
-          </tr>
-          <tr>
-            <td>#1420826271 Serecur Blocker</td>
-            <td>Mar 20, 2023</td>
-            <td><span class="badge bg-primary">Completed</span></td>
-            <td>$35.65</td>
-          </tr>
-          <tr>
-            <td>#3791245567 Betty Messa</td>
-            <td>Mar 20, 2023</td>
-            <td><span class="badge bg-primary">Completed</span></td>
-            <td>$4.95</td>
-          </tr>
+          <% orders.forEach((order) => { %>
+            <tr>
+              <td><%= order._id %></td>
+              <td><%= order.user.username %></td>
+              <td>$<%= order.totalPrice.toFixed(2) %></td>
+              <td><%= order.date.toDateString() %></td>
+            </tr>
+          <% }) %>
         </tbody>
       </table>
     </div>
