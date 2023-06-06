@@ -207,15 +207,20 @@ const checkName = (req, res, next) => {
 };
 
 const addcart = async (req, res) => {
+    if (req.session.user !== undefined) {
     console.log(req.session.username)
     const user = await User.findOne({ username: req.session.username })
     user.gameids.push(req.params.id)
     await user.save()
-    res.send()
-
+    res.redirect('/cart')
+    }
+    else {
+        res.redirect('/login');
+    }
 }
 
 const viewcart = async (req, res) => {
+    if (req.session.user !== undefined) {
     let cartgames = [];
     const user = await User.findOne({ username: req.session.username });
     if (user !== undefined) {
@@ -228,8 +233,12 @@ const viewcart = async (req, res) => {
         let sum = 0;
         res.render('pages/cart', { games: cartgames, sum, user: req.session.user });
     } else {
-        res.redirect('/');
+        res.redirect('/login');
     }
+}
+else{
+    res.redirect('/login');
+}
 };
 
 const deletecart = async (req, res) => {
@@ -301,6 +310,7 @@ const homepage = (req, res) => {
 
 
 const addwishlist = async (req, res) => {
+    if (req.session.user !== undefined) {
     try {
         const user = await User.findOne({ username: req.session.username });
         if (user) {
@@ -311,15 +321,20 @@ const addwishlist = async (req, res) => {
             await user.save();
             res.redirect('/wishlist');
         } else {
-            res.redirect('/');
+            res.redirect('/login');
         }
     } catch (error) {
         console.error(error);
         res.redirect('/error-page');
     }
+}
+else {
+    res.redirect('/login');
+}
 };
 
 const viewwishlist = async (req, res) => {
+    if (req.session.user !== undefined) {
     try {
         let wishlistgames = [];
         const user = await User.findOne({ username: req.session.username });
@@ -337,8 +352,12 @@ const viewwishlist = async (req, res) => {
         }
     } catch (error) {
         console.error(error);
-        res.redirect('/error-page');
+        res.redirect('/login');
     }
+}
+else{
+    res.redirect('/login')
+}
 };
 
 const deletewishlist = async (req, res) => {
