@@ -12,7 +12,6 @@ const logger = require('morgan');
 const fs = require('fs');// Requiring file system to use local files
 const bodyParser = require('body-parser');//mount the data coming from the form of body to take input from forms 
 // const { Configuration, OpenAIApi } = require('openai');
-// const AllGames = require('./models/AllGamesSchema');
 
 
 app.use(express.urlencoded({ extended: true }));
