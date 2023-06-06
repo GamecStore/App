@@ -1,7 +1,8 @@
 
 /*form*/
 .bgimg{
-    background-image: url("./../images/bkg.gif");
+    background-image: url("../images/bg.png");
+    background-size: contain;
 }
 
 .formlayout {
