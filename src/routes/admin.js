@@ -45,7 +45,7 @@ async function getOrders() {
   return ordersWithUsers;
 }
 
-async function handlePage(req, res, page) {
+async function handlePage(req, res, page, data = {}) {
   let username = req?.session?.username;
   if (!username) {
     res.redirect("/login");
@@ -61,6 +61,7 @@ async function handlePage(req, res, page) {
         products: await Game.find({}).sort({ created: -1 }),
         stats: await getStats(),
         selectedPage: page,
+        ...data,
       });
     }
   }
@@ -106,5 +107,10 @@ router.post("/products/delete/:id", async (req, res) => {
   await Game.findByIdAndDelete(req.params.id);
   res.redirect("/admin/products");
 });
+
+router.post("/products/edit/:id", async (req, res) => {
+  let game = await Game.findById(req.params.id);
+  handlePage(req, res, "editProduct", { game: game });
+})
 
 module.exports = router;
