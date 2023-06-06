@@ -122,7 +122,7 @@ const allGames_post = (req, res) => {
         price:req.body.price,
         genre: req.body.genre,
         platform: req.body.platform,
-        poster:gamePoster
+        sideImg:gamePoster
     });
 
     console.log(req.body);

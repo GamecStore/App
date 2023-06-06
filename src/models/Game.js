@@ -37,17 +37,13 @@ const Game = mongoose.Schema({
         type: String,
         required: [true, "A game must have a platform"]
     },
-    poster: {
-        type: String,
-        required: [true, "A game must have a poster"]
-    },
     sliderImgs: { 
         type: Array,
         default: [] 
     },
     sideImg: {
         type: String,
-        default: 'N/A'
+        required: [true, "A game must have a poster"]
     },
     user:
     {
