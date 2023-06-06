@@ -90,6 +90,7 @@
         <!------------>
         <!--header-->
         <!--checkout option-->
+        <form action="/checkout" method="POST"></form>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
@@ -98,215 +99,216 @@
             </div>
         </div>
         <!--secoundtrial-->
-        <form action="/checkout" method="POST">
-            <div class="container-fluid" id="left-side">
-                <div class="row">
-                    <div class="col-lg-6 bg-dark rounded-3 ">
-                        <div class="col-5 md-2">
-                            <p class=" text-white mt-4 game-name" style="  text-align: left;">other payment mehtods
-                            </p>
 
-                        </div>
-                        <!--the beginning of the -->
-                        <div class="accordion" id="accordionExample" width="300px">
-                            <div class="accordion-item  ">
-                                <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button bg-dark text-white" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
-                                        aria-controls="collapseOne">
-                                        <i class="bi bi-credit-card" style="padding-left: 0;"></i>
-                                        credit card
-                                    </button>
-                                </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse show "
-                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body bg-dark text-white">
-                                        <div class="row mb-4">
-                                            <div class="col">
-                                                <div class="form-outline">
-                                                    <input type="text" id="formNameOnCard" class="form-control" />
-                                                    <label class="form-label" for="formNameOnCard">Name on
-                                                        card</label>
-                                                </div>
+        <div class="container-fluid" id="left-side">
+            <div class="row">
+                <div class="col-lg-6 bg-dark rounded-3 ">
+                    <div class="col-5 md-2">
+                        <p class=" text-white mt-4 game-name" style="  text-align: left;">other payment mehtods
+                        </p>
+
+                    </div>
+                    <!--the beginning of the -->
+                    <div class="accordion" id="accordionExample" width="300px">
+                        <div class="accordion-item  ">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button bg-dark text-white" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                    <i class="bi bi-credit-card" style="padding-left: 0;"></i>
+                                    credit card
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show " aria-labelledby="headingOne"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body bg-dark text-white">
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <div class="form-outline">
+                                                <input type="text" id="formNameOnCard" class="form-control" />
+                                                <label class="form-label" for="formNameOnCard">Name on
+                                                    card</label>
                                             </div>
-                                            <div class="col">
-                                                <div class="form-outline">
-                                                    <input type="text" id="formCardNumber" class="form-control" />
-                                                    <label class="form-label" for="formCardNumber">Credit
-                                                        card
-                                                        number</label>
-                                                </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-outline">
+                                                <input type="text" id="formCardNumber" class="form-control" />
+                                                <label class="form-label" for="formCardNumber">Credit
+                                                    card
+                                                    number</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-4">
+                                        <div class="col-3">
+                                            <div class="form-outline">
+                                                <input type="text" id="formExpiration" class="form-control" />
+                                                <label class="form-label" for="formExpiration">Expiration</label>
                                             </div>
                                         </div>
 
-                                        <div class="row mb-4">
-                                            <div class="col-3">
-                                                <div class="form-outline">
-                                                    <input type="text" id="formExpiration" class="form-control" />
-                                                    <label class="form-label" for="formExpiration">Expiration</label>
-                                                </div>
+                                        <div class="col-3">
+                                            <div class="form-outline">
+                                                <input type="text" id="formCVV" class="form-control" />
+                                                <label class="form-label" for="formCVV">CVV</label>
                                             </div>
-
-                                            <div class="col-3">
-                                                <div class="form-outline">
-                                                    <input type="text" id="formCVV" class="form-control" />
-                                                    <label class="form-label" for="formCVV">CVV</label>
-                                                </div>
-                                            </div>
-
                                         </div>
-
-
 
                                     </div>
+
+
+
                                 </div>
                             </div>
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed  bg-dark text-white" type="button"
-                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
-                                        aria-controls="collapseTwo">
-                                        <i class="bi bi-paypal"></i>
-                                        paypal
-                                    </button>
-                                </h2>
-                                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                    data-bs-parent="#accordionExample">
-                                    <div class="accordion-body bg-dark text-white ">
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed  bg-dark text-white" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                    <i class="bi bi-paypal"></i>
+                                    paypal
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body bg-dark text-white ">
 
-                                        <h6>Required: Save this payment method for future purchases?</h6>
+                                    <h6>Required: Save this payment method for future purchases?</h6>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">
+                                            yes
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                            id="flexRadioDefault2" checked>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            No
+                                        </label>
+                                    </div>
+                                    <p>By choosing to save your payment information, this payment method
+                                        will be
+                                        selected as the default for all purchases made using Epic Games
+                                        payment,
+                                        including purchases in Fortnite, Rocket League, Fall Guys and
+                                        the Epic Games
+                                        Store. You can delete your saved payment information anytime on
+                                        this payment
+                                        screen or by logging in to your Epic Games account, and
+                                        selecting payment
+                                        management in your account settings. Learn more.
+                                        You will be directed to PayPal to authorize your payment method,
+                                        then you
+                                        will be returned to Epic Games to complete this purchase.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 " class="right-side">
+                    <!--right side part-->
+                    <section>
+                        <div class="rounded d-flex flex-column p-2" style="background-color:#212529;">
+                            <div class="words" style="color: black;">
+                                <div class="p-2 me-3">
+                                    <h4 style="color: white;">Order Recap</h4>
+                                </div>
+                                <div class="p-2 d-flex">
+                                    <div class="col-8"><img src="img/Age Of Wonders 4.jpg " alt="">
+                                    </div>
+                                    <div class="ms-auto">
+                                        <h5 style="color: aliceblue;">Age Of Wonders</h5>
+                                    </div>
+                                </div>
+
+
+                                <div class="border-top px-2 mx-2"></div>
+                                <div class="p-2 d-flex pt-3">
+                                    <div class="col-8" style="color:aliceblue;">After Discount</div>
+                                    <div class="ms-auto" style="color:aliceblue;">E£40</div>
+                                </div>
+                                <div class="p-2 d-flex">
+                                    <div class="col-8" style="color:aliceblue;">
+                                        shipping
+                                    </div>
+                                    <div class="ms-auto">
+                                        <h6 style="color: aliceblue;">E£50 </h6>
+                                    </div>
+                                </div>
+                                <div class="border-top px-2 mx-2"></div>
+                                <div class="p-2 d-flex pt-3">
+                                    <div class="col-8" style="color:aliceblue;">before tax</div>
+                                    <div class="ms-auto" style="color:aliceblue;"><b>E£71.76</b></div>
+                                </div>
+                                <div class="p-2 d-flex">
+                                    <div class="col-8" style="color:aliceblue;">
+                                        after tax <span class="fa fa-question-circle text-dark"></span>
+                                    </div>
+                                    <div class="ms-auto" style="color:aliceblue;"><b>E£100</b></div>
+                                </div>
+                                <div class="border-top px-2 mx-2"></div>
+                                <div class="p-2 d-flex pt-3">
+                                    <div class="col-8" style="color:aliceblue;"><b>Total</b></div>
+                                    <div class="ms-auto" style="color:aliceblue;"><b class="text-success">E£185.00</b>
+                                    </div>
+                                    <button>
+                                        <a href="/libary" class="btn btn1-primary text-center ">CHECK OUT</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                    <!--rightside part-->
+                </div>
+            </div>
+        </div>
+        <div class="container my-5">
+            <div class="row">
+
+                <!-- Modal -->
+                <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Checkout</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-10 col-md-8 rounded-3 ">
+                                    <div class="row">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                yes
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckDefault">
+                                            <label class="form-check-label" for="flexCheckDefault">
+                                                <i class="bi bi-credit-card "></i>
+                                                Credit Card
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                No
+                                            <input class="form-check-input" type="checkbox" value=""
+                                                id="flexCheckChecked" checked>
+                                            <label class="form-check-label" for="flexCheckChecked">
+                                                <i class="bi bi-paypal"></i>
+                                                PayPal
                                             </label>
                                         </div>
-                                        <p>By choosing to save your payment information, this payment method
-                                            will be
-                                            selected as the default for all purchases made using Epic Games
-                                            payment,
-                                            including purchases in Fortnite, Rocket League, Fall Guys and
-                                            the Epic Games
-                                            Store. You can delete your saved payment information anytime on
-                                            this payment
-                                            screen or by logging in to your Epic Games account, and
-                                            selecting payment
-                                            management in your account settings. Learn more.
-                                            You will be directed to PayPal to authorize your payment method,
-                                            then you
-                                            will be returned to Epic Games to complete this purchase.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 " class="right-side">
-                        <!--right side part-->
-                        <section>
-                            <div class="rounded d-flex flex-column p-2" style="background-color:#212529;">
-                                <div class="words" style="color: black;">
-                                    <div class="p-2 me-3">
-                                        <h4 style="color: white;">Order Recap</h4>
-                                    </div>
-                                    <div class="p-2 d-flex">
-                                        <div class="col-8"><img src="img/Age Of Wonders 4.jpg " alt="">
-                                        </div>
-                                        <div class="ms-auto">
-                                            <h5 style="color: aliceblue;">Age Of Wonders</h5>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="border-top px-2 mx-2"></div>
-                                    <div class="p-2 d-flex pt-3">
-                                        <div class="col-8" style="color:aliceblue;">After Discount</div>
-                                        <div class="ms-auto" style="color:aliceblue;">E£40</div>
-                                    </div>
-                                    <div class="p-2 d-flex">
-                                        <div class="col-8" style="color:aliceblue;">
-                                            shipping
-                                        </div>
-                                        <div class="ms-auto">
-                                            <h6 style="color: aliceblue;">E£50 </h6>
-                                        </div>
-                                    </div>
-                                    <div class="border-top px-2 mx-2"></div>
-                                    <div class="p-2 d-flex pt-3">
-                                        <div class="col-8" style="color:aliceblue;">before tax</div>
-                                        <div class="ms-auto" style="color:aliceblue;"><b>E£71.76</b></div>
-                                    </div>
-                                    <div class="p-2 d-flex">
-                                        <div class="col-8" style="color:aliceblue;">
-                                            after tax <span class="fa fa-question-circle text-dark"></span>
-                                        </div>
-                                        <div class="ms-auto" style="color:aliceblue;"><b>E£100</b></div>
-                                    </div>
-                                    <div class="border-top px-2 mx-2"></div>
-                                    <div class="p-2 d-flex pt-3">
-                                        <div class="col-8" style="color:aliceblue;"><b>Total</b></div>
-                                        <div class="ms-auto" style="color:aliceblue;"><b
-                                                class="text-success">E£185.00</b>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </section>
-                        <!--rightside part-->
-                    </div>
                 </div>
-            </div>
-            <div class="container my-5">
-                <div class="row">
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Checkout</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="col-10 col-md-8 rounded-3 ">
-                                        <div class="row">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    <i class="bi bi-credit-card "></i>
-                                                    Credit Card
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckChecked" checked>
-                                                <label class="form-check-label" for="flexCheckChecked">
-                                                    <i class="bi bi-paypal"></i>
-                                                    PayPal
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        </div>
 
-                </div>
-            </div>
-            </div>
-        </form>
         <!--checkout option-->
         <!--footer-->
         <footer class="footer bg">
