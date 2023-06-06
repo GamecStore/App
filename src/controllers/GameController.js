@@ -143,23 +143,6 @@ const allGames_post = async (req, res) => {
     .catch((err) => console.log(`[MONGO] Error in saving data in database: ${err}`)); 
 }
 
-const allGames_multiple_post= async (req, res) => {
-    const files = req.files;
-    if(!files){
-        const error = new Error("No files uploaded!");
-        error.httpStatusCode = 400;
-        return next(error);
-    }
-
-
-    await games.save()
-    .then(() => console.log("success"))
-    .catch((err) => console.log(`[MONGO] Error in saving data in database: ${err}`)); 
-
-    res.redirect('/admin/products');
-}
-
-
 
 module.exports = {
     createGame,
@@ -171,6 +154,5 @@ module.exports = {
     gamepage,
     searchGame,
     allGames_get,
-    allGames_post,
-    allGames_multiple_post
+    allGames_post
 };
