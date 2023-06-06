@@ -40,3 +40,28 @@
     background-color: black;
     box-shadow: none;
 }
+
+/* cards*/
+.gameCard:hover{
+    cursor:pointer;
+    scale: 1.01;
+    transition: 0.5s ease;
+    box-shadow: 0 4px 9px 0 #0d6efd;
+}
+
+.genre{
+    font-family: 'Inter','monospace', 'sans-serif';
+    font-size: 9px;
+}
+
+.title{
+    font-size: 14px;
+    font-family: 'Inter','monospace', 'sans-serif';
+}
+
+.price{
+    font-size: 14px;
+    font-family: 'Inter','monospace', 'sans-serif';
+}
+
+

@@ -101,7 +101,7 @@
                                 <li>God of War Ragnarök ps4</li>
                             </ul>
                         </div>
-                        <div class="col-12 mx-1 text-start text-white ">$<%= game.price[0] %>
+                        <div class="col-12 mx-1 text-start text-white ">$<%= game.price %>
                         </div>
                         <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
 
@@ -117,7 +117,7 @@
                                 <li>God of War Ragnarök ps4 and ps5</li>
                             </ul>
                         </div>
-                        <div class="col-12 mx-1 text-start text-white">$<%= game.price[1] %>
+                        <div class="col-12 mx-1 text-start text-white">$<%= game.price %>
                         </div>
                         <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
 
@@ -140,14 +140,14 @@
                                 <li>PSN avatar set for PS4/PS5</li>
                             </ul>
                         </div>
-                        <div class="col-12 mx-1 text-start text-white">$<%= game.price[2] %>
+                        <div class="col-12 mx-1 text-start text-white">$<%= game.price %>
                         </div>
                         <form action="/Game/<%= game.id %>/addcart" method="POST">
                             <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
 
                         </form>
                         <form action="/Game/<%= game.id %>/addwishlist" method="POST">
-                        <button class="col-12 buyButton rounded-3 my-3">Wishlist</button>
+                            <button class="col-12 buyButton rounded-3 my-3">Wishlist</button>
                         </form>
                     </div>
                 </div>

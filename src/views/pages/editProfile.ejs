@@ -121,8 +121,10 @@
 
 
                                             </div>
-                                            <button type="submit"
-                                                class=" mt-4 d-block w-100 btn btn-primary">Submit</button>
+                                            <form action="/editProfile">
+                                                <button type="submit"
+                                                    class=" mt-4 d-block w-100 btn btn-primary">Submit</button>
+                                            </form>
                                         </form>
                                     </div>
                                 </div>
@@ -152,58 +154,56 @@
             <div class="col-md-15 mb-2 ">
                 <div class="card mb-2">
                     <div class="card-body  bg-dark">
-                        <form>
-                            <h5 class="mb-4" style="color: black;">Payment</h5>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm3"
-                                    checked />
-                                <label class="form-check-label" for="checkoutForm3">
-                                    Credit card
-                                </label>
-                            </div>
-                            <div class="form-check bg-dark ">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="checkoutForm4" />
-                                <label class="form-check-label" for="checkoutForm4">
-                                    Debit card
-                                </label>
-                            </div>
-                            <div class="form-check mb-1">
-                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                    id="checkoutForm5" />
-                                <label class="form-check-label" for="checkoutForm5">
-                                    Paypal
-                                </label>
-                            </div>
-                            <div class="row mb-1">
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <input type="text" id="formNameOnCard" class="form-control" />
-                                        <label class="form-label" for="formNameOnCard">Name on card</label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <input type="text" id="formCardNumber" class="form-control" />
-                                        <label class="form-label" for="formCardNumber">Credit card number</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-4">
-                                <div class="col-3">
-                                    <div class="form-outline">
-                                        <input type="text" id="formExpiration" class="form-control" />
-                                        <label class="form-label" for="formExpiration">Expiration</label>
-                                    </div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="form-outline">
-                                        <input type="text" id="formCVV" class="form-control" />
-                                        <label class="form-label" for="formCVV">CVV</label>
-                                    </div>
-                                </div>
-                            </div>
 
+                        <h5 class="mb-4" style="color: black;">Payment</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm3"
+                                checked />
+                            <label class="form-check-label" for="checkoutForm3">
+                                Credit card
+                            </label>
+                        </div>
+                        <div class="form-check bg-dark ">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm4" />
+                            <label class="form-check-label" for="checkoutForm4">
+                                Debit card
+                            </label>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm5" />
+                            <label class="form-check-label" for="checkoutForm5">
+                                Paypal
+                            </label>
+                        </div>
+                        <div class="row mb-1">
+                            <div class="col">
+                                <div class="form-outline">
+                                    <input type="text" id="formNameOnCard" class="form-control" />
+                                    <label class="form-label" for="formNameOnCard">Name on card</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline">
+                                    <input type="text" id="formCardNumber" class="form-control" />
+                                    <label class="form-label" for="formCardNumber">Credit card number</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-3">
+                                <div class="form-outline">
+                                    <input type="text" id="formExpiration" class="form-control" />
+                                    <label class="form-label" for="formExpiration">Expiration</label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-outline">
+                                    <input type="text" id="formCVV" class="form-control" />
+                                    <label class="form-label" for="formCVV">CVV</label>
+                                </div>
+                            </div>
+                        </div>
+                        <form action="post">
                             <button class="btn btn-warning btn-lg btn-block" type="submit">
                                 Update Info
                             </button>
