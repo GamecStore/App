@@ -287,7 +287,7 @@ const checkout = async (req, res) => {
                     .then(async () => {
                         console.log("Order saved");
                         let x = [];
-                      let u =  await User.findOneAndUpdate({ _id: user._id }, {gameids : x} )
+                        let u = await User.findOneAndUpdate({ _id: user._id }, { gameids: x })
                     })
                     .catch((err) => {
                         console.error("Error saving order:", err);
@@ -311,7 +311,7 @@ const signupPage = (req, res) => {
 
 const homepage = (req, res) => {
 
-    res.render('pages/index', { user: req.session.user });
+
 };
 
 
