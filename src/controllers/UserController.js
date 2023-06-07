@@ -24,6 +24,7 @@ const { param } = require("../routes");
 const saltRounds = 10;
 const createUser = async (req, res) => {
     try {
+        const errors = []
         bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
             const user = new User({
                 email: req.body.email,
@@ -33,16 +34,27 @@ const createUser = async (req, res) => {
                 dob: req.body.dob,
             });
             const { email, gender, username, password, dob } = req.body;
-            if (username || !email || !password || !gender || !dob) {
-                //         return res.render('Name, email, and password are required');
-                //res.send("username email password gender dob are required  ")
+            if (!username || !email || !password || !gender || !dob) {
+                res.redirect('/signup?message="username email password gender dob are required"')
+            //     console.log("username email password gender dob are required must be required")
+            //     //res.send("username email password gender dob are required  ")
+            //     // errors.push("all fields are required")
             }
-            // const emailRegex = /\S+@\S+\.\S+/;
-            // if (!emailRegex.test(email)) {
-            //     res.send("email is invalid");
-            // }
-            // if (password <= 8) {
-            //     res.send("password must be at least 8 characters ");
+
+            const emailRegex = /\S+@\S+\.\S+/;
+            if (!emailRegex.test(email)) {
+                // res.render('pages/signup', { user: req.session.user });
+                res.redirect('/signup?message="email is required"')
+                console.log('email is required');
+                // errors.push("email must be a valid email")
+            }
+            if (password <= 8) {
+                // res.render('pages/signup', { user: req.session.user });
+                res.redirect('/signup?message="password is required"')
+                // errors.push("password must be equal or more than 8 characters")
+            }
+            // if (errors.length > 0) {
+            //     return res.render("/signup", { errors });
             // }
             user
                 .save()
@@ -287,7 +299,7 @@ const checkout = async (req, res) => {
                     .then(async () => {
                         console.log("Order saved");
                         let x = [];
-                      let u =  await User.findOneAndUpdate({ _id: user._id }, {gameids : x} )
+                        let u = await User.findOneAndUpdate({ _id: user._id }, { gameids: x })
                     })
                     .catch((err) => {
                         console.error("Error saving order:", err);
@@ -311,7 +323,7 @@ const signupPage = (req, res) => {
 
 const homepage = (req, res) => {
 
-    res.render('pages/index', { user: req.session.user });
+
 };
 
 
