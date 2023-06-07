@@ -415,8 +415,28 @@ const checkoutpage = async (req, res) => {
 const loginPage = (req, res) => {
     res.render('pages/login', { user: req.session.user });
 };
-const historyPage = (req, res) => {
-    res.render('pages/history', { user: req.session.user });
+const historyPage = async (req, res) => {
+    if (req.session.user !== undefined) {
+        let orders = await Order.find({user:req.session.user}).sort({ date: -1 });
+        let ordersWithUsers = [];
+        let games = await game.find({});
+        for (let order of orders) {
+          let user = await User.findById(order.user);
+          let gamesInOrder = [];
+          for (let gameId of order.games) {
+            let game = games.find((game) => game._id.toString() === gameId.toString());
+            gamesInOrder.push(game);
+          }
+          order.games = gamesInOrder;
+          ordersWithUsers.push({ ...order._doc, user: user });
+        }
+        console.log(ordersWithUsers);
+        res.render('pages/history', { orders:ordersWithUsers ,user:req.session.user});
+
+    }
+    else {
+            res.redirect('/login');
+        }
 };
 const contactusPage = (req, res) => {
     res.render('pages/contactus', { user: req.session.user });

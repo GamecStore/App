@@ -65,62 +65,15 @@
         </tr>
       </thead>
       <tbody>
+        <% orders.forEach((order)=> { %>
         <tr class="trr">
-          <td>#2632</td>
-          <td>20/8/2023</td>
-          <td>Crime Boss</td>
-          <td>$21.79</td>
+          <td><%= order._id %></td>
+          <td><%= order.date.toDateString()%></td>
+          <td><%= order.games.map(game => game.name).join('\n ') %></td>
+          <td><%= order.totalPrice%></td>
           <td>Paid</td>
         </tr>
-        <tr class="trr">
-          <td>#2634</td>
-          <td>10/7/2023</td>
-          <td>Hogwarts Legacy</td>
-          <td>$84.99</td>
-          <td>Refunded</td>
-        </tr>
-        <tr class="trr">
-          <td>#2637</td>
-          <td>10/7/2023</td>
-          <td>Final Fantasy</td>
-          <td>$40.55</td>
-          <td>Refunded</td>
-        </tr>
-        <tr class="trr">
-          <td>#2634</td>
-          <td>30/9/2023</td>
-          <td>Basketball</td>
-          <td>$45.20</td>
-          <td>Paid</td>
-        </tr>
-        <tr class="trr">
-          <td>#2621</td>
-          <td>2/2/2023</td>
-          <td>God Of War</td>
-          <td>$85.20</td>
-          <td>Refunded</td>
-        </tr>
-        <tr class="trr">
-          <td>#2640</td>
-          <td>9/9/2023</td>
-          <td>Battlefield</td>
-          <td>$100.20</td>
-          <td>Paid</td>
-        </tr>
-        <tr class="trr">
-          <td>#2645</td>
-          <td>10/5/2022</td>
-          <td>Fortnite</td>
-          <td>$85.20</td>
-          <td>Paid</td>
-        </tr>
-        <tr class="trr">
-          <td>#2645</td>
-          <td>1/9/2022</td>
-          <td>Farscape</td>
-          <td>$65.99</td>
-          <td>Refunded</td>
-        </tr>
+        <% }) %>
       </tbody>
     </table>
 
