@@ -51,7 +51,7 @@ app.use(express.static('public'));
 app.use('/static', express.static('static'))
 
 const AdminRouter = require('./routes/admin')
-
+const aboutUsRouter = require('./routes/aboutUs')
 const CheckoutRouter = require('./routes/user')
 const ContactUsRouter = require('./routes/user')
 const HistoryRouter = require('./routes/user')
@@ -95,6 +95,7 @@ app.use('/checkout', CheckoutRouter)
 app.use('/allGames', allGamesRouter)
 app.use('/editprofile', editProfileRouter)
 app.use('/game', gamePageRouter)
+app.use('/aboutUs', aboutUsRouter)
 
 
 app.get('/public/:dir/:file', (req, res) => {
