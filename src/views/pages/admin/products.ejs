@@ -40,7 +40,7 @@
             <td><%= game.name %></td>
             <td><%= game.developer %></td>
             <td><%= game.genre %></td>
-            <td><%= game.price %></td>
+            <td>$<%= game.price.toFixed(2) %></td>
             <td>
               <form
                 action="/admin/products/delete/<%= game._id %>"
