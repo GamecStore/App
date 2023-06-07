@@ -5,7 +5,7 @@ const Game = mongoose.Schema({
         type: String,
         default: 'N/A'
     },
-    publisher: {
+    publisher: { 
         type: String,
         default: 'N/A'
     },

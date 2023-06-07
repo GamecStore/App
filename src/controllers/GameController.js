@@ -6,7 +6,7 @@ const gamepage = (req, res) => {
   game = Game.findOne({ _id: id }).then((game) => {
     console.log(game);
     res.render("pages/gamePage", { game, user: req.session.user });
-  });
+  }).catch(()=> res.render("pages/ErrorPage"));
 };
 
 const searchGame = (req, res) => {

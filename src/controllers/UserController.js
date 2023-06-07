@@ -323,7 +323,7 @@ const signupPage = (req, res) => {
 
 const homepage = (req, res) => {
 
-    res.render('pages/index', { user: req.session.user });
+
 };
 
 
