@@ -64,4 +64,11 @@
     font-family: 'Inter','monospace', 'sans-serif';
 }
 
+.links{
+    text-decoration: none;
+    color: #585858;
+}
 
+.links:hover{
+    color:white;
+}

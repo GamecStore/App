@@ -6,7 +6,7 @@ const gamepage = (req, res) => {
   game = Game.findOne({ _id: id }).then((game) => {
     console.log(game);
     res.render("pages/gamePage", { game, user: req.session.user });
-  }).catch(()=> res.render("pages/ErrorPage"));
+  }).catch(() => res.render("pages/ErrorPage"));
 };
 
 const searchGame = (req, res) => {
@@ -45,14 +45,19 @@ const allGames_edit = async (req, res) => {
 // all games page
 const allGames_get = (req, res) => {
   Game.find()
-    .then((result) => {
-      res.render("pages/allGames", {
-        gamesArray: result,
-        user: req.session.user,
-      });
-    })
-    .catch((err) => console.error(err));
+  .then((result) => {
+    res.render("pages/allGames", {
+      gamesArray: result,
+      user: req.session.user,
+    });
+  })
+  .catch((err) => console.error(err));
+
+
 };
+
+
+
 
 const allGames_post = async (req, res) => {
   const gamePoster = req?.file?.filename;
