@@ -68,9 +68,9 @@
         <% orders.forEach((order)=> { %>
         <tr class="trr">
           <td><%= order._id %></td>
-          <td><%order.date.toDateString()%></td>
-          <td><%order.games.name%></td>
-          <td><%order.games.price%></td>
+          <td><%= order.date.toDateString()%></td>
+          <td><%= order.games.map(game => game.name).join('\n ') %></td>
+          <td><%= order.totalPrice%></td>
           <td>Paid</td>
         </tr>
         <% }) %>
