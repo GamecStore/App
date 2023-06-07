@@ -51,7 +51,7 @@ app.use(express.static('public'));
 app.use('/static', express.static('static'))
 
 const AdminRouter = require('./routes/admin')
-const AboutUsRouter = require('./routes/aboutUs')
+const aboutUsRouter = require('./routes/aboutUs')
 const CheckoutRouter = require('./routes/user')
 const ContactUsRouter = require('./routes/user')
 const HistoryRouter = require('./routes/user')
@@ -86,7 +86,7 @@ app.use('/', require('./routes/game'))
 app.use('/', require('./routes/user'));
 
 app.use('/admin', AdminRouter)
-app.use('/aboutUs', AboutUsRouter)
+
 app.use('/contactus', ContactUsRouter)
 app.use('/library', LibraryRouter)
 app.use('/wishlist', WishlistRouter)
@@ -95,12 +95,8 @@ app.use('/checkout', CheckoutRouter)
 app.use('/allGames', allGamesRouter)
 app.use('/editprofile', editProfileRouter)
 app.use('/game', gamePageRouter)
+app.use('/aboutUs', aboutUsRouter)
 
-
-app.get('/logout', (req, res) => {
-    req.session.destroy();
-    res.redirect('/');
-});
 
 app.get('/public/:dir/:file', (req, res) => {
     res.sendFile(`${__dirname}/public/${req.params.dir}/${req.params.file}`);

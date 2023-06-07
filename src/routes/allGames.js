@@ -40,7 +40,7 @@ const upload = multer({
     }
 });
 
-
+ 
 router.get('/', GameContoller.allGames_get)
 router.post('/', upload.single('sideImg'), GameContoller.allGames_post)
 router.post('/:id', upload.single('sideImg'), GameContoller.allGames_edit)
