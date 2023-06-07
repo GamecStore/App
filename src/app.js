@@ -42,7 +42,6 @@ app.use(express.urlencoded({ extended: true }));
 // Configuring express to use body-parser as middle-ware
 // middleware --> something that is going to run between the time that the server gets the request and 
 // the server sends the response
-app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json())
 app.use(cors());
@@ -86,7 +85,6 @@ app.use('/', require('./routes/game'))
 app.use('/', require('./routes/user'));
 
 app.use('/admin', AdminRouter)
-
 app.use('/contactus', ContactUsRouter)
 app.use('/library', LibraryRouter)
 app.use('/wishlist', WishlistRouter)
