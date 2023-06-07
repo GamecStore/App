@@ -36,9 +36,9 @@ const createUser = async (req, res) => {
             const { email, gender, username, password, dob } = req.body;
             if (!username || !email || !password || !gender || !dob) {
                 res.redirect('/signup?message="username email password gender dob are required"')
-            //     console.log("username email password gender dob are required must be required")
-            //     //res.send("username email password gender dob are required  ")
-            //     // errors.push("all fields are required")
+                //     console.log("username email password gender dob are required must be required")
+                //     //res.send("username email password gender dob are required  ")
+                //     // errors.push("all fields are required")
             }
 
             const emailRegex = /\S+@\S+\.\S+/;
@@ -120,21 +120,23 @@ const login = async (req, res) => {
     }
 };
 const editProfile = async (req, res) => {
-    const user = await User.findOne({ username: req.session.username });
-    if (user) {
-        user.email = req.body.email;
-        user.gender = req.body.gender;
-        // user.dob = req.body.dob;
-        user.username = req.body.username;
-        await user.save();
-        req.session.user = user;
-        console.log(user.username);
-        console.log(user.email);
+    if (req.session.user !== undefined) {
+        const user = await User.findOne({ username: req.session.username });
+        if (user) {
+            user.email = req.body.email;
+            user.gender = req.body.gender;
+            // user.dob = req.body.dob;
+            user.username = req.body.username;
+            await user.save();
+            req.session.user = user;
+            console.log(user.username);
+            console.log(user.email);
 
-        res.redirect('/editprofile', { user: req.session.user });
+            res.redirect('/editprofile', { user: req.session.user });
+        }
     }
     else {
-        res.status(404).send('User not found');
+        res.redirect('/login');
     }
 };
 

@@ -69,8 +69,8 @@
                                     <div class="user-avatar">
                                         <img src="../../public/images/account.png" alt="user account">
                                     </div>
-                                    <h5 class="user-name text-light"><%= user.username%></h5>
-                                    <h6 class="user-email text-light"><%= user.email%></h6>
+                                    <h5 class="user-name">User account</h5>
+                                    <h6 class="user-email">account@gmail.com</h6>
                                 </div>
                                 <div class="about">
                                     <h5 class="mb-2 text-primary">About</h5>
@@ -160,19 +160,19 @@
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm3"
                                 checked />
-                            <label class="form-check-label text-light" for="checkoutForm3">
+                            <label class="form-check-label" for="checkoutForm3">
                                 Credit card
                             </label>
                         </div>
                         <div class="form-check bg-dark ">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm4" />
-                            <label class="form-check-label text-light" for="checkoutForm4">
+                            <label class="form-check-label" for="checkoutForm4">
                                 Debit card
                             </label>
                         </div>
-                        <div class="form-check mb-4">
+                        <div class="form-check mb-1">
                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="checkoutForm5" />
-                            <label class="form-check-label text-light" for="checkoutForm5">
+                            <label class="form-check-label" for="checkoutForm5">
                                 Paypal
                             </label>
                         </div>
@@ -180,13 +180,13 @@
                             <div class="col">
                                 <div class="form-outline">
                                     <input type="text" id="formNameOnCard" class="form-control" />
-                                    <label class="form-label text-light" for="formNameOnCard">Name on card</label>
+                                    <label class="form-label" for="formNameOnCard">Name on card</label>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="form-outline">
                                     <input type="text" id="formCardNumber" class="form-control" />
-                                    <label class="form-label text-light" for="formCardNumber">Credit card number</label>
+                                    <label class="form-label" for="formCardNumber">Credit card number</label>
                                 </div>
                             </div>
                         </div>
@@ -194,18 +194,18 @@
                             <div class="col-3">
                                 <div class="form-outline">
                                     <input type="text" id="formExpiration" class="form-control" />
-                                    <label class="form-label text-light" for="formExpiration">Expiration</label>
+                                    <label class="form-label" for="formExpiration">Expiration</label>
                                 </div>
                             </div>
                             <div class="col-3">
                                 <div class="form-outline">
                                     <input type="text" id="formCVV" class="form-control" />
-                                    <label class="form-label text-light" for="formCVV">CVV</label>
+                                    <label class="form-label" for="formCVV">CVV</label>
                                 </div>
                             </div>
                         </div>
                         <form action="/user/editprofile" method="post">
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">
+                            <button class="btn btn-warning btn-lg btn-block" type="submit">
                                 Update Info
                             </button>
                             </a>
