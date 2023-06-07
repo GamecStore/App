@@ -93,90 +93,13 @@
             </div>
 
         </div>
-        <div id="focusContent" class="container my-5 text-white ">
-            <div class="row">
-                <div class="col-12 col-md-4 "><img class="img-fluid" src="/images/uploads/<%= game.sideImg %>" alt="">
-                    <div class="col text-white my-3 text-center d-flex flex-column">
-                        <h2 class="fw-light col-12">Standard</h2>
-                        <div class="col-12 text-start mx-1">
-                            <ul>
-                                <li>God of War Ragnarök ps4</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 mx-1 text-start text-white ">$<%= game.price %>
-                        </div>
-                        <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
 
-                        <button class="col-12 buyButton rounded-3 my-3">Wishlist</button>
-
-                    </div>
-                </div>
-                <div class="col-12 col-md-4"><img class="img-fluid" src="/images/uploads/<%= game.sideImg %>" alt="">
-                    <div class="col text-white my-3 text-center d-flex flex-column">
-                        <h2 class="fw-light col-12">Standard</h2>
-                        <div class="col-12 text-start mx-1">
-                            <ul>
-                                <li>God of War Ragnarök ps4 and ps5</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 mx-1 text-start text-white">$<%= game.price %>
-                        </div>
-                        <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
-
-                        <button class="col-12 buyButton rounded-3 my-3">Wishlist</button>
-
-                    </div>
-                </div>
-                <div class="col-12 col-md-4"><img class="img-fluid" src="/images/uploads/<%= game.sideImg %>" alt="<%= game.name %>">
-                    <div class="col text-white my-3 text-center">
-                        <h2 class="fw-light col-12">Digital Deluxe Edition</h2>
-                        <div class="col-12 text-start mx-1">
-                            <ul>
-                                <li>includes: God of War Ragnarök PS4 and PS5</li>
-                                <li>Darkdale Armor</li>
-                                <li>Darkdale Attire (Cosmetic)</li>
-                                <li>Darkdale Axe Grip</li>
-                                <li>Darkdale Blades Handle</li>
-                                <li>Dark Horse digital art book</li>
-                                <li> Official digital soundtrack</li>
-                                <li>PSN avatar set for PS4/PS5</li>
-                            </ul>
-                        </div>
-                        <div class="col-12 mx-1 text-start text-white">$<%= game.price %>
-                        </div>
-                        <form action="/Game/<%= game.id %>/addcart" method="POST">
-                            <button class="col-12 buyButton rounded-3 my-3">Add to Cart</button>
-
-                        </form>
-                        <form action="/Game/<%= game.id %>/addwishlist" method="POST">
-                            <button class="col-12 buyButton rounded-3 my-3">Wishlist</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-
-    <!-- <hr class="border-5 border-white">
-        <div class="row">
-            <div class="col-12">
-                <div class="col-12">
-                    <h2 class="text-white">Reviews</h2>
-                </div>
-                <div class="col-1  circle">
-                    <img class="img-fluid" src="img/users-Icons/Gamec12_Icon.png" alt="">
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-
 
     <!--footer-->
     <footer class="footer bg ">
         <%- include('../partials/footer') %>
     </footer>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
