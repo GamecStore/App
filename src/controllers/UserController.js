@@ -10,6 +10,7 @@ sgMail.setApiKey(config.gridsend)
 
 const bcrypt = require("bcrypt");
 const { param } = require("../routes");
+const Game = require('../models/Game');
 
 const saltRounds = 10;
 const createUser = async (req, res) => {
@@ -23,8 +24,10 @@ const createUser = async (req, res) => {
                 password: hash,
                 dob: req.body.dob,
             });
-            const { email, gender, username, password, dob } = req.body;
-            if (!username || !email || !password || !gender || !dob) {
+
+
+
+            if (!user.username || !user.email || !user.password || !user.gender || !user.dob) {
                 res.redirect('/signup?message="username email password gender dob are required"')
                 //     console.log("username email password gender dob are required must be required")
                 //     //res.send("username email password gender dob are required  ")
@@ -32,13 +35,13 @@ const createUser = async (req, res) => {
             }
 
             const emailRegex = /\S+@\S+\.\S+/;
-            if (!emailRegex.test(email)) {
+            if (!emailRegex.test(user.email)) {
                 // res.render('pages/signup', { user: req.session.user });
                 res.redirect('/signup?message="email is required"')
                 console.log('email is required');
                 // errors.push("email must be a valid email")
             }
-            if (password <= 8) {
+            if (user.password < 8) {
                 // res.render('pages/signup', { user: req.session.user });
                 res.redirect('/signup?message="password is required"')
                 // errors.push("password must be equal or more than 8 characters")
@@ -291,7 +294,7 @@ const checkout = async (req, res) => {
                     .then(async () => {
                         console.log("Order saved");
                         let x = [];
-                        let u = await User.findOneAndUpdate({ _id: user._id }, { gameids: x })
+                        let u = await User.findOneAndUpdate({ _id: user._id }, { gameids: x });
                     })
                     .catch((err) => {
                         console.error("Error saving order:", err);
@@ -305,7 +308,22 @@ const checkout = async (req, res) => {
     } else {
         res.redirect('/login');
     }
+}
+const library = async (req, res) => {
+    if (req.session.user !== undefined) {
+        const user = await User.findOne({ username: req.session.username });
+        if (user !== undefined) {
+
+
+        }
+    }
+    else {
+        res.redirect('/login');
+    }
+    res.render('pages/library', { user: req.session.user });
 };
+
+
 
 
 
@@ -417,27 +435,28 @@ const loginPage = (req, res) => {
 };
 const historyPage = async (req, res) => {
     if (req.session.user !== undefined) {
-        let orders = await Order.find({user:req.session.user}).sort({ date: -1 });
+        let orders = await Order.find({ user: req.session.user }).sort({ date: -1 });
         let ordersWithUsers = [];
         let games = await game.find({});
         for (let order of orders) {
-          let user = await User.findById(order.user);
-          let gamesInOrder = [];
-          for (let gameId of order.games) {
-            let game = games.find((game) => game._id.toString() === gameId.toString());
-            gamesInOrder.push(game);
-          }
-          order.games = gamesInOrder;
-          ordersWithUsers.push({ ...order._doc, user: user });
+            let user = await User.findById(order.user);
+            let gamesInOrder = [];
+            for (let gameId of order.games) {
+                let game = games.find((game) => game._id.toString() === gameId.toString());
+                gamesInOrder.push(game);
+            }
+            order.games = gamesInOrder;
+            ordersWithUsers.push({ ...order._doc, user: user });
         }
         console.log(ordersWithUsers);
-        res.render('pages/history', { orders:ordersWithUsers ,user:req.session.user});
+        res.render('pages/history', { orders: ordersWithUsers, user: req.session.user });
 
     }
     else {
-            res.redirect('/login');
-        }
+        res.redirect('/login');
+    }
 };
+
 const contactusPage = (req, res) => {
     res.render('pages/contactus', { user: req.session.user });
 };
@@ -482,5 +501,6 @@ module.exports = {
     viewwishlist,
     deletewishlist,
     logout,
-    aboutUsPage
+    aboutUsPage,
+    library
 };
