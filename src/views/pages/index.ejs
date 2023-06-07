@@ -91,7 +91,7 @@
               </div>
             </div>
           </div>
-          <%= index++ %>
+          <% index++ %>
             <%});%>
       </div>
 
@@ -121,10 +121,13 @@
   </div>
 
   <div id="carousel2" class="carousel slide mb-5">
+
+
+
+    
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="cards-wrapper">
-
           <% obj.forEach((item, index)=> { %>
           <a href="/gamePage/<%= item.id %>">
             <div class="card" style="width: 18rem;">
@@ -133,7 +136,7 @@
               </div>
               <div class="card-body">
                 <h5 class="game-title"><%=item.name%></h5>
-                <p class="game-subtitle"><%=item.price%></p>
+                <p class="game-subtitle"> $ <%=item.price%></p>
               </div>
             </div>
           </a>
