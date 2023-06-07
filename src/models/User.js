@@ -11,7 +11,8 @@ const User = mongoose.Schema
         created: { type: Date, default: Date.now },
         gameids: { type: Array, default: [] },
         // game ids for cart
-        wishlistids: { type: Array, default:[]},
+        wishlistids: { type: Array, default: [] },
+        library: { type: Array, default: [] },
         // game ids for wishlist
     });
 
