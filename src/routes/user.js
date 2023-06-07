@@ -71,13 +71,14 @@ router.post('/contactus', UserController.contactus);
 router.get('/cart', UserController.viewcart);
 router.post('/Game/:id/deletecart', UserController.deletecart);
 router.post('/checkout', UserController.checkout);
-router.post('/editprofile',UserController.editProfile);
+router.post('/editprofile', UserController.editProfile);
 
 // router.get('/checkout', UserController.checkout);
 
 router.post('/Game/:id/addwishlist', UserController.addwishlist);
 router.get('/wishlist', UserController.viewwishlist);
 router.post('/Game/:id/deletewishlist', UserController.deletewishlist);
+router.get('/', UserController.aboutUsPage);
 // just in case
 // router.get('/', UserController.getAllUsers);
 // router.get('/:id', UserController.getUserById);

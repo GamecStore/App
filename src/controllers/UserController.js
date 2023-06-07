@@ -428,6 +428,9 @@ const logout = (req, res) => {
     req.session.destroy();
     res.redirect('/');
 };
+const aboutUsPage = (req, res) => {
+    res.render('pages/aboutUs', { user: req.session.user });
+};
 module.exports = {
     createUser,
     getAllUsers,
@@ -454,5 +457,6 @@ module.exports = {
     homepage,
     viewwishlist,
     deletewishlist,
-    logout
+    logout,
+    aboutUsPage
 };
