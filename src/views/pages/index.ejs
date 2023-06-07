@@ -109,14 +109,13 @@
     </div>
   </div>
 
-  <!--------->
 
 
-  <!---cards (2)--->
+ 
   <div class="container-fluid  text-center text-light mb-1 mt-3">
     <div class="row">
       <div class="col-12">
-        <h2>Top Upcoming Wishlisted</h2>
+        <h2>Wishlisted</h2>
       </div>
     </div>
   </div>
@@ -125,118 +124,24 @@
     <div class="carousel-inner">
       <div class="carousel-item active">
         <div class="cards-wrapper">
-          <a href="gamePage.html">
+
+          <% obj.forEach((item, index)=> { %>
+          <a href="/gamePage/<%= item.id %>">
             <div class="card" style="width: 18rem;">
               <div class="image-wrapper">
-                <img src="img\download.jfif" class="card-img-top images" alt="Assassin's Creed Mirage poster">
+                <img src="/images/uploads/<%=item.sideImg%>" class="card-img-top images" alt="<%=item.name%>poster">
               </div>
               <div class="card-body">
-                <h5 class="game-title">Assassin's Creed Mirage</h5>
-                <p class="game-subtitle">Coming Soon</p>
+                <h5 class="game-title"><%=item.name%></h5>
+                <p class="game-subtitle"><%=item.price%></p>
               </div>
             </div>
           </a>
-          <a href="gamePage.html">
-            <div class="card" style="width: 18rem;">
-              <div class="image-wrapper">
-                <img src="img\the last.webp" class="card-img-top images" alt="The Last of Us Part I poster">
-              </div>
-              <div class="card-body">
-                <h5 class="game-title">The Last of Us Part I</h5>
-                <p class="game-subtitle">Available 2024</p>
-              </div>
-            </div>
-          </a>
-          <a href="gamePage.html">
-            <div class="card" style="width: 18rem;">
-              <div class="image-wrapper">
-                <img src="img\Witchfire.png" class="card-img-top images" alt="Witchfire poster">
-              </div>
-              <div class="card-body">
-                <h5 class="game-title">Witchfire</h5>
-                <p class="game-subtitle">Available 28/04/23</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="cards-wrapper">
-          <a href="gamePage.html">
-            <div class="card" style="width: 18rem;">
-              <div class="image-wrapper">
-                <img src="img\the-lamplighters-league.jpg" class="card-img-top images"
-                  alt="The Lamplighters League poster">
-              </div>
-              <div class="card-body">
-                <h5 class="game-title">The Lamplighters League</h5>
-                <p class="game-subtitle">Coming Soon</p>
-              </div>
-            </div>
-          </a>
-          <a href="gamePage.html">
-            <div class="card" style="width: 18rem;">
-              <div class="image-wrapper">
-                <img src="img\images.jfif" class="card-img-top images" alt="Touch Type Tale poster">
-              </div>
-              <div class="card-body">
-                <h5 class="game-title">Touch Type Tale</h5>
-                <p class="game-subtitle">Available 28/08/23</p>
-              </div>
-            </div>
-          </a>
-          <a href="gamePage.html">
-            <div class="card" style="width: 18rem;">
-              <div class="image-wrapper">
-                <img src="img\Age Of Wonders 4.jpg" class="card-img-top images" alt="Age Of Wonders 4 poster">
-              </div>
-              <div class="card-body">
-                <h5 class="game-title">Age Of Wonders 4</h5>
-                <p class="game-subtitle">Coming Soon</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <div class="cards-wrapper">
-          <a href="gamePage.html">
-            <div class="card" style="width: 18rem;">
-              <div class="image-wrapper">
-                <img src="img\Trails_into_Reverie_Cover_Art.jpg" class="card-img-top images"
-                  alt="Trails into Reverie poster">
-              </div>
-              <div class="card-body">
-                <h5 class="game-title">The Legend of Heroes</h5>
-                <p class="game-subtitle">Available 08/10/23 </p>
-              </div>
-            </div>
-          </a>
-          <a href="gamePage.html">
-            <div class="card" style="width: 18rem;">
-              <div class="image-wrapper">
-                <img src="img\Eternights.jpg" class="card-img-top images images" alt="Eternights Poster">
-              </div>
-              <div class="card-body">
-                <h5 class="game-title">Eternights</h5>
-                <p class="game-subtitle">Coming Soon</p>
-              </div>
-            </div>
-          </a>
-          <a href="gamePage.html">
-            <div class="card" style="width: 18rem;">
-              <div class="image-wrapper">
-                <img src="img\tile.jpg" class="card-img-top images" alt="Boundless Trails poster">
-              </div>
-              <div class="card-body">
-                <h5 class="game-title">Boundless Trails</h5>
-                <p class="game-subtitle">Available 2024</p>
-              </div>
-            </div>
-          </a>
+          <%})%>
         </div>
       </div>
     </div>
+
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel2" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Prev</span>
@@ -246,9 +151,11 @@
       <span class="visually-hidden">Nex</span>
     </button>
   </div>
-  <!--------->
 
-  <!--FAQs-->
+
+
+
+   <!----FAQ-->>
   <section id="faq" class="py-md-5 ">
     <h2 class="my-5 text-center text-white ">FAQs</h2>
     <div class="container">
