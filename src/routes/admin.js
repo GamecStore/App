@@ -28,7 +28,7 @@ async function getStats() {
     newCustomers: await User.countDocuments({
       role: "user",
       created: {
-        $gte: new Date(new Date().setHours(00, 00, 00)),
+        //$gte: new Date(new Date().setHours(00, 00, 00)),
         $lt: new Date(new Date().setHours(23, 59, 59)),
       },
     }),

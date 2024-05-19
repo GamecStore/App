@@ -53,7 +53,6 @@ const allGames_get = (req, res) => {
   })
   .catch((err) => console.error(err));
 
-
 };
 
 

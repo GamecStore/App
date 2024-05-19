@@ -57,7 +57,6 @@
     <table class="table table-bordered table-dark table-striped text-center mt-3 mb-3 tbl">
       <thead class="tablehead">
         <tr>
-          <th scope="col">#ID</th>
           <th scope="col">Date</th>
           <th scope="col">Game</th>
           <th scope="col">Price</th>
@@ -67,7 +66,6 @@
       <tbody>
         <% orders.forEach((order)=> { %>
         <tr class="trr">
-          <td><%= order._id %></td>
           <td><%= order.date.toDateString()%></td>
           <td><%= order.games.map(game => game.name).join('\n ') %></td>
           <td><%= order.totalPrice%></td>

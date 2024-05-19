@@ -2,7 +2,7 @@ const config = require('./config.json');
 const port = config.port || 3000;
 const http = require('http');
 // Express for handling GET and POST request
-const express = require('express');
+const express = require('express'); 
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
